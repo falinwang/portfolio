@@ -6,7 +6,7 @@ If you are interested in the current process, [visit here](https://falinwang.git
 
 ## Progress
 - Day 1 8/14
-  - Started the project and used Tailwind Starter Kit
+  - Started the project and used [Tailwind Starter Kit](https://github.com/creativetimofficial/tailwind-starter-kit)
   - Added the content images
   - Removed unnecessary sections
   - Added flexbox for project layout
@@ -16,5 +16,5 @@ If you are interested in the current process, [visit here](https://falinwang.git
   - Adjusted CSS: header section padding
   - Added javascript scroll animation
   - Updated navigation and footer
-  - Added hover effect on the project image based on [Hover.css](http://ianlunn.github.io/Hover/)
+  - Added hover effect on the project image based on [Hover.css](https://github.com/IanLunn/Hover)
   - Added hover effect on the project title based on [Having fun with link hover effects by Geoff Graham](https://css-tricks.com/having-fun-with-link-hover-effects/)
