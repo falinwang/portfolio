@@ -6,6 +6,7 @@
   - [Background](#background)
   - [Project](#project)
   - [Progress](#progress)
+  - [TODO](#todo)
 
 ## Background
 A self-code portfolio website built with [Tailwind Starter Kit by Creative Tim](https://www.creative-tim.com).
