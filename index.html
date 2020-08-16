@@ -11,12 +11,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"/>
     <!-- Tailwind Library -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css">
+    <!-- Tailwind LTS Library -->
+    <link rel="stylesheet" href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css">
 </head>
 <body class="text-gray-800 antialiased">
 
   <!-- Navigation -->
   <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
-      <div class="container px-4 mx-auto flex flex-wrap items-center justify-between">
+      <div class="container px-8 mx-auto flex flex-wrap items-center justify-between">
         <!-- Nav Left Side -->
           <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
               <a class="text-sm font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white" href="https://www.creative-tim.com/learning-lab/tailwindcss-starter-project#/presentation">
@@ -70,21 +72,24 @@
       <!-- Background Image -->
       <div
         class="absolute top-0 w-full h-full bg-center bg-cover"
-        style="background:url(https://images.squarespace-cdn.com/content/v1/5c3ace6fec4eb79e8dd6814b/1547366773429-PHGBZQENQSKE8HHQN4MS/ke17ZwdGBToddI8pDm48kDHPSfPanjkWqhH6pl6g5ph7gQa3H78H3Y0txjaiv_0fDoOvxcdMmMKkDsyUqMSsMWxHk725yiiHCCLfrh8O1z4YTzHvnKhyp6Da-NYroOW3ZGjoBKy3azqku80C789l0mwONMR1ELp49Lyc52iWr5dNb1QJw9casjKdtTg1_-y4jz4ptJBmI9gQmbjSQnNGng/JPEG+image-7399A0880696-19.jpeg?format=1500w)">
+        style="">
         <!-- Overlay -->
-        <span id="blackOverlay" class="w-full h-full absolute opacity-50 bg-black"></span>
+        <span id="blackOverlay" class="w-full h-full absolute bg-teal-700"></span>
       </div>
       <!-- Text Over Main Background -->
       <div class="container relative mx-auto">
         <div class="items-center flex flex-wrap">
-          <div class="w-full lg:w-9/12 px-4 ml-auto mr-auto text-center">
-            <div class="pr-12">
-              <h1 class="text-white font-semibold text-5xl">
+          <div class="w-full lg:w-11/12 px-4 ml-auto mr-auto">
+            <div class="px-4">
+              <h1 class="my-8 text-white font-bold uppercase text-4xl">
                 Hi, I am Roy!
               </h1>
               <p class="mt-4 text-lg text-gray-300">
-                I am a Product/UX designer with a technical background in <strong>behavioral science</strong>, <strong>business</strong>, and <strong>user-centered agile development</strong>.              </p>
-                <p class="mt-4 text-lg text-gray-300">Graduate with a Master in UX design and research at the University of Michigan, I'm looking for a UI/UX design opportunity where I can contribute my design and business thinking to the team to build impactful products. </p>
+                I am a Product/UX designer with a technical background in <strong>behavioral science</strong>, <strong>business</strong>, and <strong>user-centered agile development</strong>.              
+              </p>
+              <p class="mt-4 text-lg text-gray-300">
+                Graduate with a Master in UX design and research at the University of Michigan, I'm looking for a UI/UX design opportunity where I can contribute my design and business thinking to the team to build impactful products.              
+              </p>
             </div>
           </div>
         </div>
@@ -166,66 +171,6 @@
             </div>
           </div>
         </div>
-
-        <!-- Text Box and Card Container -->
-        <div class="flex flex-wrap items-center mt-32">
-          <!-- Text Box Container -->
-          <div class="w-full md:w-5/12 px-4 mr-auto ml-auto">
-            <!-- Text Box -->
-            <div class="text-gray-600 p-3 text-center inline-flex items-center justify-center w-16 h-16 mb-6 shadow-lg rounded-full bg-gray-100">
-              <!-- Icon -->
-              <i class="fas fa-star text-xl"></i>
-            </div>
-            <h3 class="text-3xl mb-2 font-semibold leading-normal">
-              Trying New Things is Great!
-            </h3>
-            <p class="text-lg font-light leading-relaxed mt-4 mb-4 text-gray-700">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis, dolores? Saepe aspernatur necessitatibus explicabo.
-            </p>
-            <p class="text-lg font-light leading-relaxed mt-0 mb-4 text-gray-700">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. At repellat obcaecati tenetur officia distinctio! A voluptates numquam, neque libero molestiae natus facere temporibus!
-            </p>
-            <a
-              href="https://www.creative-tim.com/framework/tailwind-starter-kit"
-              class="font-bold text-gray-800 mt-8"
-              >Check Tailwind Starter Kit!
-            </a>
-          </div>
-
-          <!-- Image Cap & Text Card -->
-          <div class="w-full md:w-4/12 px-4 mr-auto ml-auto">
-            <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded-lg bg-orange-500">
-              <!-- Image -->
-              <img
-                alt="..."
-                src=""
-                class="w-full align-middle rounded-t-lg"
-              />
-              <blockquote class="relative p-8 mb-4">
-                <!-- Making Polygon Shape in Card -->
-                <svg
-                  preserveAspectRatio="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 583 95"
-                  class="absolute left-0 w-full block"
-                  style="height: 95px; top: -94px;"
-                >
-                  <polygon
-                    points="-30,95 583,95 583,65"
-                    class="text-orange-500 fill-current"
-                  ></polygon>
-                </svg>
-                <!-- Text Box -->
-                <h4 class="text-xl font-bold text-white">
-                  More Than Meets The Eye
-                </h4>
-                <p class="text-md font-light mt-2 text-white">
-                  I feel like I've mentioned before that I'm a robot and that continues to be true, even to this day.
-                </p>
-              </blockquote>
-            </div>
-          </div>
-        </div>
       </div>
     </section>
     <!-- End of Services Section -->
@@ -261,31 +206,31 @@
       <div class="container mx-auto px-4">
         <!-- Text Box -->
         <div class="flex flex-wrap text-center justify-center">
-          <div class="w-full mb-6 lg:w-6/12 px-4">
+          <div class="w-full mb-8 lg:w-6/12 px-4">
             <h2 class="text-4xl font-semibold text-center">Design Projects</h2>
         </div>
       </div>
         <!-- Flex Row Container (Gird) -->
         <div class="flex flex-wrap justify-center text-center">
-          <!-- Item -->
-          <div class="m-2 px-2 py-4 flex-initial"
-          style="max-width: 470px;">
+          <!-- Item 1 -->
+          <div class="group hover:bg-blue-500 px-2 py-6 w-full md:w-6/12 mr-auto ml-auto"
+          style="max-width: 500px;">
               <!-- Image -->
               <img
                 alt="MassChallenge Thumbnail"
                 src="img/thumbnail_MC.png"               
                 class="shadow-lg rounded mx-auto"
               />
-              <div class="pt-6 text-center">
+              <div class="pt-6 text-center ">
                 <h5 class="text-xl font-bold">MassChallenge: Alumni Experience Redesign</h5>
                 <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
                   — Product UX Design Internship, UX Research
                 </p>
               </div>
           </div>
-          <!-- Item -->
-          <div class="m-2 px-2 py-4 flex-initial"
-          style="max-width: 470px;">
+          <!-- Item 2 -->
+          <div class="px-2 py-6 w-full md:w-6/12 mr-auto ml-auto"
+          style="max-width: 500px;">
               <!-- Image -->
               <img
                 alt="Guarankey Thumbnail"
@@ -299,9 +244,9 @@
                 </p>
               </div>
           </div>
-          <!-- Item -->
-          <div class="m-2 px-2 py-4 flex-initial"
-          style="max-width: 470px;">
+          <!-- Item 3 -->
+          <div class="px-2 py-6 w-full md:w-6/12 mr-auto ml-auto"
+          style="max-width: 500px;">
               <!-- Image -->
               <img
                 alt="Quipital Thumbnail"
@@ -315,9 +260,9 @@
                 </p>
               </div>
           </div>
-          <!-- Item -->
-          <div class="m-2 px-2 py-4 flex-initial"
-          style="max-width: 470px;">
+          <!-- Item 4 -->
+          <div class="px-2 py-6 w-full md:w-6/12 mr-auto ml-auto"
+          style="max-width: 500px;">
               <!-- Image -->
               <img
                 alt="Plans2Nite Thumbnail"
@@ -359,17 +304,19 @@
         </svg>
       </div>
       <!-- Section Container -->
-      <div class="container mx-auto px-4 lg:pb-24">
+      <div class="container mx-auto px-4">
         <!-- Text Box -->
         <div class="flex flex-wrap text-center justify-center">
           <div class="w-full lg:w-6/12 px-4">
             <h2 class="text-4xl font-semibold text-white">Contact</h2>
-            <p class="text-lg leading-relaxed mt-5 mb-4 text-gray-500">
+            <p class="text-lg leading-relaxed mt-6 mb-4 text-gray-500">
               Would you like to work with me? Awesome!
             </p>
-            <button class="text-gray-300 bg-transparent border border-blue-500 font-bold hover:bg-blue-500  hover:text-white py-2 px-4 hover:border-transparent rounded inline-flex items-center" type="button" style="transition: all .15s ease">
-              <i class="far fa-paper-plane pr-3"></i>
-              <span>Let's Talk</span>
+            <button 
+            class="text-gray-300 bg-transparent border border-solid border-gray-300 hover:bg-teal-500 hover:border-transparent hover:text-white active:bg-gray-600 font-semibold uppercase px-6 py-3  rounded outline-none focus:outline-none mr-1 mb-1" 
+            type="button" 
+            style="transition: all .15s ease">
+              <i class="far fa-paper-plane pr-3"></i> Let's Talk
             </button>
           </div>
         </div>
