@@ -2,7 +2,6 @@
   ![0815 progress](img/0815.png)
 
 ## Table of Contents
-- [Portfolio](#portfolio)
   - [Table of Contents](#table-of-contents)
   - [Background](#background)
   - [Project](#project)
@@ -22,7 +21,6 @@ If you are interested in the current process, [view demo](https://falinwang.gith
   - Removed unnecessary sections
   - Added flexbox for project layout
 
-
 - Day 2 8/15
   - Updated project layout
   - Adjusted background
@@ -31,3 +29,18 @@ If you are interested in the current process, [view demo](https://falinwang.gith
   - Updated navigation and footer
   - Added hover effect on the project image based on [Hover.css](https://github.com/IanLunn/Hover)
   - Added hover effect on the project title based on [Having fun with link hover effects](https://css-tricks.com/having-fun-with-link-hover-effects/) by Geoff Graham
+
+## TODO
+- [ ] Dark theme
+- [ ] Tilt
+- [ ] About Page
+- [ ] Resume Page
+- [ ] Photography Page
+- [ ] Blog Page
+- [ ] Project - GK
+- [ ] Project - PN
+- [ ] Project - Smartbrain
+- [ ] Project - MC
+- [ ] Project - Quipital
+
+
