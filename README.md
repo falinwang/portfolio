@@ -1,8 +1,18 @@
 # Portfolio
+  ![0815 progress](img/0815.png)
 
+## Table of Contents
+- [Portfolio](#portfolio)
+  - [Table of Contents](#table-of-contents)
+  - [Background](#background)
+  - [Project](#project)
+  - [Progress](#progress)
+
+## Background
 A self-code portfolio website built with [Tailwind Starter Kit by Creative Tim](https://www.creative-tim.com).
 
-If you are interested in the current process, [visit here](https://falinwang.github.io/portfolio/).
+## Project
+If you are interested in the current process, [view demo](https://falinwang.github.io/portfolio/).
 
 ## Progress
 - Day 1 8/14
@@ -11,6 +21,8 @@ If you are interested in the current process, [visit here](https://falinwang.git
   - Updated icons using [Font Awesome](https://fontawesome.com/)
   - Removed unnecessary sections
   - Added flexbox for project layout
+
+
 - Day 2 8/15
   - Updated project layout
   - Adjusted background
@@ -18,4 +30,4 @@ If you are interested in the current process, [visit here](https://falinwang.git
   - Added javascript scroll animation based on [AOS Animate On Scroll Library](https://github.com/michalsnik/aos)
   - Updated navigation and footer
   - Added hover effect on the project image based on [Hover.css](https://github.com/IanLunn/Hover)
-  - Added hover effect on the project title based on [Having fun with link hover effects by Geoff Graham](https://css-tricks.com/having-fun-with-link-hover-effects/)
+  - Added hover effect on the project title based on [Having fun with link hover effects](https://css-tricks.com/having-fun-with-link-hover-effects/) by Geoff Graham
