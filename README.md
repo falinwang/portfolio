@@ -31,17 +31,23 @@ If you are interested in the current process, [view demo](https://falinwang.gith
   - Added hover effect on the project image based on [Hover.css](https://github.com/IanLunn/Hover)
   - Added hover effect on the project title based on [Having fun with link hover effects](https://css-tricks.com/having-fun-with-link-hover-effects/) by Geoff Graham
 
+- Day 3 8/31
+  - Updated box shadow to avoid confusion
+  - Added programming projects and button links
+  - Removed 2 projects
+  - Removed some of nav items for now
+
 ## TODO
+- [X] Project - Smartbrain
+- [X] Project - Hulu clone
 - [ ] Dark theme
 - [ ] Tilt
 - [ ] About Page
 - [ ] Resume Page
 - [ ] Photography Page
 - [ ] Blog Page
-- [ ] Project - GK
 - [ ] Project - PN
-- [ ] Project - Smartbrain
 - [ ] Project - MC
-- [ ] Project - Quipital
+- [ ] React App
 
 
