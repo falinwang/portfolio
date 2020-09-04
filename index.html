@@ -51,7 +51,7 @@
       >
         <!-- Nav Left Side -->
         <div
-          class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
+          class="w-full relative flex justify-between md:w-auto md:static md:block md:justify-start"
         >
           <a
             class="text-md font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
@@ -60,19 +60,10 @@
             <!-- Nav Title -->
             Roy Wang
           </a>
-          <!-- Hamburger Menu (Mobile) -->
-          <button
-            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
-            type="button"
-            onclick="toggleNavbar('example-collapse-navbar')"
-          >
-            <!-- Icon -->
-            <i class="text-white fas fa-bars"></i>
-          </button>
         </div>
         <!-- Nav Right Side -->
-        <div class="lg:flex flex-grow items-center">
-          <ul class="flex flex-col lg:flex-row list-none ml-auto">
+        <div class="md:flex flex-grow items-center">
+          <ul class="flex flex-col md:flex-row list-none ml-auto">
             <li class="nav-item">
               <a
                 class="px-3 py-2 flex items-center text-sm uppercase font-bold leading-snug text-white hover:opacity-75"
@@ -123,27 +114,17 @@
                   class="my-8 text-white font-bold uppercase text-4xl"
                   data-aos="fade-up"
                 >
-                  Hi, I am Roy!
+                  Hi, I am Roy Wang
                 </h1>
                 <p
-                  class="mt-4 text-lg text-gray-300"
+                  class="mt-4 text-xl text-white"
                   data-aos="fade-right"
                   data-aos-delay="1000"
                 >
-                  I am a Product/UX designer with a technical background in
+                  I am a UX Developer with a technical background in
                   <strong>behavioral science</strong>,
                   <strong>business</strong>, and
                   <strong>user-centered agile development</strong>.
-                </p>
-                <p
-                  class="mt-4 text-lg text-gray-300"
-                  data-aos="fade-right"
-                  data-aos-delay="1000"
-                >
-                  Graduate with a Master in UX design and research at the
-                  University of Michigan, I'm looking for a UI/UX design
-                  opportunity where I can contribute my design and business
-                  thinking to the team to build impactful products.
                 </p>
               </div>
             </div>
@@ -171,84 +152,6 @@
         </div>
       </div>
       <!-- End of Splash Page -->
-
-      <!-- Services Section -->
-      <section class="pb-20 bg-gray-300 -mt-24">
-        <!-- 3 Card Section -->
-        <div class="container mx-auto px-4">
-          <div class="flex flex-wrap">
-            <!-- Card -->
-            <div
-              class="pt-10 w-full md:w-4/12 px-4 text-center"
-              data-aos="fade-right"
-              data-aos-delay="1200"
-            >
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-sm rounded-lg"
-              >
-                <div class="px-4 py-5 flex-auto">
-                  <div
-                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400"
-                  >
-                    <!-- Icon -->
-                    <i class="fas fa-comment"></i>
-                  </div>
-                  <!-- Text Box -->
-                  <h6 class="text-xl font-semibold">UX Research</h6>
-                  <p class="mt-2 mb-4 text-gray-600">I do UX research.</p>
-                </div>
-              </div>
-            </div>
-            <!-- Card -->
-            <div
-              class="pt-6 w-full md:w-4/12 px-4 text-center"
-              data-aos="fade-up"
-              data-aos-delay="1400"
-            >
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-sm rounded-lg"
-              >
-                <div class="px-4 py-5 flex-auto">
-                  <div
-                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
-                  >
-                    <!-- Icon -->
-                    <i class="fas fa-pen-nib"></i>
-                  </div>
-                  <!-- Text Box -->
-                  <h6 class="text-xl font-semibold">UX Design</h6>
-                  <p class="mt-2 mb-4 text-gray-600">I do UX Design.</p>
-                </div>
-              </div>
-            </div>
-            <!-- Card -->
-            <div
-              class="pt-10 w-full md:w-4/12 px-4 text-center"
-              data-aos="fade-left"
-              data-aos-delay="1600"
-            >
-              <div
-                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-sm rounded-lg"
-              >
-                <div class="px-4 py-5 flex-auto">
-                  <div
-                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400"
-                  >
-                    <!-- Icon -->
-                    <i class="fas fa-atom"></i>
-                  </div>
-                  <!-- Text Box -->
-                  <h6 class="text-xl font-semibold">Full-Stack Developer</h6>
-                  <p class="mt-2 mb-4 text-gray-600">
-                    I do full stack development.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      <!-- End of Services Section -->
 
       <!-- About Section -->
       <section class="relative py-5">
@@ -317,6 +220,9 @@
                   </h5>
                 </a>
               </div>
+              <p class="my-1">
+                A web app that detects the human face present in the image.
+              </p>
               <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
                 — Full-stack, React, API, Node.JS
               </p>
@@ -360,6 +266,10 @@
                   <h5 class="text-xl font-bold">Hulu Clone</h5>
                 </a>
               </div>
+              <p class="my-1">
+                An interactive Hulu-like movie website created with React and
+                The Movie Database API.
+              </p>
               <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
                 — React, Firebase, API
               </p>
@@ -405,6 +315,9 @@
                   </h5>
                 </a>
               </div>
+              <p class="my-1">
+                A useful web tool to help you create gradient CSS background.
+              </p>
               <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
                 — Front-end, Javascript
               </p>
@@ -453,6 +366,10 @@
                   </h5>
                 </a>
               </div>
+              <p class="my-1">
+                The project is about building a responsive landing page with
+                pure HTML5, CSS3 amd Flexbox.
+              </p>
               <p class="mt-1 text-sm text-gray-500 uppercase font-semibold">
                 — Responsive, Front-end
               </p>
@@ -674,41 +591,6 @@
               ></a>
             </div>
           </div>
-          <!-- List Container -->
-          <div class="w-full lg:w-6/12 px-4">
-            <div class="flex flex-wrap items-top mb-6">
-              <!-- List 1 -->
-              <div class="w-full lg:w-4/12 px-4 ml-auto">
-                <span
-                  class="block uppercase text-gray-600 text-sm font-semibold mb-2"
-                  >Links</span
-                >
-                <ul class="list-unstyled">
-                  <li>
-                    <a
-                      class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                      href="#about"
-                      >About</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                      href="#resume"
-                      >Resume</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="text-gray-700 hover:text-gray-900 font-semibold block pb-2 text-sm"
-                      href="#photography"
-                      >Photography</a
-                    >
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
         <!-- Line Break -->
         <hr class="my-6 border-gray-400" />
@@ -729,6 +611,4 @@
   <!-- AOS.js -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
-  <!-- Navigation Script -->
-  <script src="navbar.js"></script>
 </html>
