@@ -47,12 +47,17 @@ If you are interested in the current process, [view demo](https://falinwang.gith
   - Removed some of nav items for now
 
 - Day 4 9/13
+
   - Updated title tagline
+
+- Day 5 9/14
+  - Added [MassChallenge project](https://falinwang.github.io/portfolio/masschallenge) `MassChallenge.html` (WIP)
 
 ## TODO
 
 - [x] Project - Smartbrain
 - [x] Project - Hulu clone
+- [x] Project - MC
 - [ ] Dark theme
 - [ ] Tilt
 - [ ] About Page
@@ -60,5 +65,4 @@ If you are interested in the current process, [view demo](https://falinwang.gith
 - [ ] Photography Page
 - [ ] Blog Page
 - [ ] Project - PN
-- [ ] Project - MC
 - [ ] React App
