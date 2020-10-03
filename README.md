@@ -17,17 +17,3 @@ A self-code portfolio website built with [Tailwind Starter Kit by Creative Tim](
 ## Project
 
 If you are interested in the current process, [view demo](https://falinwang.github.io/portfolio/).
-
-## TODO
-
-- [x] Project - Smartbrain
-- [x] Project - Hulu clone
-- [x] Project - MC
-- [ ] Dark theme
-- [ ] Tilt
-- [ ] About Page
-- [ ] Resume Page
-- [ ] Photography Page
-- [ ] Blog Page
-- [ ] Project - PN
-- [ ] React App
