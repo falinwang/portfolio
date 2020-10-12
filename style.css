@@ -2,11 +2,15 @@
   --mainColor: #00bac7;
 }
 
+body {
+  /* background-color: #f5f6fa; */
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-.project-title {
+.project-title-n {
   background: linear-gradient(to bottom, #575757 0%, #575757 100%);
   background-position: 0 100%;
   background-repeat: repeat-x;
@@ -14,7 +18,7 @@ html {
   transition: background-size 0.5s;
 }
 
-.project-title:hover {
+.project-title-n:hover {
   background-size: 2px 60px;
   color: #ffffff;
 }
