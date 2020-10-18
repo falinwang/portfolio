@@ -4,3 +4,8 @@ AOS.init({
   once: false, // whether animation should happen only once - while scrolling down
   mirror: false, // whether elements should animate out while scrolling past them
 });
+
+function toggleNavbar(collapseID) {
+  document.getElementById(collapseID).classList.toggle("hidden");
+  document.getElementById(collapseID).classList.toggle("block");
+}
