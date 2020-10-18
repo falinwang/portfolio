@@ -76,7 +76,7 @@
             <li class="flex items-center">
               <a
                 class="px-3 py-2 flex items-center text-sm uppercase font-bold leading-snug text-white hover:opacity-75"
-                href="#programming-projects"
+                href="#dev-projects"
               >
                 Dev
               </a>
@@ -120,10 +120,15 @@
             <div class="w-full lg:w-11/12 px-4 ml-auto mr-auto">
               <div class="px-4">
                 <h1
-                  class="my-8 text-white font-bold uppercase text-4xl"
+                  class="my-8 text-white font-bold text-4xl"
                   data-aos="fade-up"
                 >
-                  Hi, I am Roy Wang 👋🏻
+                  Hi, I am Roy Wang
+                  <img
+                    src="https://camo.githubusercontent.com/35d3d11359a49bf12aebb834cc13fd81b95eff4e/68747470733a2f2f6d656469612e67697068792e636f6d2f6d656469612f6876524a434c467a6361737252346961377a2f67697068792e676966"
+                    alt="Waving gif"
+                    class="w-10 inline align-text-top pl-1"
+                  />
                 </h1>
                 <p
                   class="mt-4 text-xl text-white"
@@ -163,9 +168,78 @@
         </div>
       </div>
       <!-- End of Splash Page -->
-
-      <!-- About Section -->
-      <section class="relative py-5">
+      <!-- About Page -->
+      <section class="pb-20 bg-gray-300 -mt-24">
+        <div class="container mx-auto px-4">
+          <div class="flex flex-wrap">
+            <div class="lg:pt-12 pt-6 w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-red-400"
+                  >
+                    <i class="fas fa-project-diagram"></i>
+                  </div>
+                  <h6 class="text-xl font-semibold">UX Design</h6>
+                  <p class="mt-2 mb-4 text-gray-600">
+                    User experience design, user journey map, interaction
+                    design, user flow, Wireframing, design system
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-blue-400"
+                  >
+                    <i class="fas fa-laptop-code"></i>
+                  </div>
+                  <h6 class="text-xl font-semibold">Software Engineer</h6>
+                  <div class="mt-2 mb-4 text-gray-600">
+                    <ul
+                      class="pl-2 text-sm grid grid-cols-2 list-disc list-inside text-left"
+                    >
+                      <li>JavaScript (ES6+)</li>
+                      <li>HTML5 & CSS3</li>
+                      <li>React</li>
+                      <li>Node.js</li>
+                      <li>Python</li>
+                      <li>SQL</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="pt-6 w-full md:w-4/12 px-4 text-center">
+              <div
+                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-8 shadow-lg rounded-lg"
+              >
+                <div class="px-4 py-5 flex-auto">
+                  <div
+                    class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 mb-5 shadow-lg rounded-full bg-green-400"
+                  >
+                    <i class="fas fa-comments"></i>
+                  </div>
+                  <h6 class="text-xl font-semibold">UX Research</h6>
+                  <p class="mt-2 mb-4 text-gray-600">
+                    Affinity diagram, comparative analysis, survey design,
+                    heuristic evaluation, usability testing, A/B testing
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- End of About Page -->
+      <!-- Dev Project Section -->
+      <section class="relative py-5 pb-40" id="dev-projects">
         <!-- Making Polygon Shape in Background -->
         <div
           class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
@@ -186,23 +260,15 @@
             ></polygon>
           </svg>
         </div>
-      </section>
-      <!-- End of About Section -->
-
-      <!-- Project Section -->
-      <section class="pt-16 pb-40">
         <!-- Section Container -->
         <div class="container mx-auto px-4">
           <!-- Text Box -->
           <div
             class="flex flex-wrap text-center justify-center my-8"
             data-aos="fade-up"
-            id="programming-projects"
           >
             <div class="w-full my-8 lg:w-6/12 px-4">
-              <h2 class="text-4xl font-semibold text-center">
-                Programming Projects
-              </h2>
+              <h2 class="text-4xl font-semibold text-center">Dev Projects</h2>
             </div>
           </div>
           <!-- Flex Row Container (Gird) -->
@@ -520,11 +586,36 @@
             </div>
           </div>
           <!-- End of Flex Row Container (Gird) -->
+        </div>
+      </section>
+      <!-- End of Project Section -->
+      <!-- Design Project Section -->
+      <section class="relative py-20 pb-40 bg-gray-100" id="design-projects">
+        <!-- Making Polygon Shape in Background -->
+        <div
+          class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+          style="height: 80px; transform: translateZ(0)"
+        >
+          <svg
+            class="absolute bottom-0 overflow-hidden"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            version="1.1"
+            viewBox="0 0 2560 100"
+            x="0"
+            y="0"
+          >
+            <polygon
+              class="text-gray-100 fill-current"
+              points="2560 0 2560 100 0 100"
+            ></polygon>
+          </svg>
+        </div>
+        <div class="container mx-auto px-4">
           <!-- Text Box -->
           <div
             class="flex flex-wrap text-center justify-center my-8"
             data-aos="fade-up"
-            id="design-projects"
           >
             <div class="w-full mb-8 lg:w-6/12 px-4">
               <h2 class="text-4xl font-semibold text-center">
@@ -608,7 +699,6 @@
           <!-- End of Flex Row Container (Gird) -->
         </div>
       </section>
-      <!-- End of Project Section -->
 
       <!-- Contact Section -->
       <section class="pb-20 pt-12 relative block bg-gray-900">
@@ -725,7 +815,7 @@
         >
           <div class="w-full md:w-4/12 px-4 mx-auto text-center">
             <div class="text-sm text-gray-600 font-semibold py-1">
-              © 2020 Roy Fa-Lin Wang
+              Built with Love 💙 2020 Roy Fa-Lin Wang
             </div>
           </div>
         </div>
