@@ -8,7 +8,6 @@
   - [Table of Contents](#table-of-contents)
   - [Background](#background)
   - [Project](#project)
-  - [TODO](#todo)
 
 ## Background
 

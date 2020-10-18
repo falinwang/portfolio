@@ -51,25 +51,34 @@
       >
         <!-- Nav Left Side -->
         <div
-          class="w-full relative flex justify-between md:w-auto md:static md:block md:justify-start"
+          class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
         >
           <a
             class="text-md font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
             href="https://falinwang.github.io/portfolio/"
           >
             <!-- Nav Title -->
-            Roy Wang
-          </a>
+            Roy Wang </a
+          ><button
+            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+            type="button"
+            onclick="toggleNavbar('collapse-navbar')"
+          >
+            <i class="text-white fas fa-bars"></i>
+          </button>
         </div>
         <!-- Nav Right Side -->
-        <div class="md:flex flex-grow items-center">
-          <ul class="flex flex-col md:flex-row list-none ml-auto">
-            <li class="nav-item">
+        <div
+          class="lg:flex flex-grow items-center bg-gray-700 bg-opacity-25 lg:bg-transparent lg:shadow-none hidden"
+          id="collapse-navbar"
+        >
+          <ul class="flex flex-col lg:flex-row list-none ml-auto">
+            <li class="flex items-center">
               <a
                 class="px-3 py-2 flex items-center text-sm uppercase font-bold leading-snug text-white hover:opacity-75"
                 href="#programming-projects"
               >
-                Programming
+                Dev
               </a>
             </li>
             <li class="nav-item">
@@ -703,4 +712,5 @@
   <!-- AOS.js -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="script.js"></script>
+  <script src="navbar.js"></script>
 </html>

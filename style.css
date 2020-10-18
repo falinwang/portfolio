@@ -10,6 +10,8 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Project title */
+
 .project-title-n {
   background: linear-gradient(to bottom, #575757 0%, #575757 100%);
   background-position: 0 100%;
