@@ -1,18 +1,21 @@
-# Portfolio
-
-![0914 progress](img/0914.png)
+# Roy's Dev Portfolio
 
 ## Table of Contents
 
-- [Portfolio](#portfolio)
+- [Roy's Dev Portfolio](#roys-dev-portfolio)
   - [Table of Contents](#table-of-contents)
-  - [Background](#background)
-  - [Project](#project)
+  - [Links](#links)
+  - [Reference](#reference)
 
-## Background
 
-A self-code portfolio website built with [Tailwind Starter Kit by Creative Tim](https://www.creative-tim.com).
+## Links
+- [View Live: roywannago.com](https://roywannago.com)
+- [Link to this repo](https://github.com/falinwang/portfolio)
 
-## Project
 
-If you are interested in the current process, [view demo](https://falinwang.github.io/portfolio/).
+
+## Reference
+
+- [Vanilla-tile.js](https://github.com/micku7zu/vanilla-tilt.js)
+- [Tailwind Starter Kit by Creative Tim](https://www.creative-tim.com)
+- [Animate On Scroll Library](https://michalsnik.github.io/aos/)
