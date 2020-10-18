@@ -38,31 +38,40 @@
       >
         <!-- Nav Left Side -->
         <div
-          class="w-full relative flex justify-between md:w-auto md:static md:block md:justify-start"
+          class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
         >
           <a
             class="text-md font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
-            href="https://falinwang.github.io/portfolio/"
+            href="index.html"
           >
             <!-- Nav Title -->
-            Roy Wang
-          </a>
+            Roy Wang </a
+          ><button
+            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+            type="button"
+            onclick="toggleNavbar('collapse-navbar')"
+          >
+            <i class="text-white fas fa-bars"></i>
+          </button>
         </div>
         <!-- Nav Right Side -->
-        <div class="md:flex flex-grow items-center">
-          <ul class="flex flex-col md:flex-row list-none ml-auto">
-            <li class="nav-item">
+        <div
+          class="lg:flex flex-grow items-center bg-gray-700 bg-opacity-25 lg:bg-transparent lg:shadow-none hidden"
+          id="collapse-navbar"
+        >
+          <ul class="flex flex-col lg:flex-row list-none ml-auto">
+            <li class="flex items-center">
               <a
                 class="px-3 py-2 flex items-center text-sm uppercase font-bold leading-snug text-white hover:opacity-75"
-                href="#programming-projects"
+                href="index.html#programming-projects"
               >
-                Programming
+                Dev
               </a>
             </li>
             <li class="nav-item">
               <a
                 class="px-3 py-2 flex items-center text-sm uppercase font-bold leading-snug text-white hover:opacity-75"
-                href="#design-projects"
+                href="index.html#design-projects"
               >
                 Design
               </a>
@@ -72,6 +81,7 @@
       </div>
     </nav>
     <!-- End of Navigation -->
+
     <main>
       <!-- Splash Page -->
       <div
@@ -111,7 +121,7 @@
       <!-- End of Splash Page -->
       <!-- Project Details -->
       <div class="bg-gray-100">
-        <div class="container mx-auto pt-8 py-4">
+        <div class="container mx-auto px-4 pt-8 py-4">
           <div class="flex flex-wrap">
             <div class="w-full md:w-2/6 mb-4 px-2">
               <h6 class="sectionTitle">Type</h6>
@@ -142,7 +152,7 @@
       </div>
       <!-- End of Project Details -->
       <!-- Project Content Part 1 -->
-      <div class="mt-8 mb-24 container mx-auto">
+      <div class="mt-8 mb-24 container mx-auto px-4">
         <!-- Project Overview -->
         <div id="Project-Overview">
           <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-10">
@@ -187,19 +197,19 @@
               </p>
             </div>
             <div class="">
-              <div class="p-4 m-4 flex flex-wrap">
+              <div class="p-4 flex flex-wrap mx-auto">
                 <img
-                  class="shadow-md rounded-lg m-4"
+                  class="shadow-md rounded-lg m-2"
                   src="img/mc/Landing-Page.jpg"
                   alt="Landing Page"
                 />
                 <img
-                  class="shadow-md rounded-lg m-4"
+                  class="shadow-md rounded-lg m-2"
                   src="img/mc/Goal-Setting.png"
                   alt="Goal Setting Page"
                 />
                 <img
-                  class="shadow-md rounded-lg m-4"
+                  class="shadow-md rounded-lg m-2"
                   src="img/mc/Company-Specialty.png"
                   alt="Company Specialty"
                 />
@@ -371,7 +381,7 @@
       <!-- End of Project Content Part 1  -->
       <!-- Research results blue bg -->
       <div class="pb-40" style="background-color: #007694">
-        <div class="container mx-auto pt-8 py-4">
+        <div class="container mx-auto pt-8 py-4 px-4">
           <h2 class="text-3xl font-semibold text-white py-6 mt-10">
             Framing the problem
           </h2>
@@ -461,7 +471,7 @@
       </div>
       <!-- End of Research results -->
       <!-- Project Details Part 2 -->
-      <div class="mt-8 mb-24 container mx-auto">
+      <div class="mt-8 mb-24 container mx-auto px-4">
         <!-- Define -->
         <div id="Define">
           <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-10">
@@ -790,7 +800,7 @@
       <!-- End of Part 2 -->
       <!-- Next Steps -->
       <div class="pb-40 text-white" style="background-color: #007694">
-        <div class="container mx-auto pt-8 py-4">
+        <div class="container mx-auto pt-8 py-4 px-4">
           <div id="Validation">
             <h2 class="text-3xl font-semibold py-5 mt-10">Validation</h2>
             <div class="py-4">
