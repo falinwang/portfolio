@@ -2,10 +2,6 @@
   --mainColor: #00bac7;
 }
 
-body {
-  /* background-color: #f5f6fa; */
-}
-
 html {
   scroll-behavior: smooth;
 }
