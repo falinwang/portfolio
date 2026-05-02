@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roy Wang | Legal Tech — Review Page Redesign</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.ico" />
+    <!-- Style sheet -->
+    <link rel="stylesheet" href="style.css" />
+    <!-- Style sheet -->
+    <link rel="stylesheet" href="projectStyle.css" />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <!-- Tailwind Library -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+    />
+    <!-- Tailwind LTS Library -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+    />
+    <style>
+      .hero-bg { background-color: #1e3a5f; }
+      .accent-bg { background-color: #1e3a5f; }
+      .visual-placeholder {
+        background-color: #f0f4f8;
+        border: 2px dashed #cbd5e0;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #a0aec0;
+        font-size: 0.875rem;
+        font-style: italic;
+        padding: 2rem;
+        text-align: center;
+        min-height: 220px;
+        width: 100%;
+        margin: 1rem 0;
+      }
+      .decision-card {
+        border-left: 4px solid #13acbd;
+        padding: 1rem 1.5rem;
+        background: #f7fafc;
+        margin-bottom: 1rem;
+        border-radius: 0 6px 6px 0;
+      }
+      .callout-box {
+        background-color: #ebf8ff;
+        border-left: 4px solid #1e3a5f;
+        padding: 1rem 1.5rem;
+        border-radius: 0 6px 6px 0;
+        margin: 1.5rem 0;
+      }
+      .callout-box p { margin: 0; font-style: italic; font-size: 1.1rem; color: #2d3748; }
+      .metric-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+      .metric-table th {
+        background-color: #1e3a5f;
+        color: white;
+        padding: 0.75rem 1rem;
+        text-align: left;
+        font-size: 0.875rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+      .metric-table td { padding: 0.75rem 1rem; border-bottom: 1px solid #e2e8f0; font-size: 1rem; }
+      .metric-table tr:last-child td { border-bottom: none; }
+      .metric-table tr:nth-child(even) td { background-color: #f7fafc; }
+      .section-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        background-color: #1e3a5f;
+        color: white;
+        border-radius: 50%;
+        font-weight: 700;
+        font-size: 0.875rem;
+        margin-right: 0.75rem;
+        flex-shrink: 0;
+      }
+    </style>
+  </head>
+  <body class="text-gray-800 antialiased">
+    <!-- Navigation -->
+    <nav
+      class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
+    >
+      <div
+        class="container px-8 mx-auto flex flex-wrap items-center justify-between"
+      >
+        <div
+          class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start"
+        >
+          <a
+            class="text-md font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
+            href="index.html"
+          >
+            Roy Wang
+          </a>
+          <button
+            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+            type="button"
+            onclick="toggleNavbar('collapse-navbar')"
+          >
+            <i class="text-white fas fa-bars"></i>
+          </button>
+        </div>
+        <div
+          class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden rounded-lg shadow-lg"
+          id="collapse-navbar"
+        >
+          <ul class="flex flex-col lg:flex-row list-none ml-auto">
+            <li class="nav-item">
+              <a
+                class="pl-6 py-3 flex items-center text-sm uppercase font-bold leading-snug text-teal-800 lg:text-white hover:opacity-75"
+                href="index.html#design-projects"
+              >
+                Work
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="pl-6 py-3 flex items-center text-sm uppercase font-bold leading-snug text-teal-800 lg:text-white hover:opacity-75"
+                href="index.html#about-me"
+              >
+                About
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End of Navigation -->
+
+    <main id="main">
+      <!-- Hero -->
+      <div
+        class="relative pt-16 pb-32 flex content-center items-center justify-center"
+        style="min-height: 70vh"
+      >
+        <div class="absolute top-0 w-full h-full bg-center bg-cover hero-bg"></div>
+        <div class="container relative mx-auto mt-16 md:mt-2 px-4">
+          <div class="flex flex-wrap items-center pt-10">
+            <div class="w-full md:w-6/12">
+              <div class="px-4 text-white">
+                <p class="font-serif lg:text-xl" data-aos="fade-right">
+                  /Product Design · /UX Strategy · /Senior Designer
+                </p>
+                <h1
+                  class="md:my-6 font-bold xl:text-4xl md:text-3xl text-2xl"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
+                  Legal Tech — Review Page Redesign
+                </h1>
+                <p
+                  class="md:mt-4 lg:text-xl text-gray-300"
+                  data-aos="fade-right"
+                  data-aos-delay="400"
+                >
+                  Reframing a visual refresh into an architectural content challenge — and turning a declining high-traffic page into a trust-first discovery experience.
+                </p>
+              </div>
+            </div>
+            <div
+              class="w-full md:w-6/12 mt-8 flex justify-center"
+              data-aos="fade-left"
+              data-aos-delay="400"
+            >
+              <div class="visual-placeholder" style="min-height: 280px; background-color: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5);">
+                [VISUAL: Before/after side-by-side — directory-heavy page vs. redesigned review-first page]
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Hero -->
+
+      <!-- Project Details Bar -->
+      <div class="bg-gray-100">
+        <div class="container mx-auto px-4 pt-8 pb-6">
+          <div class="flex flex-wrap">
+            <div class="w-full md:w-2/6 mb-4 px-2">
+              <h6 class="sectionTitle">Type</h6>
+              <p class="bodyText">Senior UX Designer · Sole Designer</p>
+            </div>
+            <div class="w-full md:w-2/6 mb-4 px-2">
+              <h6 class="sectionTitle">What I Did</h6>
+              <p class="bodyText">Problem Reframing, Information Architecture, Interaction Design, Stakeholder Alignment</p>
+            </div>
+            <div class="w-full md:w-2/6 mb-4 px-2">
+              <h6 class="sectionTitle">Status</h6>
+              <p class="bodyText">Design finalized April 2026 · Engineering handoff in progress</p>
+            </div>
+            <div class="w-full md:w-2/6 mb-2 px-2">
+              <h6 class="sectionTitle">Tools</h6>
+              <p class="bodyText">Figma, Notion, Google Search Console, GA4</p>
+            </div>
+            <div class="w-full md:w-2/6 mb-2 px-2">
+              <h6 class="sectionTitle">Team</h6>
+              <p class="bodyText">Product Manager · SEO Lead · Engineering · Legal · Marketing</p>
+            </div>
+            <div class="w-full md:w-2/6 mb-2 px-2">
+              <h6 class="sectionTitle">Context</h6>
+              <p class="bodyText">Legal tech platform · Highest-traffic review discovery page</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Project Details Bar -->
+
+      <!-- Main Content -->
+      <div class="mt-8 mb-24 container mx-auto px-4">
+
+        <!-- Overview -->
+        <div id="overview" data-aos="fade-up">
+          <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-10">Project Overview</h2>
+          <div class="py-4 flex flex-wrap">
+            <div class="w-full lg:w-3/5 pr-0 lg:pr-10">
+              <h6 class="sectionTitle">The Situation</h6>
+              <h3 class="text-2xl py-4 tracking-wide">A high-traffic page in sustained decline</h3>
+              <p class="bodyText">
+                A legal tech company's highest-traffic attorney review discovery page was experiencing a sustained organic traffic decline. Stakeholders described it as a page that needed refreshing. The design looked dated, and the numbers weren't moving.
+              </p>
+              <p class="bodyText">
+                I was brought in as the sole designer to lead the redesign — responsible for reframing the problem, designing the end-to-end filter system and review card experience, and aligning a cross-functional team around a unified direction.
+              </p>
+            </div>
+            <div class="w-full lg:w-2/5 mt-6 lg:mt-0">
+              <div class="decision-card mt-6">
+                <h6 class="sectionTitle">My Scope</h6>
+                <ul class="list-disc list-inside bodyText" style="padding-bottom: 0;">
+                  <li>Problem reframing</li>
+                  <li>Content hierarchy restructure</li>
+                  <li>Geo + Practice Area filter system</li>
+                  <li>Review card redesign</li>
+                  <li>Stakeholder alignment across 5 functions</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Overview -->
+
+        <!-- The Decision That Mattered Most -->
+        <div id="key-decision" data-aos="fade-up">
+          <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-10">The Decision That Mattered Most</h2>
+          <div class="callout-box">
+            <p>"The hardest part wasn't designing the page. It was deciding what kind of problem this actually was."</p>
+          </div>
+          <p class="bodyText">
+            The brief described this as a page that needed refreshing. Traffic was declining, the design looked dated, and stakeholders wanted it improved.
+          </p>
+          <p class="bodyText">
+            The real problem was different: <strong>the page was architecturally misaligned with its own users.</strong>
+          </p>
+          <p class="bodyText">
+            Users search "lawyer reviews" and land on a grid of practice area directory links. That's not a visual problem — it's a content hierarchy problem. Every design decision that followed came from that reframing.
+          </p>
+          <p class="bodyText">
+            If that judgment had been wrong — if we'd treated this as a visual refresh — we would have rearranged deck chairs on a page that would have kept losing ground.
+          </p>
+          <div class="visual-placeholder" data-aos="fade-up">
+            [VISUAL: Diagram showing the mismatch — user intent ("read reviews") vs. above-the-fold content (practice area links). 2-column graphic.]
+          </div>
+        </div>
+        <!-- End of The Decision That Mattered Most -->
+
+      </div>
+      <!-- End of Main Content Part 1 -->
+
+      <!-- What Changed — accent background -->
+      <div class="pb-16 accent-bg">
+        <div class="container mx-auto pt-8 py-4 px-4">
+          <h2 class="text-3xl font-semibold text-white py-6 mt-10" data-aos="fade-up">
+            What Changed — And Why It Mattered Beyond the Design
+          </h2>
+
+          <!-- Change 1 -->
+          <div class="flex flex-wrap items-start mb-12" data-aos="fade-up">
+            <div class="w-full lg:w-1/2 pr-0 lg:pr-8 text-white">
+              <div class="flex items-start mb-4">
+                <span class="section-number">1</span>
+                <h3 class="text-2xl font-semibold">Content hierarchy restructure</h3>
+              </div>
+              <p class="bodyText text-gray-300">
+                Reviews moved above the fold. Practice area directory links moved to the bottom.
+              </p>
+              <p class="bodyText text-gray-300">
+                This decision drove the PM to reframe the PRD entirely — from "page improvement" to "Trust Engine." <strong class="text-white">The design didn't follow the PRD. The PRD followed the design direction.</strong>
+              </p>
+            </div>
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0">
+              <div class="visual-placeholder" style="background-color: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5);">
+                [VISUAL: Before/after page structure diagram — section order changing. Labels only.]
+              </div>
+            </div>
+          </div>
+
+          <!-- Change 2 -->
+          <div class="flex flex-wrap items-start mb-12" data-aos="fade-up">
+            <div class="w-full lg:w-1/2 pr-0 lg:pr-8 text-white">
+              <div class="flex items-start mb-4">
+                <span class="section-number">2</span>
+                <h3 class="text-2xl font-semibold">Geo + Practice Area filter system</h3>
+              </div>
+              <p class="bodyText text-gray-300">
+                Two independent filters — location and practice area — with free-form auto-suggest.
+              </p>
+              <p class="bodyText text-gray-300">
+                The original ticket specified a metro area dropdown. I changed this to free-form + auto-suggest after evaluating three approaches. <strong class="text-white">A dropdown locks users into our taxonomy. Auto-suggest meets users at the word they're already thinking.</strong>
+              </p>
+              <p class="bodyText text-gray-300">
+                This also forced a conversation about backend data completeness that hadn't been raised before — directly shaping the PM's scope decision.
+              </p>
+            </div>
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0">
+              <div class="visual-placeholder" style="background-color: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5);">
+                [VISUAL: Filter component — default, typing (auto-suggest dropdown), and selected (chip applied) states. Desktop.]
+              </div>
+            </div>
+          </div>
+
+          <!-- Change 3 -->
+          <div class="flex flex-wrap items-start" data-aos="fade-up">
+            <div class="w-full lg:w-1/2 pr-0 lg:pr-8 text-white">
+              <div class="flex items-start mb-4">
+                <span class="section-number">3</span>
+                <h3 class="text-2xl font-semibold">Review card redesign</h3>
+              </div>
+              <p class="bodyText text-gray-300">
+                Added three fields: City/State, Primary Practice Area, recency timestamp.
+              </p>
+              <p class="bodyText text-gray-300">
+                Not for aesthetics — each field answers one question a mid-funnel user needs in under 5 seconds: <em>Is this attorney near me? Do they handle my case? Is this recent?</em>
+              </p>
+              <p class="bodyText text-gray-300">
+                <strong class="text-white">Without these signals, every card looks identical. Users scan without engaging.</strong>
+              </p>
+            </div>
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0">
+              <div class="visual-placeholder" style="background-color: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5);">
+                [VISUAL: Review card before vs. after. Old: name, rating, snippet. New: photo, name, rating, City/State, AOP, timestamp, "See Full Review."]
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of What Changed -->
+
+      <!-- Main Content Part 2 -->
+      <div class="mt-8 mb-24 container mx-auto px-4">
+
+        <!-- A Decision I Reversed -->
+        <div id="reversal" data-aos="fade-up">
+          <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-10">A Decision I Reversed — And Why That's Part of the Story</h2>
+          <div class="flex flex-wrap">
+            <div class="w-full lg:w-3/5 pr-0 lg:pr-10">
+              <p class="bodyText">
+                I confirmed the search bar would be removed. The rationale was sound: primary users are in browsing mode, not search mode.
+              </p>
+              <p class="bodyText">
+                In the final stakeholder walkthrough, two PMs raised a valid concern: secondary users — people who want to <em>leave</em> a review — need a way to find their attorney first. The search bar served that flow.
+              </p>
+              <p class="bodyText">
+                I relinquished the decision and redesigned the search bar as a secondary, lower-priority path.
+              </p>
+              <p class="bodyText">
+                <strong>What made this work:</strong> every decision had been documented with rationale throughout the project. When the reversal happened, it wasn't chaos — it was a controlled scope adjustment with a clear paper trail. The reversal didn't destabilize the design because the primary hierarchy (reviews above fold) was never in question.
+              </p>
+            </div>
+            <div class="w-full lg:w-2/5 mt-4 lg:mt-0">
+              <div class="visual-placeholder">
+                [VISUAL: Annotated screen — primary flow (browse reviews) vs. secondary flow (find attorney to review). Visual weight shows hierarchy: primary dominant, secondary subordinate.]
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of A Decision I Reversed -->
+
+        <!-- Process -->
+        <div id="process" data-aos="fade-up">
+          <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-10">Process — The Judgments, Not the Iterations</h2>
+
+          <div class="flex flex-wrap -mx-2 mt-4">
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card h-full">
+                <h6 class="sectionTitle">The Framing Judgment</h6>
+                <p class="bodyText" style="padding-bottom: 0;">
+                  Existing search performance data made the business case undeniable without needing new research. Choosing to lead with data — not user interviews, not competitive analysis — accelerated alignment across five stakeholders in the first meeting.
+                </p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card h-full">
+                <h6 class="sectionTitle">The Filter Judgment</h6>
+                <p class="bodyText" style="padding-bottom: 0;">
+                  Three approaches explored: zip code input, metro pill grid, free-form auto-suggest. Zip code required radius logic from engineering. Pills locked us into a pre-defined city list. Auto-suggest scaled to any city while guiding users toward results we had. One approach solved for UX, engineering complexity, and data coverage simultaneously.
+                </p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card h-full">
+                <h6 class="sectionTitle">The Scope Judgment</h6>
+                <p class="bodyText" style="padding-bottom: 0;">
+                  Write a Review CTAs and FAQ section were in the original brief. I removed both from scope early: Write a Review served a different user type and FAQs were high-effort for Phase 1. This sharpened the design's focus. Both were later confirmed as Phase 2 by the PM.
+                </p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card h-full">
+                <h6 class="sectionTitle">The Label Judgment</h6>
+                <p class="bodyText" style="padding-bottom: 0;">
+                  "Recently approved reviews" implied attorney approval, not platform moderation. Changed to "Recent reviews" after stakeholder feedback. Small change, significant trust implication.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-placeholder mt-4" data-aos="fade-up">
+            [VISUAL: Decision map showing 3–4 key judgment points across the project. Not a full process flow — just the forks.]
+          </div>
+        </div>
+        <!-- End of Process -->
+
+        <!-- If Not Me -->
+        <div id="impact" data-aos="fade-up">
+          <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-10">If Not Me</h2>
+          <div class="callout-box">
+            <p>Without the architectural reframing, this project would have shipped as a visual refresh. The directory structure would have stayed above the fold. The CTR gap — the actual business problem — would not have been addressed.</p>
+          </div>
+          <p class="bodyText">
+            The filter system, the card redesign, and the scope decisions all follow from the one judgment that mattered most: <strong>this is a content hierarchy problem, not a visual one.</strong>
+          </p>
+        </div>
+        <!-- End of If Not Me -->
+
+      </div>
+      <!-- End of Main Content Part 2 -->
+
+      <!-- Outcomes — accent background -->
+      <div class="pb-16 accent-bg">
+        <div class="container mx-auto pt-8 py-4 px-4">
+          <h2 class="text-3xl font-semibold text-white py-6 mt-10" data-aos="fade-up">Outcomes</h2>
+          <p class="bodyText text-gray-300" data-aos="fade-up">
+            Design finalized April 2026. Engineering handoff in progress. Targets set for 60 days post-launch.
+          </p>
+
+          <div class="bg-white rounded-lg shadow-lg overflow-hidden mt-8" data-aos="fade-up">
+            <table class="metric-table">
+              <thead>
+                <tr>
+                  <th>Metric</th>
+                  <th>Target</th>
+                  <th>Timeframe</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Organic CTR</td>
+                  <td>2× improvement</td>
+                  <td>60 days post-launch</td>
+                </tr>
+                <tr>
+                  <td>Monthly organic clicks</td>
+                  <td>2× improvement</td>
+                  <td>60 days post-launch</td>
+                </tr>
+                <tr>
+                  <td>Bounce rate</td>
+                  <td>Significant reduction</td>
+                  <td>60 days post-launch</td>
+                </tr>
+                <tr>
+                  <td>Filter adoption</td>
+                  <td>30%+ of visitors use at least one filter</td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <td>Review card click-through</td>
+                  <td>TBD post-launch</td>
+                  <td>—</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Lessons Learned -->
+          <div id="lessons" class="mt-12" data-aos="fade-up">
+            <h2 class="text-3xl font-semibold text-white py-4">Lessons Learned</h2>
+            <div class="flex flex-wrap -mx-2 mt-4">
+              <div class="w-full md:w-1/2 px-2 mb-4">
+                <div class="bg-white rounded-lg p-6 h-full">
+                  <h6 class="sectionTitle">Documentation as a design tool</h6>
+                  <p class="bodyText" style="padding-bottom: 0;">
+                    Maintaining a living decision log throughout the project meant that when the search bar decision was reversed in a final meeting, the team could trace the original rationale, understand the new constraint, and adjust without losing ground.
+                  </p>
+                </div>
+              </div>
+              <div class="w-full md:w-1/2 px-2 mb-4">
+                <div class="bg-white rounded-lg p-6 h-full">
+                  <h6 class="sectionTitle">Stakeholder alignment is continuous</h6>
+                  <p class="bodyText" style="padding-bottom: 0;">
+                    Two decisions that were "confirmed" got revisited. Having rationale on record made those conversations faster and less political. Alignment isn't a gate — it's a practice.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Next Steps -->
+          <div id="next-steps" class="mt-8" data-aos="fade-up">
+            <h2 class="text-3xl font-semibold text-white py-4">Next Steps</h2>
+            <ul class="list-disc list-inside text-gray-300" style="font-size: 1.1rem; line-height: 2rem;">
+              <li>Engineering handoff: 3 open decisions remaining (zero results fallback, practice area data source, client-side vs. server-side filtering)</li>
+              <li>Mobile: Phase 2, post desktop launch</li>
+              <li>Post-launch: Update outcomes with real CTR, bounce rate, filter adoption data from GA4 + GSC</li>
+            </ul>
+          </div>
+
+          <div class="visual-placeholder mt-12" style="background-color: rgba(255,255,255,0.07); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); min-height: 340px;" data-aos="fade-up">
+            [VISUAL: Final full-page desktop mockup — the hero shot. High-fidelity. This is the last thing they see.]
+          </div>
+
+          <div class="flex justify-center mt-16 mx-auto">
+            <a href="#main">
+              <button
+                class="text-gray-300 bg-transparent border border-solid border-gray-300 hover:bg-teal-500 hover:border-transparent hover:text-white active:bg-gray-600 font-semibold uppercase px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1"
+                type="button"
+                style="transition: all 0.15s ease"
+              >
+                <i class="fas fa-arrow-up pr-3"></i> Back to Top
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- End of Outcomes -->
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative bg-gray-300 pt-8 pb-6">
+      <div
+        class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+        style="height: 80px; transform: translateZ(0)"
+      >
+        <svg
+          class="absolute bottom-0 overflow-hidden"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          version="1.1"
+          viewBox="0 0 2560 100"
+          x="0"
+          y="0"
+        >
+          <polygon
+            class="text-gray-300 fill-current"
+            points="2560 0 2560 100 0 100"
+          ></polygon>
+        </svg>
+      </div>
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap">
+          <div class="w-full lg:w-6/12 px-4">
+            <h4 class="text-3xl font-semibold">Let's keep in touch!</h4>
+            <h5 class="text-lg mt-0 mb-2 text-gray-700">Find me on social platforms</h5>
+            <div class="mt-6">
+              <a
+                href="https://www.linkedin.com/in/falinwang/"
+                rel="noopener noreferrer"
+                target="_blank"
+              >
+                <i
+                  class="fab fa-linkedin-in bg-white text-blue-800 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center"
+                ></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <hr class="my-6 border-gray-400" />
+        <div class="flex flex-wrap items-center md:justify-between justify-center">
+          <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+            <div class="text-sm text-gray-600 font-semibold py-1">
+              Built with Love 💙 2026 Roy Wang
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End of Footer -->
+
+  </body>
+  <!-- AOS.js -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</html>
