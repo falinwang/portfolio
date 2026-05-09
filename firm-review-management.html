@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>Firm-Level Review Management — Roy Wang</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="img/favicon.ico" />
+    <style>
+      .hero-bg { background-color: #0f2d40; }
+      .accent-bg { background-color: #0f2d40; }
+
+      .sectionTitle {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #718096;
+        margin-bottom: 0.5rem;
+      }
+
+      .decision-card {
+        border-left: 4px solid #0f2d40;
+        background: #f7fafc;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .decision-card h4 {
+        font-weight: 700;
+        color: #1a202c;
+        margin-bottom: 0.25rem;
+      }
+
+      .callout-box {
+        background-color: #e8f0f5;
+        border-left: 4px solid #0f2d40;
+        padding: 1.25rem 1.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .callout-box p {
+        margin: 0;
+        font-style: italic;
+        font-size: 1.05rem;
+        color: #2d3748;
+      }
+
+      .visual-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px dashed #cbd5e0;
+        border-radius: 8px;
+        color: #a0aec0;
+        font-size: 0.85rem;
+        font-style: italic;
+        min-height: 220px;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .decision-number {
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #0f2d40;
+        margin-bottom: 0.4rem;
+      }
+
+      .hierarchy-block {
+        font-family: 'Courier New', Courier, monospace;
+        font-size: 0.85rem;
+        background: #f0f4f8;
+        border-radius: 6px;
+        padding: 1rem 1.25rem;
+        line-height: 1.8;
+        color: #2d3748;
+        margin: 1rem 0;
+      }
+
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        font-size: 0.8rem;
+        font-weight: 600;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        margin: 0.25rem;
+      }
+
+      .badge-green { background: #c6f6d5; color: #22543d; }
+      .badge-yellow { background: #fefcbf; color: #744210; }
+      .badge-red { background: #fed7d7; color: #742a2a; }
+    </style>
+  </head>
+
+  <body class="text-gray-800 antialiased bg-white">
+
+    <!-- NAV -->
+    <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3">
+      <div class="container px-8 mx-auto flex flex-wrap items-center justify-between">
+        <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+          <a class="text-md font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white" href="index.html">Roy Wang</a>
+        </div>
+        <div class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden rounded-lg shadow-lg">
+          <ul class="flex flex-col lg:flex-row list-none ml-auto">
+            <li class="nav-item">
+              <a class="pl-6 py-3 flex items-center text-sm uppercase font-bold leading-snug text-teal-800 lg:text-white hover:opacity-75" href="index.html#design-projects">Work</a>
+            </li>
+            <li class="nav-item">
+              <a class="pl-6 py-3 flex items-center text-sm uppercase font-bold leading-snug text-teal-800 lg:text-white hover:opacity-75" href="index.html#about">About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="relative pt-16 pb-32 flex content-center items-center justify-center" style="min-height: 70vh">
+      <div class="absolute top-0 w-full h-full bg-center bg-cover hero-bg"></div>
+      <div class="container relative mx-auto mt-16 md:mt-2 px-4">
+        <div class="flex flex-wrap items-center pt-10">
+          <div class="w-full md:w-6/12">
+            <div class="px-4 text-white">
+              <p class="font-serif lg:text-xl" data-aos="fade-right">B2B SaaS · Legal Tech · Information Architecture</p>
+              <h1 class="md:my-6 font-bold xl:text-4xl md:text-3xl text-2xl" data-aos="fade-right" data-aos-delay="100">
+                Firm-Level Review Management
+              </h1>
+              <p class="md:mt-4 lg:text-xl text-gray-300" data-aos="fade-right" data-aos-delay="200">
+                Solving a two-platform workflow problem by designing a three-tier information architecture — from fragmented legacy systems to a unified reputation dashboard for law firms.
+              </p>
+            </div>
+          </div>
+          <div class="w-full md:w-6/12 mt-8 flex justify-center" data-aos="fade-left" data-aos-delay="200">
+            <div class="visual-placeholder" style="min-height: 280px; min-width: 300px; background-color: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5);">
+              [ Final dashboard — firm + attorney review table ]
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- META -->
+    <div class="bg-gray-100">
+      <div class="container mx-auto px-4 pt-8 pb-6">
+        <div class="flex flex-wrap">
+          <div class="w-full md:w-3/12 mb-4 px-2">
+            <h6 class="sectionTitle">Role</h6>
+            <p class="text-gray-700 font-medium">Lead Product Designer — end-to-end, kickoff to dev handoff</p>
+          </div>
+          <div class="w-full md:w-3/12 mb-4 px-2">
+            <h6 class="sectionTitle">Collaborators</h6>
+            <p class="text-gray-700 font-medium">PM · Senior Director of Product · Engineering · Account Management · CEO</p>
+          </div>
+          <div class="w-full md:w-3/12 mb-4 px-2">
+            <h6 class="sectionTitle">Timeline</h6>
+            <p class="text-gray-700 font-medium">~8 weeks · 20+ design review sessions</p>
+          </div>
+          <div class="w-full md:w-3/12 mb-4 px-2">
+            <h6 class="sectionTitle">Outcome</h6>
+            <p class="text-gray-700 font-medium">Zero major revision requests post-handoff · AM team validated pre-dev · CEO presentation incorporated without scope change</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="container mx-auto px-4">
+
+      <!-- PROBLEM -->
+      <section class="py-12" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="decision-number">The Problem</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            Firm admins had to use two platforms to do one job
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Law firms managing multiple attorneys had no single place to oversee their firm's online reputation. They were forced to jump between two separate platforms — MyMA for attorney profiles and the legacy CSC system for review management — to monitor reviews, respond to clients, and track attorney performance.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Every task required context-switching. Every workflow was incomplete. Firms weren't managing their reviews — not because they didn't care, but because the tools made it too hard.
+          </p>
+
+          <div class="callout-box">
+            <p>"The broken user journey between MyMA and the legacy CSC system was creating invisible churn — firms weren't managing their reviews because the tools made it too hard."</p>
+          </div>
+
+          <p class="text-gray-600 leading-relaxed mt-6 mb-4">
+            The ask: integrate firm-level review management into MyMA.<br/>
+            The real problem: a fragmented information architecture that no single dashboard had ever solved.
+          </p>
+
+          <div class="visual-placeholder mt-6" data-aos="fade-up">
+            [ Before state — two-platform workflow: MyMA + CSC ]
+          </div>
+        </div>
+      </section>
+
+      <!-- CHALLENGE -->
+      <section class="py-8" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="decision-number">The Challenge</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            Two problems in one
+          </h2>
+
+          <div class="flex flex-wrap -mx-2 mb-8">
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card" style="min-height: 160px;">
+                <h4>1. Broken user journey</h4>
+                <p class="text-gray-600 text-sm mt-2">Firm admins needed MyMA for attorney profiles and CSC for review management. No single view. No unified workflow. Every task started in the wrong place.</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card" style="min-height: 160px;">
+                <h4>2. Complex information hierarchy</h4>
+                <p class="text-gray-600 text-sm mt-2">A law firm isn't flat. It has a firm entity with its own reviews, multiple attorneys each with reviews across 3 platforms, and aggregate views that combine both. Showing this in a single table without overwhelming users was the core design challenge.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- DISCOVERY -->
+      <section class="py-8" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="decision-number">Discovery</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            What the data and AM interviews revealed
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Starting from the existing attorney-level review management page, I mapped data coverage across Avvo, Lawyers.com, and Martindale-Hubbell, traced where the current workflow broke down for firm admins, and ran a review session with the Account Management team to understand what they needed to support their clients.
+          </p>
+
+          <div class="callout-box">
+            <p>Key insight from AM session: firms with 100+ attorneys had no way to quickly identify who needed attention. There was no urgency signal — no way to see at a glance which attorney hadn't received a review in over a year.</p>
+          </div>
+
+          <p class="text-gray-600 leading-relaxed mt-6">
+            That missing urgency signal became the design brief: the dashboard needed to function not as a data display, but as a health monitoring tool.
+          </p>
+        </div>
+      </section>
+
+      <!-- DECISION THAT MATTERED MOST -->
+      <section class="py-8" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="decision-number">The Decision That Mattered Most</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            Rejecting the flat table after leadership review
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            The first version of the dashboard showed everything in a single flat table — firm reviews and attorney reviews side by side, undifferentiated. Leadership feedback after the first stakeholder review was immediate:
+          </p>
+
+          <div class="callout-box">
+            <p>"Unclear and overwhelming."</p>
+          </div>
+
+          <p class="text-gray-600 leading-relaxed mt-6 mb-4">
+            The fix wasn't decoration — it was architecture. The table needed to reflect how firms actually think about their reputation: the firm as a whole, then the attorneys as individual contributors.
+          </p>
+
+          <div class="hierarchy-block">
+            Manage All Reviews&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← top-level CTA<br/>
+            ├── Firm Reviews&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← firm-only data<br/>
+            └── All Attorney Reviews&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← rollup<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;├── Attorney A<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;├── Attorney B<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;└── Attorney C
+          </div>
+
+          <p class="text-gray-600 leading-relaxed mt-4 mb-6">
+            Iterated through indentation, background color, section dividers, and tooltips before landing on a solution that made the hierarchy scannable without adding visual noise.
+          </p>
+
+          <div class="visual-placeholder" data-aos="fade-up">
+            [ V1 flat table → V2 three-tier hierarchy comparison ]
+          </div>
+        </div>
+      </section>
+
+      <!-- 4 DESIGN DECISIONS -->
+      <section class="py-8" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="decision-number">Four Design Decisions</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            The details that made it trustworthy
+          </h2>
+
+          <!-- 01 -->
+          <div class="decision-card mb-8">
+            <div class="decision-number mb-1">01 · Information Hierarchy</div>
+            <h4 class="text-lg">Three tiers: firm / rollup / individual</h4>
+            <p class="text-gray-600 text-sm mt-2 mb-4">
+              Solving for the firm vs. attorney distinction required a clear visual system for each level. The hierarchy needed to be scannable for a firm admin managing 100+ attorneys — and immediately readable for someone checking in on a single attorney's review health.
+            </p>
+            <div class="callout-box">
+              <p>"The table isn't showing data — it's showing a business. The hierarchy has to match how the admin thinks about their firm, not how the database is structured."</p>
+            </div>
+          </div>
+
+          <!-- 02 -->
+          <div class="decision-card mb-8">
+            <div class="decision-number mb-1">02 · Status Indicators — ADA Compliance</div>
+            <h4 class="text-lg">Color alone fails. Icon + color is the standard.</h4>
+            <p class="text-gray-600 text-sm mt-2 mb-4">
+              Early designs used color alone to signal review health. The problem: color-only systems fail WCAG 2.2 for color-blind users, and they fail non-color-blind users who are scanning quickly in low-attention states.
+            </p>
+            <div class="flex flex-wrap mb-4">
+              <span class="status-badge badge-green">✓ On track <span class="font-normal ml-1">(reviewed within 90 days)</span></span>
+              <span class="status-badge badge-yellow">⚠ Caution <span class="font-normal ml-1">(3 months – 1 year)</span></span>
+              <span class="status-badge badge-red">🚨 Urgent <span class="font-normal ml-1">(over 1 year or zero reviews)</span></span>
+            </div>
+            <p class="text-gray-600 text-sm">Each status includes a tooltip explaining the threshold on hover. WCAG 2.2 compliant — icon carries the signal, color reinforces it.</p>
+            <div class="visual-placeholder mt-4">
+              [ Status indicator system — before (color only) / after (icon + color + tooltip) ]
+            </div>
+          </div>
+
+          <!-- 03 -->
+          <div class="decision-card mb-8">
+            <div class="decision-number mb-1">03 · Zero State Design</div>
+            <h4 class="text-lg">Two-layer entry for accounts with no reviews</h4>
+            <p class="text-gray-600 text-sm mt-2 mb-4">
+              A significant portion of firm accounts had zero reviews. An empty table with no context is a dead end — users don't know what they're looking at or what to do next. The zero state had to convert confusion into action.
+            </p>
+            <div class="flex flex-wrap -mx-2">
+              <div class="w-full md:w-1/2 px-2 mb-3">
+                <div style="background:#f0f4f8; border-radius:6px; padding:1rem;">
+                  <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Layer 1 — Entry modal</p>
+                  <p class="text-gray-600 text-sm">Pop-up on first visit explains why reviews matter + immediate CTA to start requesting. Clears after first interaction.</p>
+                </div>
+              </div>
+              <div class="w-full md:w-1/2 px-2 mb-3">
+                <div style="background:#f0f4f8; border-radius:6px; padding:1rem;">
+                  <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Layer 2 — Persistent banner</p>
+                  <p class="text-gray-600 text-sm">"88% of consumers consider an attorney's reputation before hiring." Data-backed value message always visible — gives returning users a reason to act.</p>
+                </div>
+              </div>
+            </div>
+            <div class="visual-placeholder mt-4">
+              [ Zero state — entry modal + persistent banner ]
+            </div>
+          </div>
+
+          <!-- 04 -->
+          <div class="decision-card mb-8">
+            <div class="decision-number mb-1">04 · Search & Filter for Scale</div>
+            <h4 class="text-lg">Conditional search that appears when you need it</h4>
+            <p class="text-gray-600 text-sm mt-2 mb-4">
+              Firms with 100+ attorneys needed to find specific people fast. A persistent search bar on a 5-attorney firm is visual noise. The solution: conditional rendering based on firm size.
+            </p>
+            <div class="decision-card" style="border-left-color: #718096; background: #f0f4f8;">
+              <ul class="text-sm text-gray-600 space-y-2">
+                <li>→ Search appears only when attorney count exceeds 10</li>
+                <li>→ Real-time name filter — no page reload</li>
+                <li>→ Top 3 summary rows locked — not affected by filter</li>
+                <li>→ Filter pattern: all options visible by default, uncheck to exclude (Google Flights model)</li>
+              </ul>
+            </div>
+            <div class="callout-box mt-4">
+              <p>"A search bar that only appears when you need it is more trustworthy than one that's always visible. It signals: the product knows what kind of firm you are."</p>
+            </div>
+            <div class="visual-placeholder mt-4">
+              [ Search + filter — small firm (no search bar) / large firm (search active) ]
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- IF NOT ME -->
+      <section class="py-12 accent-bg" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+          <div class="max-w-3xl mx-auto">
+            <div class="decision-number text-blue-200 mb-2">If Not Me</div>
+            <h2 class="text-3xl font-semibold text-white py-4">What doesn't get built without these decisions</h2>
+            <p class="text-gray-300 leading-relaxed mb-8">
+              The consequences of the default path — flat table, color-only status, empty zero state — aren't visible on launch day. They appear as silent abandonment over weeks.
+            </p>
+            <div class="flex flex-wrap -mx-2">
+              <div class="w-full md:w-1/3 px-2 mb-4">
+                <div class="bg-white rounded-lg p-5" style="min-height: 160px;">
+                  <h4 class="font-bold text-gray-800 mb-2">Invisible urgency</h4>
+                  <p class="text-gray-600 text-sm">Firms with 100+ attorneys continue to have no signal for which attorney is at risk. Admins can't prioritize. Review health deteriorates without awareness.</p>
+                </div>
+              </div>
+              <div class="w-full md:w-1/3 px-2 mb-4">
+                <div class="bg-white rounded-lg p-5" style="min-height: 160px;">
+                  <h4 class="font-bold text-gray-800 mb-2">Accessibility failure</h4>
+                  <p class="text-gray-600 text-sm">Color-only status signals fail 8% of male users with color-blindness. A system that looks complete but fails a compliance audit is a liability, not a feature.</p>
+                </div>
+              </div>
+              <div class="w-full md:w-1/3 px-2 mb-4">
+                <div class="bg-white rounded-lg p-5" style="min-height: 160px;">
+                  <h4 class="font-bold text-gray-800 mb-2">Zero-state drop-off</h4>
+                  <p class="text-gray-600 text-sm">Without the entry modal and persistent banner, zero-review firms open an empty table, don't know what to do, and close the tab. The feature exists — but the behavior never starts.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OUTCOMES -->
+      <section class="py-12" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="decision-number">Outcomes</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">Shipped. Validated. Foundation for what's next.</h2>
+
+          <div class="flex flex-wrap -mx-2 mb-8">
+            <div class="w-full md:w-1/4 px-2 mb-4 text-center">
+              <div class="py-6">
+                <p class="text-4xl font-bold" style="color:#0f2d40;">8wk</p>
+                <p class="text-gray-600 mt-2 text-sm">Kickoff to dev handoff</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/4 px-2 mb-4 text-center">
+              <div class="py-6">
+                <p class="text-4xl font-bold" style="color:#0f2d40;">20+</p>
+                <p class="text-gray-600 mt-2 text-sm">Design review sessions</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/4 px-2 mb-4 text-center">
+              <div class="py-6">
+                <p class="text-4xl font-bold" style="color:#0f2d40;">0</p>
+                <p class="text-gray-600 mt-2 text-sm">Major revision requests post-handoff</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/4 px-2 mb-4 text-center">
+              <div class="py-6">
+                <p class="text-4xl font-bold" style="color:#0f2d40;">CEO</p>
+                <p class="text-gray-600 mt-2 text-sm">Presented mid-project, incorporated feedback without scope change</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="decision-card">
+            <h4>What this unlocks</h4>
+            <p class="text-gray-600 text-sm mt-2">Foundation laid for review generation workflows and Fine Law integration. The three-tier IA is extensible — new attorney platforms can be added without redesigning the hierarchy.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT I LEARNED -->
+      <section class="py-8 pb-16" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="decision-number">What I Learned</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            The biggest unlock wasn't a design pattern
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Designing for complex B2B hierarchies isn't just an information architecture problem — it's a trust problem. Every label, every tooltip, every empty state is a moment where the product either earns or loses the user's confidence that the system understands their business.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            The biggest unlock wasn't a design pattern. It was reframing the table from a data display into a health monitoring tool — giving firm admins a reason to come back every week, not just when a review appeared.
+          </p>
+
+          <div class="callout-box">
+            <p>"When I stopped asking 'how do we show all the reviews?' and started asking 'what does a firm admin need to know to act?' — the hierarchy resolved itself."</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="relative bg-gray-900 pt-8 pb-6">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap items-center justify-between">
+          <div class="w-full md:w-4/12">
+            <p class="text-white text-sm font-semibold">Roy Wang — Product Designer</p>
+            <p class="text-gray-400 text-xs mt-1">Los Angeles, CA · roywannago@gmail.com</p>
+          </div>
+          <div class="w-full md:w-4/12 mt-4 md:mt-0 text-right">
+            <a href="https://linkedin.com/in/falinwang" target="_blank" rel="noopener noreferrer" class="text-gray-400 hover:text-white text-sm mr-4">LinkedIn</a>
+            <a href="index.html" class="text-gray-400 hover:text-white text-sm">← Back to Work</a>
+          </div>
+        </div>
+        <div class="mt-6 border-t border-gray-700 pt-4 text-center">
+          <p class="text-gray-500 text-xs">© 2026 Roy Wang</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 600, once: true });</script>
+  </body>
+</html>

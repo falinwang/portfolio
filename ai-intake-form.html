@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>AI-Powered Legal Intake — Roy Wang</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="img/favicon.ico" />
+    <style>
+      .hero-bg { background-color: #1d2f5c; }
+      .accent-bg { background-color: #1d2f5c; }
+
+      .sectionTitle {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #718096;
+        margin-bottom: 0.5rem;
+      }
+
+      .decision-card {
+        border-left: 4px solid #1d2f5c;
+        background: #f7fafc;
+        padding: 1.25rem 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .decision-card h4 {
+        font-weight: 700;
+        color: #1a202c;
+        margin-bottom: 0.25rem;
+      }
+
+      .callout-box {
+        background-color: #eef1f8;
+        border-left: 4px solid #1d2f5c;
+        padding: 1.25rem 1.5rem;
+        margin: 1.5rem 0;
+      }
+
+      .callout-box p {
+        margin: 0;
+        font-style: italic;
+        font-size: 1.05rem;
+        color: #2d3748;
+      }
+
+      .visual-placeholder {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px dashed #cbd5e0;
+        border-radius: 8px;
+        color: #a0aec0;
+        font-size: 0.85rem;
+        font-style: italic;
+        min-height: 220px;
+        padding: 1rem;
+        text-align: center;
+      }
+
+      .constraint-tag {
+        display: inline-block;
+        background: #e8ecf7;
+        color: #1d2f5c;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        margin-bottom: 0.5rem;
+      }
+
+      .option-card {
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 1.25rem;
+        margin-bottom: 1rem;
+      }
+
+      .option-card.selected {
+        border-color: #1d2f5c;
+        background: #f0f3fb;
+      }
+
+      .option-card.selected .option-label {
+        color: #1d2f5c;
+        font-weight: 700;
+      }
+
+      .micro-decision-row {
+        display: grid;
+        grid-template-columns: 2fr 1.5fr 2fr;
+        gap: 1rem;
+        padding: 1rem 0;
+        border-bottom: 1px solid #e2e8f0;
+      }
+
+      .micro-decision-row:last-child {
+        border-bottom: none;
+      }
+
+      .chapter-number {
+        font-size: 0.7rem;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #1d2f5c;
+        margin-bottom: 0.5rem;
+      }
+
+      @media (max-width: 768px) {
+        .micro-decision-row {
+          grid-template-columns: 1fr;
+          gap: 0.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body class="text-gray-800 antialiased bg-white">
+
+    <!-- NAV -->
+    <nav
+      class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
+    >
+      <div class="container px-8 mx-auto flex flex-wrap items-center justify-between">
+        <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+          <a
+            class="text-md font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
+            href="index.html"
+          >Roy Wang</a>
+        </div>
+        <div class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden rounded-lg shadow-lg">
+          <ul class="flex flex-col lg:flex-row list-none ml-auto">
+            <li class="nav-item">
+              <a
+                class="pl-6 py-3 flex items-center text-sm uppercase font-bold leading-snug text-teal-800 lg:text-white hover:opacity-75"
+                href="index.html#design-projects"
+              >Work</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="pl-6 py-3 flex items-center text-sm uppercase font-bold leading-snug text-teal-800 lg:text-white hover:opacity-75"
+                href="index.html#about"
+              >About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section
+      class="relative pt-16 pb-32 flex content-center items-center justify-center"
+      style="min-height: 70vh"
+    >
+      <div class="absolute top-0 w-full h-full bg-center bg-cover hero-bg"></div>
+      <div class="container relative mx-auto mt-16 md:mt-2 px-4">
+        <div class="flex flex-wrap items-center pt-10">
+          <div class="w-full md:w-6/12">
+            <div class="px-4 text-white">
+              <p class="font-serif lg:text-xl" data-aos="fade-right">
+                Legal Tech · AI Features · Trust Design
+              </p>
+              <h1
+                class="md:my-6 font-bold xl:text-4xl md:text-3xl text-2xl"
+                data-aos="fade-right"
+                data-aos-delay="100"
+              >
+                AI-Powered Legal Intake
+              </h1>
+              <p
+                class="md:mt-4 lg:text-xl text-gray-300"
+                data-aos="fade-right"
+                data-aos-delay="200"
+              >
+                Integrating AI into a high-anxiety, deadline-constrained legal contact form — designing for trust, error recovery, and pivot decisions.
+              </p>
+            </div>
+          </div>
+          <div class="w-full md:w-6/12 mt-8 flex justify-center" data-aos="fade-left" data-aos-delay="200">
+            <div class="visual-placeholder" style="min-height: 280px; min-width: 300px; background-color: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5);">
+              [ Hero screenshot — AI Intake Form, final layout ]
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT META -->
+    <div class="bg-gray-100">
+      <div class="container mx-auto px-4 pt-8 pb-6">
+        <div class="flex flex-wrap">
+          <div class="w-full md:w-2/6 mb-4 px-2">
+            <h6 class="sectionTitle">Role</h6>
+            <p class="text-gray-700 font-medium">Lead Product Designer — end-to-end</p>
+          </div>
+          <div class="w-full md:w-2/6 mb-4 px-2">
+            <h6 class="sectionTitle">Context</h6>
+            <p class="text-gray-700 font-medium">Major legal marketplace · Consumer-facing AI features · Q1 Bundle</p>
+          </div>
+          <div class="w-full md:w-2/6 mb-4 px-2">
+            <h6 class="sectionTitle">Constraint</h6>
+            <p class="text-gray-700 font-medium">Feb 1 hard deadline · AI dependency uncertainty · Scope pivot mid-project</p>
+          </div>
+        </div>
+        <div class="flex flex-wrap mt-2">
+          <div class="w-full md:w-2/6 mb-4 px-2">
+            <h6 class="sectionTitle">What I designed</h6>
+            <p class="text-gray-700 font-medium">AI loading states · Error recovery · Two-step flow · Layout architecture · 6 micro-decisions</p>
+          </div>
+          <div class="w-full md:w-2/6 mb-4 px-2">
+            <h6 class="sectionTitle">Outcome</h6>
+            <p class="text-gray-700 font-medium">Shipped to Q1 deadline · A/B test live against standard form · Expanding to paid profiles</p>
+          </div>
+          <div class="w-full md:w-2/6 mb-4 px-2">
+            <h6 class="sectionTitle">Thesis</h6>
+            <p class="text-gray-700 font-medium" style="font-style:italic;">"Design for trust — make AI feel helpful, not technical."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="container mx-auto px-4">
+
+      <!-- PROBLEM -->
+      <section class="py-12" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+
+          <div class="chapter-number">The Problem</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            Users don't know what to say. Attorneys don't know what they're getting.
+          </h2>
+
+          <p class="text-gray-600 leading-relaxed mb-6">
+            When users contact an attorney on the platform, they're typically in a high-anxiety state — facing a legal problem they don't fully understand. The result: messages with insufficient information, making it hard for attorneys to prioritize or respond effectively. Message quality was notoriously bad, but there was no quality metric to prove it — only submission volume.
+          </p>
+
+          <div class="flex flex-wrap -mx-2 mb-8">
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card">
+                <h4>User problem</h4>
+                <p class="text-gray-600 text-sm">Blank form + legal anxiety = low-quality messages. Users don't know what information matters.</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card">
+                <h4>Business problem</h4>
+                <p class="text-gray-600 text-sm">Poor message quality reduces attorney engagement. No quality baseline metric existed to measure against.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-placeholder mt-4" data-aos="fade-up">
+            [ Before state — original intake form ]
+          </div>
+        </div>
+      </section>
+
+      <!-- CONSTRAINTS -->
+      <section class="py-8" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="chapter-number">The Constraints</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            Three pressures hitting at once
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            This project didn't have the luxury of ideal conditions. The design had to succeed within four hard constraints — and the most important design decisions came directly from accepting them, not fighting them.
+          </p>
+
+          <div class="overflow-x-auto mb-8">
+            <table class="w-full text-sm text-left">
+              <thead>
+                <tr class="border-b-2 border-gray-300">
+                  <th class="py-3 pr-6 font-semibold text-gray-700 uppercase text-xs tracking-wider">Constraint</th>
+                  <th class="py-3 font-semibold text-gray-700 uppercase text-xs tracking-wider">What it meant for design</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 pr-6"><span class="constraint-tag">Timeline</span><br/>Feb 1 hard deadline — no extension</td>
+                  <td class="py-4 text-gray-600">MVP scope was non-negotiable. Any "nice to have" had to be cut or deferred.</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 pr-6"><span class="constraint-tag">Technical</span><br/>Can't modify competitor messaging template</td>
+                  <td class="py-4 text-gray-600">Maintaining two parallel templates was cost-prohibitive. Full redesign became blocked mid-project.</td>
+                </tr>
+                <tr class="border-b border-gray-200">
+                  <td class="py-4 pr-6"><span class="constraint-tag">Scope</span><br/>Original plan included full redesign</td>
+                  <td class="py-4 text-gray-600">Competitor messaging wasn't in scope. Required a strategic pivot on the spot.</td>
+                </tr>
+                <tr>
+                  <td class="py-4 pr-6"><span class="constraint-tag">AI Dependency</span><br/>Uncertain if AI would read existing AOP answers</td>
+                  <td class="py-4 text-gray-600">Risk of AI asking questions the user already answered. Required graceful fallback design.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- DECISION THAT MATTERED MOST -->
+      <section class="py-8" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="chapter-number">The Decision That Mattered Most</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            The pivot: choosing Option 2 over Option 3
+          </h2>
+
+          <p class="text-gray-600 leading-relaxed mb-8">
+            When the competitor messaging template issue surfaced mid-project, the team faced a fork. Three options were on the table — and choosing the wrong one would either miss the deadline or deliver an incomplete experience.
+          </p>
+
+          <div class="option-card">
+            <div class="option-label text-gray-500 text-sm font-semibold mb-1">Option 1 — Parallel templates</div>
+            <p class="text-gray-600 text-sm">Build a new flow, maintain the existing competitor messaging template and the new flow in parallel.</p>
+            <p class="text-red-500 text-xs mt-2 font-medium">❌ Rejected — engineering cost too high, creates long-term maintenance debt</p>
+          </div>
+
+          <div class="option-card selected">
+            <div class="option-label text-sm mb-1">✅ Option 2 — MVP scope reduction <span class="text-xs font-normal text-gray-500 ml-2">(chosen)</span></div>
+            <p class="text-gray-600 text-sm">Reduce V1 scope. Add AI questions on top of the existing form only — minimal surface change, maximum feasibility.</p>
+            <p class="text-sm mt-2 font-medium" style="color:#1d2f5c;">Chosen because: existing template is "not the worst on site." A functional AI feature on a working form beats a beautiful but unshippable redesign.</p>
+          </div>
+
+          <div class="option-card">
+            <div class="option-label text-gray-500 text-sm font-semibold mb-1">Option 3 — Full redesign including competitor messaging</div>
+            <p class="text-gray-600 text-sm">Redesign everything — contact form, competitor messaging, and new AI layer simultaneously.</p>
+            <p class="text-red-500 text-xs mt-2 font-medium">❌ Rejected — technically blocked, deadline-impossible</p>
+          </div>
+
+          <div class="callout-box">
+            <p>"The question wasn't which option was most elegant — it was which option would actually ship with value intact. Constraint-driven scope cuts are design decisions too."</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- TWO-STEP FLOW -->
+      <section class="py-8" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="chapter-number">Chapter 2 — Flow Architecture</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            The two-step structure: reduce cognitive load first, qualify second
+          </h2>
+
+          <p class="text-gray-600 leading-relaxed mb-6">
+            The original form asked for everything at once. The redesigned flow splits the experience into two moments with different purposes.
+          </p>
+
+          <div class="flex flex-wrap -mx-2 mb-8">
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card" style="min-height: 140px;">
+                <h4>Step 1 — Message</h4>
+                <p class="text-gray-600 text-sm mt-1">User describes their legal problem (100-character minimum). Focus: get the user writing. Nothing else on screen.</p>
+                <p class="text-gray-500 text-xs mt-2">→ Clicks Next → AI begins analysis</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card" style="min-height: 140px;">
+                <h4>Step 2 — AI + Send</h4>
+                <p class="text-gray-600 text-sm mt-1">AI returns up to 2 follow-up questions → user adds detail → communication preferences → submit.</p>
+                <p class="text-gray-500 text-xs mt-2">Communication preferences moved here to reduce initial form length</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="visual-placeholder" data-aos="fade-up">
+            [ Two-step flow diagram / wireframe ]
+          </div>
+        </div>
+      </section>
+
+      <!-- SIX MICRO-DECISIONS -->
+      <section class="py-8" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="chapter-number">Chapter 3 — Micro-Decisions</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            Six decisions. Each one a deliberate trade-off.
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-8">
+            The details of an AI feature are where trust is won or lost. These six decisions — some made quickly, some challenged and revised — collectively define how the AI feels to the user.
+          </p>
+
+          <!-- Decision 1: AI Icon -->
+          <div class="decision-card mb-8">
+            <div class="chapter-number mb-1">Decision 1</div>
+            <h4 class="text-lg">Remove the AI icon</h4>
+            <p class="text-gray-600 text-sm mt-2 mb-3">
+              An AI icon in the loading state would signal "this is AI-powered" to the consumer. But the product's AI branding strategy was deliberately attorney-facing — AI labels appeared on attorney email insights and other B2B features, not on consumer surfaces. Putting an AI icon here would create a brand inconsistency.
+            </p>
+            <p class="text-gray-700 text-sm font-medium">Decision: Text-only loading state — <em>"Analyzing your case details"</em></p>
+            <div class="callout-box mt-4">
+              <p>"The loading message is the experience. It tells the user the system is working for them — without making them feel like they're being processed by a machine."</p>
+            </div>
+            <div class="visual-placeholder mt-4">
+              [ Loading state — before / after ]
+            </div>
+          </div>
+
+          <!-- Decision 2: Optional label -->
+          <div class="decision-card mb-8">
+            <div class="chapter-number mb-1">Decision 2</div>
+            <h4 class="text-lg">Remove the "optional" label from AI questions</h4>
+            <p class="text-gray-600 text-sm mt-2 mb-3">
+              Labeling AI-generated follow-up questions as "optional" gives users permission to skip them — but these questions are the mechanism that improves message quality. If users skip them, the whole value proposition breaks.
+            </p>
+            <p class="text-gray-700 text-sm font-medium">Decision: Remove optional label. Conversion rate over psychological escape hatch.</p>
+            <p class="text-gray-500 text-xs mt-2">Risk acknowledged: tested via A/B to validate no negative impact on drop-off rate.</p>
+          </div>
+
+          <!-- Decision 3: Silent AI failure -->
+          <div class="decision-card mb-8">
+            <div class="chapter-number mb-1">Decision 3</div>
+            <h4 class="text-lg">Silent failure when AI generates nothing</h4>
+            <p class="text-gray-600 text-sm mt-2 mb-3">
+              If the AI fails to generate questions — whether due to a technical error, non-legal content, or an edge case — showing an error state punishes the user for a system failure they didn't cause. The form should still complete successfully.
+            </p>
+            <p class="text-gray-700 text-sm font-medium">Decision: Silent skip to communication preferences. No error message. No broken experience.</p>
+            <div class="callout-box mt-4">
+              <p>"Users should only have to take responsibility for their own decisions — not for system failures they didn't cause and can't fix."</p>
+            </div>
+          </div>
+
+          <!-- Decision 4: Modal warning (PM pushback) -->
+          <div class="decision-card mb-8" style="border-left-color: #e53e3e;">
+            <div class="chapter-number mb-1" style="color: #e53e3e;">Decision 4 — Challenged by PM</div>
+            <h4 class="text-lg">Modal warning on edit: proposed, then revised</h4>
+            <p class="text-gray-600 text-sm mt-2 mb-3">
+              I proposed a modal warning: if the user tried to edit their original message after AI had generated questions, a warning would appear explaining that doing so would clear and regenerate the AI questions. My reasoning: users would lose work without knowing it.
+            </p>
+            <p class="text-gray-600 text-sm mb-3">
+              The PM pushed back: AI questions are optional anyway. If the user edits their message, they want better questions — that's intentional. The reset cost is low. The modal is friction that doesn't justify its cost.
+            </p>
+            <p class="text-gray-700 text-sm font-medium">Decision: Modal added (not removed) — but the pushback sharpened the framing.</p>
+            <div class="callout-box mt-4">
+              <p>"This challenge made me articulate the difference between friction that protects and friction that just obstructs. The modal stays — but now I can explain exactly why."</p>
+            </div>
+          </div>
+
+          <!-- Decision 5: Input box size -->
+          <div class="decision-card mb-8">
+            <div class="chapter-number mb-1">Decision 5</div>
+            <h4 class="text-lg">Input box: 3 rows default</h4>
+            <p class="text-gray-600 text-sm mt-2 mb-3">
+              Single-line input feels too constrained for a message that needs to describe a legal situation. Competitor analysis showed a range of default heights. A 3-row input signals "write a paragraph, not a sentence" without being intimidating.
+            </p>
+            <p class="text-gray-700 text-sm font-medium">Decision: 3 rows — grounded in competitive benchmarking, not gut feel.</p>
+          </div>
+
+          <!-- Decision 6: Layout Flip -->
+          <div class="decision-card mb-8">
+            <div class="chapter-number mb-1">Decision 6 — The Layout Flip</div>
+            <h4 class="text-lg">Attorney card left, form right, CTA inline</h4>
+            <p class="text-gray-600 text-sm mt-2 mb-3">
+              The original layout placed the attorney info panel on the right and the form on the left — with the submit button anchored to the bottom of the attorney card. A user who finished filling out the form had to cross to the right side of the screen to submit. The button was spatially disconnected from the action.
+            </p>
+            <p class="text-gray-600 text-sm mb-3">
+              A prior workshop identified this as a disconnected button issue. The solution: flip the layout — attorney card left, form right, CTA inline below the form. On mobile, CTA sits directly beneath the input fields.
+            </p>
+            <p class="text-gray-700 text-sm font-medium">Decision: Layout flip + CTA inline, consistent with Q&A and review forms.</p>
+            <div class="callout-box mt-4">
+              <p>"Layout is not an aesthetic decision — it's an affordance decision. The user's mental model is 'fill in → press the button right below.' The original layout broke that model."</p>
+            </div>
+            <div class="visual-placeholder mt-4">
+              [ Layout flip — before (Form Left / Attorney Right) vs. after (Attorney Left / Form Right) ]
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- IF NOT ME -->
+      <section class="py-12 accent-bg" data-aos="fade-up">
+        <div class="container mx-auto px-4">
+          <div class="max-w-3xl mx-auto">
+            <div class="chapter-number text-blue-200 mb-2">If Not Me</div>
+            <h2 class="text-3xl font-semibold text-white py-4">What the default path looked like</h2>
+            <p class="text-gray-300 leading-relaxed mb-8">
+              Each decision had a lower-effort default. Here's what ships without the deliberate choices:
+            </p>
+
+            <div class="flex flex-wrap -mx-2">
+              <div class="w-full md:w-1/3 px-2 mb-4">
+                <div class="bg-white rounded-lg p-5" style="min-height: 160px;">
+                  <h4 class="font-bold text-gray-800 mb-2">Spinning loader</h4>
+                  <p class="text-gray-600 text-sm">No text context. Users see an indeterminate spinner and assume the page is broken. Drop rate increases.</p>
+                </div>
+              </div>
+              <div class="w-full md:w-1/3 px-2 mb-4">
+                <div class="bg-white rounded-lg p-5" style="min-height: 160px;">
+                  <h4 class="font-bold text-gray-800 mb-2">Error state on AI failure</h4>
+                  <p class="text-gray-600 text-sm">Users see "Something went wrong" for a problem they didn't cause. Damages trust at the worst possible moment.</p>
+                </div>
+              </div>
+              <div class="w-full md:w-1/3 px-2 mb-4">
+                <div class="bg-white rounded-lg p-5" style="min-height: 160px;">
+                  <h4 class="font-bold text-gray-800 mb-2">Disconnected submit button</h4>
+                  <p class="text-gray-600 text-sm">Users fill out the form and look for a button where the form ends. It's on the other side of the screen. Hesitation, confusion, abandonment.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- OUTCOMES -->
+      <section class="py-12" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="chapter-number">Outcomes</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">Shipped. Testing.</h2>
+
+          <div class="flex flex-wrap -mx-2 mb-8">
+            <div class="w-full md:w-1/3 px-2 mb-4 text-center">
+              <div class="py-8">
+                <p class="text-5xl font-bold" style="color:#1d2f5c;">Q1</p>
+                <p class="text-gray-600 mt-2 text-sm">Shipped on deadline — no extension, full MVP scope delivered</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/3 px-2 mb-4 text-center">
+              <div class="py-8">
+                <p class="text-5xl font-bold" style="color:#1d2f5c;">A/B</p>
+                <p class="text-gray-600 mt-2 text-sm">Live test vs. standard form — completion rate + message quality as primary metrics</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/3 px-2 mb-4 text-center">
+              <div class="py-8">
+                <p class="text-5xl font-bold" style="color:#1d2f5c;">→</p>
+                <p class="text-gray-600 mt-2 text-sm">Rollout starting with paid profiles, expanding based on results</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="decision-card">
+            <h4>Measurement plan</h4>
+            <p class="text-gray-600 text-sm mt-2">Form completion rate (AI vs. standard) · Message quality score (to be defined) · Lead conversion rate · AI question answer rate</p>
+            <p class="text-gray-500 text-xs mt-2 italic">Note: message quality baseline metric did not exist pre-project. Defining this metric is a post-MVP priority.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHAT I'D DO DIFFERENTLY -->
+      <section class="py-8 pb-16" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="chapter-number">What I'd Do Differently</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            The decisions I'd make earlier next time
+          </h2>
+
+          <div class="flex flex-wrap -mx-2">
+            <div class="w-full md:w-1/2 px-2 mb-6">
+              <div class="decision-card" style="min-height: 140px;">
+                <h4>Define message quality before designing</h4>
+                <p class="text-gray-600 text-sm mt-2">We were optimizing for message quality without a baseline metric. I'd push to define — even roughly — what "good" looks like before designing the intervention. Without a baseline, we can only measure relative change, not absolute improvement.</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-6">
+              <div class="decision-card" style="min-height: 140px;">
+                <h4>Include competitor messaging in scope earlier</h4>
+                <p class="text-gray-600 text-sm mt-2">The scope pivot to Option 2 was the right call given the constraints, but the constraint itself could have been anticipated. A fuller discovery phase would have surfaced the competitor messaging dependency before it became a mid-project blocker.</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-6">
+              <div class="decision-card" style="min-height: 140px;">
+                <h4>Map the AOP answer overlap earlier</h4>
+                <p class="text-gray-600 text-sm mt-2">The risk that AI would re-ask questions already answered in the AOP was discovered mid-design, not at discovery. I'd audit all existing data inputs before designing an AI layer — to understand what the model already knows about the user.</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-6">
+              <div class="decision-card" style="min-height: 140px;">
+                <h4>Plan the post-MVP roadmap alongside MVP</h4>
+                <p class="text-gray-600 text-sm mt-2">The full redesign (Option 3) still needs to happen. By shipping Option 2 first, we've created a temporary state that will require follow-up work. I'd document the post-MVP roadmap explicitly so it's easier to pick up — and harder to deprioritize.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="relative bg-gray-900 pt-8 pb-6">
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap items-center justify-between">
+          <div class="w-full md:w-4/12">
+            <p class="text-white text-sm font-semibold">Roy Wang — Product Designer</p>
+            <p class="text-gray-400 text-xs mt-1">Los Angeles, CA · roywannago@gmail.com</p>
+          </div>
+          <div class="w-full md:w-4/12 mt-4 md:mt-0 text-right">
+            <a
+              href="https://linkedin.com/in/falinwang"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-gray-400 hover:text-white text-sm mr-4"
+            >LinkedIn</a>
+            <a href="index.html" class="text-gray-400 hover:text-white text-sm">← Back to Work</a>
+          </div>
+        </div>
+        <div class="mt-6 border-t border-gray-700 pt-4 text-center">
+          <p class="text-gray-500 text-xs">© 2026 Roy Wang</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>AOS.init({ duration: 600, once: true });</script>
+  </body>
+</html>
