@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git branch *)",
+      "Bash(git checkout *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "mcp__4bdabacd-7015-4a8f-ba6e-445cb5dfdeb8__notion-fetch",
+      "Bash(git push *)",
+      "WebSearch",
+      "WebFetch(domain:jobs.ashbyhq.com)",
+      "Bash(brew install *)",
+      "Bash(go version *)",
+      "Bash(go build *)",
+      "Bash(cat ~/.claude/skills/kami/SKILL.md | head -60)",
+      "WebFetch(domain:www.glassdoor.com)",
+      "WebFetch(domain:builtin.com)",
+      "WebFetch(domain:app.welcometothejungle.com)",
+      "WebFetch(domain:www.tealhq.com)",
+      "Bash(brew --version)"
+    ]
+  }
+}

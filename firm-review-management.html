@@ -10,8 +10,13 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="img/favicon.ico" />
     <style>
-      .hero-bg { background-color: #0f2d40; }
-      .accent-bg { background-color: #0f2d40; }
+      :root {
+        --brand: #0f2d40;
+        --brand-light: #e8f0f5;
+      }
+
+      .hero-bg { background-color: var(--brand); }
+      .accent-bg { background-color: var(--brand); }
 
       .sectionTitle {
         font-size: 0.7rem;
@@ -23,7 +28,7 @@
       }
 
       .decision-card {
-        border-left: 4px solid #0f2d40;
+        border-left: 4px solid var(--brand);
         background: #f7fafc;
         padding: 1.25rem 1.5rem;
         margin-bottom: 1rem;
@@ -36,8 +41,8 @@
       }
 
       .callout-box {
-        background-color: #e8f0f5;
-        border-left: 4px solid #0f2d40;
+        background-color: var(--brand-light);
+        border-left: 4px solid var(--brand);
         padding: 1.25rem 1.5rem;
         margin: 1.5rem 0;
       }
@@ -68,7 +73,7 @@
         font-weight: 800;
         letter-spacing: 0.15em;
         text-transform: uppercase;
-        color: #0f2d40;
+        color: var(--brand);
         margin-bottom: 0.4rem;
       }
 
@@ -94,9 +99,109 @@
         margin: 0.25rem;
       }
 
-      .badge-green { background: #c6f6d5; color: #22543d; }
+      .badge-green  { background: #c6f6d5; color: #22543d; }
       .badge-yellow { background: #fefcbf; color: #744210; }
-      .badge-red { background: #fed7d7; color: #742a2a; }
+      .badge-red    { background: #fed7d7; color: #742a2a; }
+
+      /* Option comparison rows */
+      .option-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 0.75rem 0;
+        border-bottom: 1px solid #e2e8f0;
+        font-size: 0.9rem;
+      }
+      .option-row:last-child { border-bottom: none; }
+      .option-label {
+        flex-shrink: 0;
+        width: 2rem;
+        font-weight: 700;
+        color: #4a5568;
+        padding-top: 0.05rem;
+      }
+      .option-label.winner { color: var(--brand); }
+      .option-text { flex: 1; color: #4a5568; line-height: 1.55; }
+      .option-verdict {
+        flex-shrink: 0;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.6rem;
+        border-radius: 4px;
+        margin-top: 0.1rem;
+      }
+      .verdict-fail    { background: #fed7d7; color: #9b2c2c; }
+      .verdict-win     { background: #c6f6d5; color: #22543d; }
+
+      /* Phase timeline */
+      .phase-block {
+        border-left: 3px solid var(--brand);
+        padding-left: 1rem;
+        margin-bottom: 1.25rem;
+      }
+      .phase-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--brand);
+        margin-bottom: 0.2rem;
+      }
+      .phase-dates {
+        font-size: 0.78rem;
+        color: #718096;
+        margin-bottom: 0.35rem;
+      }
+      .phase-desc {
+        font-size: 0.9rem;
+        color: #4a5568;
+        line-height: 1.55;
+      }
+
+      /* Value list */
+      .value-row {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid #edf2f7;
+        font-size: 0.9rem;
+      }
+      .value-row:last-child { border-bottom: none; }
+      .value-num {
+        flex-shrink: 0;
+        width: 1.4rem;
+        font-weight: 700;
+        color: var(--brand);
+      }
+      .value-text { flex: 1; color: #2d3748; line-height: 1.5; }
+
+      /* Scope table */
+      .scope-col { flex: 1; }
+      .scope-col h5 {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 0.75rem;
+      }
+      .scope-in  h5 { color: #276749; }
+      .scope-out h5 { color: #9b2c2c; }
+      .scope-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        padding: 0.45rem 0;
+        border-bottom: 1px solid #edf2f7;
+        font-size: 0.88rem;
+        color: #4a5568;
+        line-height: 1.5;
+      }
+      .scope-item:last-child { border-bottom: none; }
+      .scope-icon-in  { color: #38a169; flex-shrink: 0; margin-top: 0.1rem; }
+      .scope-icon-out { color: #e53e3e; flex-shrink: 0; margin-top: 0.1rem; }
     </style>
   </head>
 
@@ -133,13 +238,13 @@
                 Firm-Level Review Management
               </h1>
               <p class="md:mt-4 lg:text-xl text-gray-300" data-aos="fade-right" data-aos-delay="200">
-                Solving a two-platform workflow problem by designing a three-tier information architecture — from fragmented legacy systems to a unified reputation dashboard for law firms.
+                A two-platform workflow problem solved by a single reframe: the table isn't a data display. It's a triage tool.
               </p>
             </div>
           </div>
           <div class="w-full md:w-6/12 mt-8 flex justify-center" data-aos="fade-left" data-aos-delay="200">
             <div class="visual-placeholder" style="min-height: 280px; min-width: 300px; background-color: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5);">
-              [ Final dashboard — firm + attorney review table ]
+              [ Final dashboard — three-tier firm + attorney review table ]
             </div>
           </div>
         </div>
@@ -151,20 +256,20 @@
       <div class="container mx-auto px-4 pt-8 pb-6">
         <div class="flex flex-wrap">
           <div class="w-full md:w-3/12 mb-4 px-2">
+            <h6 class="sectionTitle">Company</h6>
+            <p class="text-gray-700 font-medium">Martindale-Avvo · Internet Brands</p>
+          </div>
+          <div class="w-full md:w-3/12 mb-4 px-2">
             <h6 class="sectionTitle">Role</h6>
-            <p class="text-gray-700 font-medium">Lead Product Designer — end-to-end, kickoff to dev handoff</p>
+            <p class="text-gray-700 font-medium">Lead Product Designer — end-to-end ownership across research, IA, interaction design, visual design, stakeholder facilitation, and dev handoff. Wil Teran (Sr. Product Designer) provided directional feedback and badge system components.</p>
+          </div>
+          <div class="w-full md:w-3/12 mb-4 px-2">
+            <h6 class="sectionTitle">Timeline</h6>
+            <p class="text-gray-700 font-medium">13 weeks · Jan 23 – Apr 20, 2026 · 20+ design review sessions</p>
           </div>
           <div class="w-full md:w-3/12 mb-4 px-2">
             <h6 class="sectionTitle">Collaborators</h6>
             <p class="text-gray-700 font-medium">PM · Senior Director of Product · Engineering · Account Management · CEO</p>
-          </div>
-          <div class="w-full md:w-3/12 mb-4 px-2">
-            <h6 class="sectionTitle">Timeline</h6>
-            <p class="text-gray-700 font-medium">~8 weeks · 20+ design review sessions</p>
-          </div>
-          <div class="w-full md:w-3/12 mb-4 px-2">
-            <h6 class="sectionTitle">Outcome</h6>
-            <p class="text-gray-700 font-medium">Zero major revision requests post-handoff · AM team validated pre-dev · CEO presentation incorporated without scope change</p>
           </div>
         </div>
       </div>
@@ -173,204 +278,435 @@
     <!-- MAIN -->
     <div class="container mx-auto px-4">
 
-      <!-- PROBLEM -->
+      <!-- THE DECISION THAT MATTERED MOST -->
       <section class="py-12" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="decision-number">The Decision That Mattered Most</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            The table isn't a data display. It's a triage tool.
+          </h2>
+
+          <p class="text-gray-600 leading-relaxed mb-4">
+            That reframe didn't come at kickoff. It came in week 7, after the CEO demo.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            The original brief asked for a "firm-level review dashboard" — a way to show all of a firm's review data in one place. The first six weeks of design treated it that way: I built a flat table that surfaced every column the PM, AM team, and Engineering had requested. It tested fine in internal critique. It looked complete.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Then the CEO saw it and called it unclear and overwhelming.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            That feedback could have been answered cosmetically — tighten the spacing, soften the borders, ship it. Instead I took it as a signal that the underlying model was wrong. Firm admins don't want to read a table. They want to know <em>who needs my attention right now.</em>
+          </p>
+
+          <div class="callout-box">
+            <p>Once that became the design's job, every subsequent decision — the three-tier hierarchy, the icon-plus-color status system, the conditional search, the reframed zero state — fell out of that one principle.</p>
+          </div>
+
+          <p class="text-gray-600 leading-relaxed mt-6">
+            The IA restructure took ~3 weeks in the middle of an already-running project, with no scope change and no extension. That trade-off — slower middle, cleaner outcome — was the project's most consequential decision.
+          </p>
+        </div>
+      </section>
+
+      <!-- PROBLEM -->
+      <section class="py-8" data-aos="fade-up">
         <div class="max-w-3xl mx-auto">
           <div class="decision-number">The Problem</div>
           <h2 class="text-3xl font-semibold text-gray-700 py-4">
             Firm admins had to use two platforms to do one job
           </h2>
-          <p class="text-gray-600 leading-relaxed mb-6">
-            Law firms managing multiple attorneys had no single place to oversee their firm's online reputation. They were forced to jump between two separate platforms — MyMA for attorney profiles and the legacy CSC system for review management — to monitor reviews, respond to clients, and track attorney performance.
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Martindale-Avvo sells reputation management to law firms. The promise is simple — help attorneys get more reviews, respond faster, look credible online. But the tool meant to deliver that promise was broken at the seam.
           </p>
-          <p class="text-gray-600 leading-relaxed mb-6">
-            Every task required context-switching. Every workflow was incomplete. Firms weren't managing their reviews — not because they didn't care, but because the tools made it too hard.
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Firm administrators — the people responsible for an entire firm's online presence — had to use two separate platforms to do one job:
+          </p>
+
+          <div class="flex flex-wrap -mx-2 mb-6">
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card" style="min-height: 120px;">
+                <h4>MyMA</h4>
+                <p class="text-gray-600 text-sm mt-2">Attorney profiles and marketing — where firm admins managed profiles and visibility.</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card" style="min-height: 120px;">
+                <h4>CSC (legacy)</h4>
+                <p class="text-gray-600 text-sm mt-2">Review management — where actual review data lived, completely separate from profiles.</p>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Every time they needed to check review status, respond to a client, or identify which attorney needed attention, they had to leave one platform and log into another. The workflow was never complete in either place.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            The business was expanding from attorney-level to firm-level accounts. Firms with 10, 50, even 100+ attorneys were becoming key revenue. Without a unified tool, Account Managers couldn't scale support — and firm admins couldn't self-serve.
           </p>
 
           <div class="callout-box">
-            <p>"The broken user journey between MyMA and the legacy CSC system was creating invisible churn — firms weren't managing their reviews because the tools made it too hard."</p>
+            <p>這不只是 UX 問題。是留客風險。</p>
           </div>
 
-          <p class="text-gray-600 leading-relaxed mt-6 mb-4">
-            The ask: integrate firm-level review management into MyMA.<br/>
-            The real problem: a fragmented information architecture that no single dashboard had ever solved.
-          </p>
-
-          <div class="visual-placeholder mt-6" data-aos="fade-up">
+          <div class="visual-placeholder mt-6">
             [ Before state — two-platform workflow: MyMA + CSC ]
           </div>
         </div>
       </section>
 
-      <!-- CHALLENGE -->
+      <!-- USERS -->
       <section class="py-8" data-aos="fade-up">
         <div class="max-w-3xl mx-auto">
-          <div class="decision-number">The Challenge</div>
+          <div class="decision-number">Users</div>
           <h2 class="text-3xl font-semibold text-gray-700 py-4">
-            Two problems in one
+            Three audiences. One design had to serve all of them.
           </h2>
 
-          <div class="flex flex-wrap -mx-2 mb-8">
-            <div class="w-full md:w-1/2 px-2 mb-4">
-              <div class="decision-card" style="min-height: 160px;">
-                <h4>1. Broken user journey</h4>
-                <p class="text-gray-600 text-sm mt-2">Firm admins needed MyMA for attorney profiles and CSC for review management. No single view. No unified workflow. Every task started in the wrong place.</p>
+          <div class="flex flex-wrap -mx-2">
+            <div class="w-full md:w-1/3 px-2 mb-4">
+              <div class="decision-card" style="min-height: 200px; border-left-color: #0f2d40;">
+                <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Primary</p>
+                <h4>Firm Administrator</h4>
+                <p class="text-gray-600 text-sm mt-2">Responsible for the firm's entire online reputation. May be a marketing lead, an operations manager, or a paralegal wearing the marketing hat. They don't have time to read a table — they need to know <em>who needs attention right now.</em></p>
               </div>
             </div>
-            <div class="w-full md:w-1/2 px-2 mb-4">
-              <div class="decision-card" style="min-height: 160px;">
-                <h4>2. Complex information hierarchy</h4>
-                <p class="text-gray-600 text-sm mt-2">A law firm isn't flat. It has a firm entity with its own reviews, multiple attorneys each with reviews across 3 platforms, and aggregate views that combine both. Showing this in a single table without overwhelming users was the core design challenge.</p>
+            <div class="w-full md:w-1/3 px-2 mb-4">
+              <div class="decision-card" style="min-height: 200px; border-left-color: #4a90d9;">
+                <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Secondary</p>
+                <h4>Account Manager</h4>
+                <p class="text-gray-600 text-sm mt-2">Internal team supporting larger firm accounts. Without firm-level tooling, AMs were doing manual triage work that didn't scale past ~10-attorney firms.</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/3 px-2 mb-4">
+              <div class="decision-card" style="min-height: 200px; border-left-color: #a0aec0;">
+                <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Edge Case</p>
+                <h4>Single-Attorney "Firm"</h4>
+                <p class="text-gray-600 text-sm mt-2">Solo practitioners technically registered as firms. The design had to gracefully degrade — no point showing a 100-row hierarchy when there's one attorney.</p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- DISCOVERY -->
+      <!-- RESEARCH & DISCOVERY -->
       <section class="py-8" data-aos="fade-up">
         <div class="max-w-3xl mx-auto">
-          <div class="decision-number">Discovery</div>
+          <div class="decision-number">Research &amp; Discovery</div>
           <h2 class="text-3xl font-semibold text-gray-700 py-4">
-            What the data and AM interviews revealed
+            No formal study. Three structured sources.
           </h2>
-          <p class="text-gray-600 leading-relaxed mb-6">
-            Starting from the existing attorney-level review management page, I mapped data coverage across Avvo, Lawyers.com, and Martindale-Hubbell, traced where the current workflow broke down for firm admins, and ran a review session with the Account Management team to understand what they needed to support their clients.
-          </p>
 
-          <div class="callout-box">
-            <p>Key insight from AM session: firms with 100+ attorneys had no way to quickly identify who needed attention. There was no urgency signal — no way to see at a glance which attorney hadn't received a review in over a year.</p>
+          <div class="phase-block mb-4">
+            <div class="phase-label">Source 1 — Existing System Audit</div>
+            <p class="phase-desc">Walked through the current MyMA attorney-level review page and CSC peer review management side by side. Mapped every point where the user journey broke or required platform switching.</p>
+          </div>
+          <div class="phase-block mb-4">
+            <div class="phase-label">Source 2 — Account Manager Interviews</div>
+            <p class="phase-desc">Ran a dedicated AM review session before development. Key signal: 100+ attorney firms had no way to identify who needed attention. There was no urgency signal — no way to see at a glance which attorney hadn't received a review in over a year.</p>
+          </div>
+          <div class="phase-block mb-4">
+            <div class="phase-label">Source 3 — Stakeholder Feedback Loop</div>
+            <p class="phase-desc">Used weekly design reviews with PM, Product, and Engineering as continuous discovery — surfacing edge cases (single-attorney firms, zero-review firms, multi-location firms) that shaped the final IA.</p>
           </div>
 
-          <p class="text-gray-600 leading-relaxed mt-6">
-            That missing urgency signal became the design brief: the dashboard needed to function not as a data display, but as a health monitoring tool.
-          </p>
-        </div>
-      </section>
+          <h3 class="text-xl font-semibold text-gray-700 mt-8 mb-4">Three insights that changed the design</h3>
 
-      <!-- DECISION THAT MATTERED MOST -->
-      <section class="py-8" data-aos="fade-up">
-        <div class="max-w-3xl mx-auto">
-          <div class="decision-number">The Decision That Mattered Most</div>
-          <h2 class="text-3xl font-semibold text-gray-700 py-4">
-            Rejecting the flat table after leadership review
-          </h2>
-          <p class="text-gray-600 leading-relaxed mb-6">
-            The first version of the dashboard showed everything in a single flat table — firm reviews and attorney reviews side by side, undifferentiated. Leadership feedback after the first stakeholder review was immediate:
-          </p>
-
-          <div class="callout-box">
-            <p>"Unclear and overwhelming."</p>
+          <div class="decision-card mb-4">
+            <h4>1. The table wasn't a data display problem — it was a triage problem.</h4>
+            <p class="text-gray-600 text-sm mt-2">Firm admins don't want to read a table. They want to know who needs them. This reframed the design from "show all data" to "surface urgency."</p>
           </div>
-
-          <p class="text-gray-600 leading-relaxed mt-6 mb-4">
-            The fix wasn't decoration — it was architecture. The table needed to reflect how firms actually think about their reputation: the firm as a whole, then the attorneys as individual contributors.
-          </p>
-
-          <div class="hierarchy-block">
-            Manage All Reviews&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← top-level CTA<br/>
-            ├── Firm Reviews&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← firm-only data<br/>
-            └── All Attorney Reviews&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← rollup<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;├── Attorney A<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;├── Attorney B<br/>
-            &nbsp;&nbsp;&nbsp;&nbsp;└── Attorney C
+          <div class="decision-card mb-4">
+            <h4>2. The hierarchy was invisible when flattened.</h4>
+            <p class="text-gray-600 text-sm mt-2">Firm + All Attorneys + Individual Attorneys sounds simple. But flattened into a table, users couldn't tell what was a summary row vs. an actionable row. The IA needed to be <em>felt</em>, not just labeled.</p>
           </div>
-
-          <p class="text-gray-600 leading-relaxed mt-4 mb-6">
-            Iterated through indentation, background color, section dividers, and tooltips before landing on a solution that made the hierarchy scannable without adding visual noise.
-          </p>
-
-          <div class="visual-placeholder" data-aos="fade-up">
-            [ V1 flat table → V2 three-tier hierarchy comparison ]
+          <div class="decision-card mb-4">
+            <h4>3. Zero reviews is a different product moment.</h4>
+            <p class="text-gray-600 text-sm mt-2">A firm with no reviews isn't an empty state — it's a user who doesn't yet believe reviews matter. The design needed to sell the value before showing the tool.</p>
           </div>
         </div>
       </section>
 
-      <!-- 4 DESIGN DECISIONS -->
+      <!-- VALUE (NOT FEATURES) -->
       <section class="py-8" data-aos="fade-up">
         <div class="max-w-3xl mx-auto">
-          <div class="decision-number">Four Design Decisions</div>
+          <div class="decision-number">Value, Not Features</div>
           <h2 class="text-3xl font-semibold text-gray-700 py-4">
-            The details that made it trustworthy
+            What the design needed to deliver — in order
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            Before designing anything, I listed what the design had to accomplish for the user — not what features the PM had listed. Anything that didn't serve one of these got cut.
+          </p>
+
+          <div style="border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden;">
+            <div class="value-row" style="padding: 0.6rem 1rem;">
+              <div class="value-num">1</div>
+              <div class="value-text"><strong>Show me who needs attention</strong> — urgency before completeness</div>
+            </div>
+            <div class="value-row" style="padding: 0.6rem 1rem;">
+              <div class="value-num">2</div>
+              <div class="value-text"><strong>Show me the firm's overall health</strong> — not just individual attorneys</div>
+            </div>
+            <div class="value-row" style="padding: 0.6rem 1rem;">
+              <div class="value-num">3</div>
+              <div class="value-text"><strong>Let me act without leaving the page</strong> — close the cross-platform gap</div>
+            </div>
+            <div class="value-row" style="padding: 0.6rem 1rem;">
+              <div class="value-num">4</div>
+              <div class="value-text"><strong>Don't make me learn a new mental model</strong> — respect the existing system</div>
+            </div>
+            <div class="value-row" style="padding: 0.6rem 1rem; border-bottom: none;">
+              <div class="value-num">5</div>
+              <div class="value-text"><strong>Motivate me if I have nothing yet</strong> — zero state as a product moment, not an empty state</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TIMELINE -->
+      <section class="py-8" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="decision-number">Timeline</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">13 weeks, four phases</h2>
+
+          <div class="phase-block">
+            <div class="phase-label">Phase 1 — Discovery &amp; Scoping</div>
+            <div class="phase-dates">Weeks 1–2 · Jan 23 – Feb 1</div>
+            <div class="phase-desc">Audited existing MyMA and CSC systems side by side. Mapped where the user journey broke. Aligned with PM and Engineering on Phase 1 scope and constraints.</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-label">Phase 2 — Core Design Sprint</div>
+            <div class="phase-dates">Weeks 3–6 · Feb 2 – Feb 20</div>
+            <div class="phase-desc">Designed and iterated on table view, status indicators, badge system, filter logic, and review cards. Presented at internal Design Review/Critique. Ran AM review session with Account Management team to validate field assumptions.</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-label">Phase 3 — Stakeholder Reviews &amp; IA Overhaul</div>
+            <div class="phase-dates">Weeks 7–9 · Feb 23 – Mar 9</div>
+            <div class="phase-desc">Prepared for CEO demo. Executive feedback triggered major IA restructure — flat table → three-tier nested hierarchy. Redesigned zero state and finalized ADA-compliant status system.</div>
+          </div>
+          <div class="phase-block">
+            <div class="phase-label">Phase 4 — Refinement &amp; Dev Handoff</div>
+            <div class="phase-dates">Weeks 10–13 · Mar 10 – Apr 20</div>
+            <div class="phase-desc">Finalized badge display, tooltips, and copy. Built clean dev handoff file. Collaborated with Engineering during build. Incorporated ALP filter and Authority Bundle integration.</div>
+          </div>
+
+          <div class="visual-placeholder mt-6">
+            [ 13-week phase timeline ]
+          </div>
+        </div>
+      </section>
+
+      <!-- FOUR DESIGN DECISIONS -->
+      <section class="py-8" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="decision-number">Four Key Design Decisions</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            Each one came with a wrong answer first
           </h2>
 
-          <!-- 01 -->
+          <!-- Decision 1 -->
           <div class="decision-card mb-8">
             <div class="decision-number mb-1">01 · Information Hierarchy</div>
-            <h4 class="text-lg">Three tiers: firm / rollup / individual</h4>
-            <p class="text-gray-600 text-sm mt-2 mb-4">
-              Solving for the firm vs. attorney distinction required a clear visual system for each level. The hierarchy needed to be scannable for a firm admin managing 100+ attorneys — and immediately readable for someone checking in on a single attorney's review health.
-            </p>
+            <h4 class="text-lg mb-4">How to show the hierarchy</h4>
+
+            <div class="option-row">
+              <div class="option-label">A.</div>
+              <div class="option-text"><strong>Flat table.</strong> All rows equal weight. Simple to build. Users couldn't distinguish summary rows from attorney rows. Leadership called it "unclear and overwhelming."</div>
+              <div class="option-verdict verdict-fail">Failed</div>
+            </div>
+            <div class="option-row">
+              <div class="option-label">B.</div>
+              <div class="option-text"><strong>Separate cards above table.</strong> Pull summary data out, show as cards on top. Creates two mental models — users have to reconcile card data with table data.</div>
+              <div class="option-verdict verdict-fail">Failed</div>
+            </div>
+            <div class="option-row">
+              <div class="option-label winner">C. ✓</div>
+              <div class="option-text"><strong>Three-tier nested table with visual separation.</strong> Single mental model. Hierarchy is felt through visual weight, not just labels. Summary rows stay locked during search/sort so the frame of reference never moves.</div>
+              <div class="option-verdict verdict-win">Shipped</div>
+            </div>
+
+            <div class="hierarchy-block mt-4">
+              Manage All Reviews&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← sticky CTA row, distinct background<br/>
+              ├── Firm Reviews&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← section header, firm-only data<br/>
+              └── All Attorney Reviews&nbsp;&nbsp;&nbsp;&nbsp;← rollup section header<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;├── Attorney A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;← indented, sortable<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;├── Attorney B<br/>
+              &nbsp;&nbsp;&nbsp;&nbsp;└── Attorney C
+            </div>
+
             <div class="callout-box">
               <p>"The table isn't showing data — it's showing a business. The hierarchy has to match how the admin thinks about their firm, not how the database is structured."</p>
             </div>
+
+            <div class="visual-placeholder mt-4">
+              [ V1 flat table → V2 three-tier hierarchy comparison ]
+            </div>
           </div>
 
-          <!-- 02 -->
+          <!-- Decision 2 -->
           <div class="decision-card mb-8">
-            <div class="decision-number mb-1">02 · Status Indicators — ADA Compliance</div>
-            <h4 class="text-lg">Color alone fails. Icon + color is the standard.</h4>
-            <p class="text-gray-600 text-sm mt-2 mb-4">
-              Early designs used color alone to signal review health. The problem: color-only systems fail WCAG 2.2 for color-blind users, and they fail non-color-blind users who are scanning quickly in low-attention states.
-            </p>
-            <div class="flex flex-wrap mb-4">
+            <div class="decision-number mb-1">02 · Status Indicators</div>
+            <h4 class="text-lg mb-4">How to signal review health at a glance</h4>
+
+            <div class="option-row">
+              <div class="option-label">A.</div>
+              <div class="option-text"><strong>Color only.</strong> Green/yellow/red per row. Fails WCAG 2.2 — color-blind users get no signal. Approximately 8% of male users affected.</div>
+              <div class="option-verdict verdict-fail">Failed</div>
+            </div>
+            <div class="option-row">
+              <div class="option-label">B.</div>
+              <div class="option-text"><strong>Text labels only.</strong> "On Track" / "Warning" / "Urgent." Too verbose for a dense table. Kills scannability — the one thing this system had to do.</div>
+              <div class="option-verdict verdict-fail">Failed</div>
+            </div>
+            <div class="option-row">
+              <div class="option-label winner">C. ✓</div>
+              <div class="option-text"><strong>Icon + color dual system.</strong> Accessible, scannable, self-explanatory. Passes WCAG 2.2 without adding visual noise. The icon does the triage work in under a second.</div>
+              <div class="option-verdict verdict-win">Shipped</div>
+            </div>
+
+            <div class="flex flex-wrap mt-4 mb-4">
               <span class="status-badge badge-green">✓ On track <span class="font-normal ml-1">(reviewed within 90 days)</span></span>
               <span class="status-badge badge-yellow">⚠ Caution <span class="font-normal ml-1">(3 months – 1 year)</span></span>
               <span class="status-badge badge-red">🚨 Urgent <span class="font-normal ml-1">(over 1 year or zero reviews)</span></span>
             </div>
             <p class="text-gray-600 text-sm">Each status includes a tooltip explaining the threshold on hover. WCAG 2.2 compliant — icon carries the signal, color reinforces it.</p>
+
             <div class="visual-placeholder mt-4">
               [ Status indicator system — before (color only) / after (icon + color + tooltip) ]
             </div>
           </div>
 
-          <!-- 03 -->
+          <!-- Decision 3 -->
           <div class="decision-card mb-8">
-            <div class="decision-number mb-1">03 · Zero State Design</div>
-            <h4 class="text-lg">Two-layer entry for accounts with no reviews</h4>
-            <p class="text-gray-600 text-sm mt-2 mb-4">
-              A significant portion of firm accounts had zero reviews. An empty table with no context is a dead end — users don't know what they're looking at or what to do next. The zero state had to convert confusion into action.
-            </p>
-            <div class="flex flex-wrap -mx-2">
+            <div class="decision-number mb-1">03 · Zero State</div>
+            <h4 class="text-lg mb-4">What to show when a firm has no reviews</h4>
+
+            <div class="option-row">
+              <div class="option-label">A.</div>
+              <div class="option-text"><strong>Empty table with message.</strong> "No reviews yet." No motivation to act. High drop-off risk — user has no reason to return.</div>
+              <div class="option-verdict verdict-fail">Failed</div>
+            </div>
+            <div class="option-row">
+              <div class="option-label">B.</div>
+              <div class="option-text"><strong>Full onboarding flow.</strong> Multi-step education before the dashboard. Too much friction. Users who already have reviews get blocked unnecessarily.</div>
+              <div class="option-verdict verdict-fail">Failed</div>
+            </div>
+            <div class="option-row">
+              <div class="option-label winner">C. ✓</div>
+              <div class="option-text"><strong>Two-layer contextual zero state.</strong> Respects users who already have reviews while actively motivating those who don't. The banner creates an ongoing nudge without blocking the UI.</div>
+              <div class="option-verdict verdict-win">Shipped</div>
+            </div>
+
+            <div class="flex flex-wrap -mx-2 mt-4">
               <div class="w-full md:w-1/2 px-2 mb-3">
                 <div style="background:#f0f4f8; border-radius:6px; padding:1rem;">
-                  <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Layer 1 — Entry modal</p>
-                  <p class="text-gray-600 text-sm">Pop-up on first visit explains why reviews matter + immediate CTA to start requesting. Clears after first interaction.</p>
+                  <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Layer 1 — Entry Popup</p>
+                  <p class="text-gray-600 text-sm">Triggers only for zero-review firms. Explains why reviews matter + single CTA to start requesting. Clears after first interaction.</p>
                 </div>
               </div>
               <div class="w-full md:w-1/2 px-2 mb-3">
                 <div style="background:#f0f4f8; border-radius:6px; padding:1rem;">
-                  <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Layer 2 — Persistent banner</p>
-                  <p class="text-gray-600 text-sm">"88% of consumers consider an attorney's reputation before hiring." Data-backed value message always visible — gives returning users a reason to act.</p>
+                  <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Layer 2 — Persistent Banner</p>
+                  <p class="text-gray-600 text-sm">"88% of consumers consider an attorney's reputation before hiring." Data-backed value message visible to all users — gives returning users a reason to act.</p>
                 </div>
               </div>
             </div>
+
             <div class="visual-placeholder mt-4">
-              [ Zero state — entry modal + persistent banner ]
+              [ Zero state — entry popup + persistent banner ]
             </div>
           </div>
 
-          <!-- 04 -->
+          <!-- Decision 4 -->
           <div class="decision-card mb-8">
-            <div class="decision-number mb-1">04 · Search & Filter for Scale</div>
-            <h4 class="text-lg">Conditional search that appears when you need it</h4>
-            <p class="text-gray-600 text-sm mt-2 mb-4">
-              Firms with 100+ attorneys needed to find specific people fast. A persistent search bar on a 5-attorney firm is visual noise. The solution: conditional rendering based on firm size.
+            <div class="decision-number mb-1">04 · Conditional UI for Scale</div>
+            <h4 class="text-lg mb-4">When to show what — two-attorney firms and 100-attorney firms can't use the same UI</h4>
+
+            <p class="text-gray-600 text-sm mb-4">
+              Small firms shouldn't pay the cognitive cost of features built for large firms. Large firms can't function without them. The solution: conditional rendering based on attorney count.
             </p>
-            <div class="decision-card" style="border-left-color: #718096; background: #f0f4f8;">
+
+            <div class="decision-card" style="border-left-color: #718096; background: #f0f4f8; margin-bottom: 1rem;">
               <ul class="text-sm text-gray-600 space-y-2">
-                <li>→ Search appears only when attorney count exceeds 10</li>
-                <li>→ Real-time name filter — no page reload</li>
-                <li>→ Top 3 summary rows locked — not affected by filter</li>
-                <li>→ Filter pattern: all options visible by default, uncheck to exclude (Google Flights model)</li>
+                <li>→ <strong>Search bar:</strong> appears only when attorney count &gt; 10</li>
+                <li>→ <strong>Pagination:</strong> activates at &gt; 10 items</li>
+                <li>→ <strong>Status urgency filter:</strong> auto-prioritized to top when filter is "Needs Attention"</li>
+                <li>→ <strong>Filter pattern:</strong> all options visible by default, uncheck to exclude (Google Flights model)</li>
+                <li>→ <strong>Summary rows:</strong> locked — not affected by search or sort</li>
               </ul>
             </div>
-            <div class="callout-box mt-4">
+
+            <div class="callout-box">
               <p>"A search bar that only appears when you need it is more trustworthy than one that's always visible. It signals: the product knows what kind of firm you are."</p>
             </div>
+
             <div class="visual-placeholder mt-4">
-              [ Search + filter — small firm (no search bar) / large firm (search active) ]
+              [ Small firm (search hidden) vs. large firm (search visible + filter active) ]
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCOPE DISCIPLINE -->
+      <section class="py-8" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="decision-number">Scope Discipline</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            Naming what wasn't designed was as important as what shipped
+          </h2>
+          <p class="text-gray-600 leading-relaxed mb-6">
+            It's how the project stayed on scope across 13 weeks, a mid-project CEO demo, and 20+ design reviews.
+          </p>
+
+          <div class="flex flex-wrap -mx-3">
+            <div class="w-full md:w-1/2 px-3 mb-4 scope-col scope-in">
+              <h5>In Scope — Phase 1</h5>
+              <div class="scope-item"><span class="scope-icon-in">✓</span><span>Review summary dashboard for firm admins</span></div>
+              <div class="scope-item"><span class="scope-icon-in">✓</span><span>Multi-source data consolidation (Avvo, Lawyers.com, Martindale-Hubbell)</span></div>
+              <div class="scope-item"><span class="scope-icon-in">✓</span><span>Attorney-level health monitoring within firm view</span></div>
+              <div class="scope-item"><span class="scope-icon-in">✓</span><span>Badge/award display and download</span></div>
+              <div class="scope-item"><span class="scope-icon-in">✓</span><span>Zero-state onboarding for firms with no reviews</span></div>
+            </div>
+            <div class="w-full md:w-1/2 px-3 mb-4 scope-col scope-out">
+              <h5>Explicitly Out of Scope</h5>
+              <div class="scope-item"><span class="scope-icon-out">✕</span><span><strong>Peer review management</strong> — stays in CSC. Different audience, different workflow. Merging it now would have doubled complexity for a 5% use case.</span></div>
+              <div class="scope-item"><span class="scope-icon-out">✕</span><span><strong>Native review generation</strong> — future phase. Worth building right rather than rushing.</span></div>
+              <div class="scope-item"><span class="scope-icon-out">✕</span><span><strong>FindLaw integration</strong> — pending separate data architecture work.</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL DESIGN -->
+      <section class="py-8" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="decision-number">Final Design</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            Four surfaces. One mental model.
+          </h2>
+
+          <div class="decision-card mb-4">
+            <h4>Review Summary Dashboard</h4>
+            <p class="text-gray-600 text-sm mt-2">Three-tier nested table with locked summary rows. Color + icon status system. Real-time attorney name search (conditional on count &gt; 10). Sortable columns: review count, star rating, last review date. Hover tooltip showing platform breakdown across Avvo, Lawyers.com, and Martindale-Hubbell.</p>
+          </div>
+
+          <div class="decision-card mb-4">
+            <h4>Badge &amp; Award Display</h4>
+            <p class="text-gray-600 text-sm mt-2">Horizontal tier progression: Silver → Gold → Platinum. Earned badges shown in full color with copy-code and download options. Unearned badges grayscale, info only. Year selector for annual Avvo awards.</p>
+          </div>
+
+          <div class="decision-card mb-4">
+            <h4>Zero State</h4>
+            <p class="text-gray-600 text-sm mt-2">Entry popup with value proposition and single CTA. Persistent banner with social proof statistic. Red-line visualization showing zero across all metrics — making the absence feel like a problem to solve, not a UI bug.</p>
+          </div>
+
+          <div class="decision-card mb-4">
+            <h4>Review Management Page</h4>
+            <p class="text-gray-600 text-sm mt-2">Filtered view based on summary page entry point. Platform breakdown across Avvo, Lawyers.com, Martindale-Hubbell, and Peer Reviews. Firm vs. attorney review differentiation. Respond, highlight, and request-review actions inline.</p>
+          </div>
+
+          <div class="visual-placeholder mt-6">
+            [ Final design — all four surfaces ]
           </div>
         </div>
       </section>
@@ -388,19 +724,19 @@
               <div class="w-full md:w-1/3 px-2 mb-4">
                 <div class="bg-white rounded-lg p-5" style="min-height: 160px;">
                   <h4 class="font-bold text-gray-800 mb-2">Invisible urgency</h4>
-                  <p class="text-gray-600 text-sm">Firms with 100+ attorneys continue to have no signal for which attorney is at risk. Admins can't prioritize. Review health deteriorates without awareness.</p>
+                  <p class="text-gray-600 text-sm">Firms with 100+ attorneys continue to have no signal for which attorney is at risk. Admins can't prioritize. Review health deteriorates without awareness — and the AM team is still doing manual triage.</p>
                 </div>
               </div>
               <div class="w-full md:w-1/3 px-2 mb-4">
                 <div class="bg-white rounded-lg p-5" style="min-height: 160px;">
-                  <h4 class="font-bold text-gray-800 mb-2">Accessibility failure</h4>
-                  <p class="text-gray-600 text-sm">Color-only status signals fail 8% of male users with color-blindness. A system that looks complete but fails a compliance audit is a liability, not a feature.</p>
+                  <h4 class="font-bold text-gray-800 mb-2">Accessibility liability</h4>
+                  <p class="text-gray-600 text-sm">Color-only status signals fail 8% of male users with color-blindness. A system that looks complete but fails a WCAG 2.2 audit isn't a finished product — it's a compliance risk.</p>
                 </div>
               </div>
               <div class="w-full md:w-1/3 px-2 mb-4">
                 <div class="bg-white rounded-lg p-5" style="min-height: 160px;">
                   <h4 class="font-bold text-gray-800 mb-2">Zero-state drop-off</h4>
-                  <p class="text-gray-600 text-sm">Without the entry modal and persistent banner, zero-review firms open an empty table, don't know what to do, and close the tab. The feature exists — but the behavior never starts.</p>
+                  <p class="text-gray-600 text-sm">Without the entry popup and persistent banner, zero-review firms open an empty table, don't know what to do, and close the tab. The feature exists — but the behavior never starts.</p>
                 </div>
               </div>
             </div>
@@ -417,7 +753,7 @@
           <div class="flex flex-wrap -mx-2 mb-8">
             <div class="w-full md:w-1/4 px-2 mb-4 text-center">
               <div class="py-6">
-                <p class="text-4xl font-bold" style="color:#0f2d40;">8wk</p>
+                <p class="text-4xl font-bold" style="color:#0f2d40;">13wk</p>
                 <p class="text-gray-600 mt-2 text-sm">Kickoff to dev handoff</p>
               </div>
             </div>
@@ -436,34 +772,73 @@
             <div class="w-full md:w-1/4 px-2 mb-4 text-center">
               <div class="py-6">
                 <p class="text-4xl font-bold" style="color:#0f2d40;">CEO</p>
-                <p class="text-gray-600 mt-2 text-sm">Presented mid-project, incorporated feedback without scope change</p>
+                <p class="text-gray-600 mt-2 text-sm">Presented mid-project, feedback incorporated without scope change</p>
               </div>
             </div>
           </div>
 
-          <div class="decision-card">
+          <div class="decision-card mb-4">
             <h4>What this unlocks</h4>
-            <p class="text-gray-600 text-sm mt-2">Foundation laid for review generation workflows and Fine Law integration. The three-tier IA is extensible — new attorney platforms can be added without redesigning the hierarchy.</p>
+            <p class="text-gray-600 text-sm mt-2">Foundation laid for Phase 2: native review generation and FindLaw integration. The three-tier IA is extensible — new attorney platforms can be added without redesigning the hierarchy. ADA-compliant status system adopted as the pattern for future review surfaces.</p>
+          </div>
+
+          <div class="callout-box">
+            <p>Live metrics to be added post-launch: CTR on "Manage Reviews," time-to-first-action for new firms, AM-supported vs. self-serve ratio.</p>
           </div>
         </div>
       </section>
 
-      <!-- WHAT I LEARNED -->
+      <!-- WHAT I'D DO NEXT -->
+      <section class="py-8" data-aos="fade-up">
+        <div class="max-w-3xl mx-auto">
+          <div class="decision-number">What I'd Do Next</div>
+          <h2 class="text-3xl font-semibold text-gray-700 py-4">
+            The questions the design still can't answer
+          </h2>
+
+          <div class="flex flex-wrap -mx-2">
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card" style="min-height: 160px;">
+                <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Short Term</p>
+                <ul class="text-gray-600 text-sm space-y-2">
+                  <li>→ Usability test the three-tier table with actual firm admins — validate that the hierarchy reads correctly without explanation</li>
+                  <li>→ A/B test zero-state popup vs. no popup on conversion to first review request</li>
+                </ul>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card" style="min-height: 160px;">
+                <p class="text-xs font-bold text-gray-500 uppercase tracking-wider mb-2">Long Term</p>
+                <ul class="text-gray-600 text-sm space-y-2">
+                  <li>→ Build review generation natively into MyMA (currently CSC-dependent)</li>
+                  <li>→ Expand health monitoring to include review sentiment, not just recency</li>
+                  <li>→ Design for large-firm edge cases: 500+ attorney firms, multi-location firms</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- REFLECTION -->
       <section class="py-8 pb-16" data-aos="fade-up">
         <div class="max-w-3xl mx-auto">
-          <div class="decision-number">What I Learned</div>
+          <div class="decision-number">Reflection</div>
           <h2 class="text-3xl font-semibold text-gray-700 py-4">
-            The biggest unlock wasn't a design pattern
+            最難的部分不是視覺設計
           </h2>
-          <p class="text-gray-600 leading-relaxed mb-6">
-            Designing for complex B2B hierarchies isn't just an information architecture problem — it's a trust problem. Every label, every tooltip, every empty state is a moment where the product either earns or loses the user's confidence that the system understands their business.
+          <p class="text-gray-600 leading-relaxed mb-4">
+            最難的部分不是視覺設計 — 是忍住什麼都想塞進去的衝動。
           </p>
-          <p class="text-gray-600 leading-relaxed mb-6">
-            The biggest unlock wasn't a design pattern. It was reframing the table from a data display into a health monitoring tool — giving firm admins a reason to come back every week, not just when a review appeared.
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Every stakeholder had a different definition of what "firm-level" meant. The version that shipped wasn't the most feature-rich one. It was the version where every element had a clear job — and nothing was there just because someone asked for it.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            The reframe — the table isn't a data display, it's a triage tool — wasn't a clever insight. It was a forcing function. It gave me a way to say no without saying no to people; I could say no to elements that didn't serve triage.
           </p>
 
           <div class="callout-box">
-            <p>"When I stopped asking 'how do we show all the reviews?' and started asking 'what does a firm admin need to know to act?' — the hierarchy resolved itself."</p>
+            <p>"The hardest design work is often deciding what the design is for, not what it looks like."</p>
           </div>
         </div>
       </section>
