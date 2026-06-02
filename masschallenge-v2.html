@@ -3,589 +3,1178 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Roy Wang | MassChallenge — Alumni Platform Redesign</title>
-    <!-- Favicon -->
+    <title>Roy Wang | MassChallenge: Alumni Platform Redesign</title>
     <link rel="icon" type="image/png" href="img/favicon.ico" />
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="projectStyle.css" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
-    />
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
-    />
-    <link
-      rel="stylesheet"
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
     />
     <style>
-      .hero-bg { background-color: #13acbd; }
-      .accent-bg { background-color: #007694; }
-      .decision-card {
-        border-left: 4px solid #13acbd;
-        padding: 1rem 1.5rem;
-        background: #f7fafc;
-        margin-bottom: 1rem;
-        border-radius: 0 6px 6px 0;
+      /* mcv2: editorial chrome (scoped to this page) */
+      :root {
+        --cobalt: oklch(42% 0.20 255);
+        --cobalt-deep: oklch(28% 0.18 258);
+        --cobalt-rgb: 31, 53, 181; /* #1F35B5 for selection alpha */
+        --paper: #fcfcfc;
+        --ink: #1b1b1f;
+        --muted: #5e5e66;
+        --rule: #eaeaec;
+        --paper-on-cobalt: #ffffff;
+        --muted-on-cobalt: #c0c6e0;
+        --rule-on-cobalt: rgba(255, 255, 255, 0.18);
       }
-      .callout-box {
-        background-color: #e6f7f9;
-        border-left: 4px solid #13acbd;
-        padding: 1rem 1.5rem;
-        border-radius: 0 6px 6px 0;
-        margin: 1.5rem 0;
+
+      html {
+        scroll-behavior: smooth;
       }
-      .callout-box p { margin: 0; font-style: italic; font-size: 1.1rem; color: #2d3748; }
-      .impact-number {
-        font-size: 2.5rem;
-        font-weight: 700;
-        color: #13acbd;
-        line-height: 1;
+
+      ::selection {
+        background: rgba(var(--cobalt-rgb), 0.18);
+        color: inherit;
       }
-      .section-number {
+
+      main.mcv2 {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        font-size: 17px;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      main.mcv2 .mcv2-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      main.mcv2 .mcv2-prose {
+        max-width: 65ch;
+      }
+
+      main.mcv2 .mcv2-prose--wide {
+        max-width: 75ch;
+        padding-bottom: 3rem;
+      }
+
+      main.mcv2 h1,
+      main.mcv2 h2,
+      main.mcv2 h3,
+      main.mcv2 blockquote {
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 400;
+        color: var(--ink);
+        text-wrap: balance;
+      }
+
+      main.mcv2 h1.mcv2-hero {
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        line-height: 1.05;
+        letter-spacing: -0.035em;
+        margin: 0;
+      }
+
+      main.mcv2 .mcv2-eyebrow-meta {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        font-size: 0.85rem;
+        color: var(--muted);
+        letter-spacing: 0.01em;
+        margin: 0 0 1.25rem;
+      }
+
+      main.mcv2 .mcv2-lead {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(1.2rem, 1.8vw, 1.45rem);
+        line-height: 1.45;
+        color: var(--ink);
+        margin: 1.5rem 0 0;
+        max-width: 56ch;
+        text-wrap: pretty;
+      }
+
+      main.mcv2 h2.mcv2-section {
+        font-size: clamp(1.75rem, 3vw, 2.5rem);
+        line-height: 1.15;
+        letter-spacing: -0.02em;
+        margin: 5rem 0 1.5rem;
+      }
+
+      main.mcv2 h3.mcv2-sub {
+        font-size: 1.5rem;
+        font-weight: 500;
+        line-height: 1.25;
+        letter-spacing: -0.01em;
+        margin: 0 0 0.75rem;
+      }
+
+      main.mcv2 p,
+      main.mcv2 li {
+        margin: 0 0 1.1rem;
+        color: var(--ink);
+        text-wrap: pretty;
+      }
+
+      main.mcv2 p strong {
+        font-weight: 600;
+        color: var(--cobalt);
+      }
+
+      /* Full-bleed slab system */
+      main.mcv2 .mcv2-slab {
+        width: 100%;
+        padding: 0;
+      }
+
+      main.mcv2 .mcv2-slab--cobalt {
+        background: var(--cobalt);
+        color: var(--paper-on-cobalt);
+        padding: 5rem 0;
+      }
+
+      main.mcv2 .mcv2-slab--cobalt h1,
+      main.mcv2 .mcv2-slab--cobalt h2,
+      main.mcv2 .mcv2-slab--cobalt h3,
+      main.mcv2 .mcv2-slab--cobalt p,
+      main.mcv2 .mcv2-slab--cobalt blockquote {
+        color: var(--paper-on-cobalt);
+      }
+
+      main.mcv2 .mcv2-slab--cobalt p strong {
+        color: var(--paper-on-cobalt);
+        font-weight: 600;
+      }
+
+      main.mcv2 .mcv2-slab--cobalt .mcv2-eyebrow-meta {
+        color: var(--muted-on-cobalt);
+      }
+
+      main.mcv2 .mcv2-slab--cobalt .mcv2-lead {
+        color: var(--paper-on-cobalt);
+        line-height: 1.5;
+      }
+
+      main.mcv2 .mcv2-slab--cobalt .mcv2-outcome-prose {
+        color: var(--paper-on-cobalt);
+        line-height: 1.65;
+      }
+
+      main.mcv2 .mcv2-slab--cobalt p {
+        line-height: 1.7;
+      }
+
+      main.mcv2 .mcv2-slab--cobalt blockquote.mcv2-quote {
+        border-left-color: var(--rule-on-cobalt);
+      }
+
+      main.mcv2 .mcv2-slab--cobalt a {
+        color: var(--paper-on-cobalt);
+        text-decoration-color: var(--rule-on-cobalt);
+      }
+      main.mcv2 .mcv2-slab--cobalt a:hover {
+        text-decoration-color: var(--paper-on-cobalt);
+      }
+
+      /* Floating TOC: fixed-right, theme-aware (paper vs cobalt sections) */
+      main.mcv2 .mcv2-toc {
+        position: fixed;
+        top: 50%;
+        right: 2rem;
+        transform: translateY(-50%);
+        z-index: 50;
+        max-width: 180px;
+        pointer-events: auto;
+
+        --toc-fg: var(--ink);
+        --toc-fg-muted: var(--muted);
+        --toc-accent: var(--cobalt);
+      }
+
+      main.mcv2 .mcv2-toc.on-cobalt {
+        --toc-fg: var(--paper-on-cobalt);
+        --toc-fg-muted: var(--muted-on-cobalt);
+        --toc-accent: var(--paper-on-cobalt);
+      }
+
+      main.mcv2 .mcv2-toc-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--toc-fg-muted);
+        margin: 0 0 0.75rem;
+        transition: color 0.3s ease;
+      }
+
+      main.mcv2 .mcv2-toc-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      main.mcv2 .mcv2-toc-list li {
+        margin: 0;
+        padding: 0;
+      }
+
+      main.mcv2 .mcv2-toc-list a {
+        position: relative;
+        display: block;
+        font-size: 0.82rem;
+        line-height: 1.4;
+        color: var(--toc-fg-muted);
+        text-decoration: none;
+        padding: 0.15rem 0 0.15rem 0.85rem;
+        transition: color 0.2s ease;
+      }
+
+      main.mcv2 .mcv2-toc-list a::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        width: 6px;
+        height: 1px;
+        background: currentColor;
+        transform: translateY(-50%) scaleX(0);
+        transform-origin: left center;
+        transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      main.mcv2 .mcv2-toc-list a:hover,
+      main.mcv2 .mcv2-toc-list a:focus-visible {
+        color: var(--toc-fg);
+      }
+
+      main.mcv2 .mcv2-toc-list a.is-active {
+        color: var(--toc-accent);
+        font-weight: 600;
+      }
+
+      main.mcv2 .mcv2-toc-list a.is-active::before {
+        transform: translateY(-50%) scaleX(1);
+      }
+
+      @media (max-width: 1199px) {
+        main.mcv2 .mcv2-toc {
+          display: none;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        main.mcv2 .mcv2-toc-label,
+        main.mcv2 .mcv2-toc-list a {
+          transition: none;
+        }
+      }
+
+      main.mcv2 .mcv2-meta-row {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1.75rem 2.5rem;
+        padding: 2rem 0;
+        border-top: 1px solid var(--rule);
+        border-bottom: 1px solid var(--rule);
+        margin: 0;
+      }
+
+      main.mcv2 .mcv2-meta-label {
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        color: var(--muted);
+        margin: 0 0 0.35rem;
+      }
+
+      main.mcv2 .mcv2-meta-value {
+        font-size: 0.95rem;
+        color: var(--ink);
+        margin: 0;
+        line-height: 1.4;
+      }
+
+      main.mcv2 blockquote.mcv2-quote {
+        font-style: italic;
+        font-size: clamp(1.3rem, 2vw, 1.6rem);
+        line-height: 1.4;
+        color: var(--ink);
+        margin: 2rem 0;
+        padding: 0 0 0 1.5rem;
+        border-left: 1px solid var(--rule);
+        max-width: 60ch;
+      }
+
+      main.mcv2 .mcv2-fork {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+
+      main.mcv2 .mcv2-fork-label {
+        display: block;
+        font-size: 0.78rem;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        color: var(--muted);
+        margin: 0 0 1rem;
+      }
+
+      main.mcv2 .mcv2-fork-row + .mcv2-fork-row {
+        margin-top: 1.25rem;
+      }
+
+      main.mcv2 .mcv2-fork-row p {
+        margin: 0;
+        line-height: 1.55;
+      }
+
+      /* Reframe two-column composition */
+      main.mcv2 .mcv2-reframe-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        margin-top: 2rem;
+      }
+
+      @media (min-width: 900px) {
+        main.mcv2 .mcv2-reframe-grid {
+          grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+          column-gap: 4rem;
+          row-gap: 0;
+          align-items: start;
+        }
+      }
+
+      main.mcv2 .mcv2-reframe-prose .mcv2-quote {
+        margin-top: 0;
+        margin-bottom: 2rem;
+        max-width: none;
+      }
+
+      main.mcv2 .mcv2-reframe-prose > p:last-child {
+        margin-bottom: 0;
+      }
+
+      main.mcv2 .mcv2-findings {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        margin: 2rem 0;
+      }
+
+      @media (min-width: 768px) {
+        main.mcv2 .mcv2-findings {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      main.mcv2 .mcv2-finding {
+        border-top: 1px solid var(--rule);
+        padding-top: 1.25rem;
+      }
+
+      main.mcv2 .mcv2-finding h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+      }
+
+      main.mcv2 .mcv2-finding p:not(.mcv2-finding-quote) {
+        margin-bottom: 0;
+      }
+
+      main.mcv2 .mcv2-finding p:not(.mcv2-finding-quote) + p {
+        margin-top: 0.75rem;
+      }
+
+      main.mcv2 .mcv2-finding-quote {
+        font-style: italic;
+        color: var(--muted);
+        margin: 0.5rem 0 0.75rem;
+      }
+        font-style: italic;
+        color: var(--muted);
+        margin: 0.5rem 0 0.75rem;
+      }
+
+      main.mcv2 .mcv2-insights {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        margin: 2rem 0;
+      }
+
+      @media (min-width: 768px) {
+        main.mcv2 .mcv2-insights {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      main.mcv2 .mcv2-insight {
+        border-top: 1px solid var(--rule);
+        padding-top: 1.25rem;
+      }
+
+      main.mcv2 .mcv2-insight h3 {
+        margin-bottom: 0.5rem;
+        font-size: 1.25rem;
+      }
+
+      main.mcv2 .mcv2-insight-quote {
+        font-style: italic;
+        color: var(--muted);
+        margin: 0.75rem 0 0;
+        font-size: 0.95rem;
+      }
+
+      main.mcv2 .mcv2-solution {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin: 3.5rem 0 0;
+        padding-top: 2.5rem;
+        border-top: 1px solid var(--rule);
+      }
+
+      @media (min-width: 900px) {
+        main.mcv2 .mcv2-solution {
+          grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+          align-items: start;
+          gap: 3rem;
+        }
+      }
+
+      main.mcv2 .mcv2-solution-body p:last-child {
+        margin-bottom: 0;
+      }
+
+      main.mcv2 figure {
+        margin: 0;
+      }
+
+      main.mcv2 img.mcv2-figure {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 2px;
+      }
+
+      main.mcv2 figcaption {
+        font-size: 0.85rem;
+        color: var(--muted);
+        margin-top: 0.6rem;
+        line-height: 1.5;
+      }
+
+      main.mcv2 .mcv2-figure-stack {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      @media (min-width: 600px) {
+        main.mcv2 .mcv2-figure-stack--split {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      main.mcv2 .mcv2-process {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2.25rem;
+        margin: 2rem 0;
+      }
+
+      @media (min-width: 768px) {
+        main.mcv2 .mcv2-process {
+          grid-template-columns: 1fr 1fr;
+          column-gap: 3rem;
+        }
+      }
+
+      main.mcv2 .mcv2-process-item {
+        border-top: 1px solid var(--rule);
+        padding-top: 1.25rem;
+      }
+
+      main.mcv2 .mcv2-process-item h3 {
+        font-size: 1.15rem;
+        font-weight: 500;
+        margin-bottom: 0.5rem;
+      }
+
+      main.mcv2 .mcv2-process-item p {
+        margin: 0;
+      }
+
+      main.mcv2 .mcv2-outcome-prose {
+        font-size: 1.15rem;
+        line-height: 1.6;
+        max-width: 60ch;
+        margin: 1.5rem 0 0;
+      }
+
+      main.mcv2 .mcv2-outcome-prose strong {
+        font-weight: 600;
+      }
+
+      main.mcv2 a {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+        text-decoration-thickness: 1px;
+        text-decoration-color: var(--rule);
+        transition: text-decoration-color 0.2s ease, color 0.2s ease;
+      }
+
+      main.mcv2 a:hover {
+        color: var(--cobalt);
+        text-decoration-color: var(--cobalt);
+      }
+
+      main.mcv2 .mcv2-back {
+        display: inline-block;
+        margin: 5rem 0 0;
+        font-size: 0.9rem;
+        color: var(--muted);
+        text-decoration: none;
+      }
+
+      main.mcv2 .mcv2-back:hover {
+        color: var(--ink);
+      }
+
+      main.mcv2 .mcv2-back svg {
+        display: inline-block;
+        vertical-align: -2px;
+        margin-right: 0.4rem;
+      }
+
+      /* Nav merges into the cobalt hero block (no seam) */
+      nav.mcv2-nav {
+        position: relative;
+        background: var(--cobalt);
+        border-bottom: 0;
+        padding: 1.5rem 0 1.25rem;
+      }
+
+      nav.mcv2-nav .mcv2-nav-brand {
+        color: var(--paper-on-cobalt);
+        font-weight: 600;
+        font-size: 0.95rem;
+        letter-spacing: 0.02em;
+        text-decoration: none;
+      }
+
+      nav.mcv2-nav .mcv2-nav-link {
+        color: var(--paper-on-cobalt);
+        font-size: 0.9rem;
+        letter-spacing: 0.01em;
+        text-decoration: none;
+        padding: 0.25rem 0;
+        margin-left: 1.5rem;
+        border-bottom: 1px solid transparent;
+        transition: border-color 0.2s ease;
+      }
+
+      nav.mcv2-nav .mcv2-nav-link:hover {
+        color: var(--paper-on-cobalt);
+        border-bottom-color: var(--paper-on-cobalt);
+      }
+
+      nav.mcv2-nav .mcv2-nav-toggle {
+        color: var(--paper-on-cobalt);
+        background: transparent;
+        border: 0;
+        padding: 0.25rem 0.5rem;
+        cursor: pointer;
+      }
+
+      /* When the mobile menu collapses open on cobalt nav, give it a paper bg */
+      nav.mcv2-nav #collapse-navbar {
+        background: transparent;
+      }
+      @media (max-width: 1023px) {
+        nav.mcv2-nav #collapse-navbar:not(.hidden) {
+          background: var(--paper);
+          border-radius: 4px;
+          margin-top: 0.75rem;
+          padding: 0.5rem 1rem;
+        }
+        nav.mcv2-nav #collapse-navbar:not(.hidden) .mcv2-nav-link {
+          color: var(--ink);
+          margin-left: 0;
+        }
+      }
+
+      /* Hero: cobalt slab, white serif, image below on paper */
+      main.mcv2 .mcv2-hero-block {
+        padding: 3rem 0 4rem;
+      }
+
+      main.mcv2 .mcv2-hero-image-wrap {
+        margin: 4rem auto 0;
+        text-align: center;
+      }
+
+      main.mcv2 .mcv2-hero-image {
+        display: inline-block;
+        max-width: 960px;
+        width: 100%;
+        height: auto;
+      }
+
+      /* Footer simplified */
+      footer.mcv2-footer {
+        background: var(--paper);
+        border-top: 1px solid var(--rule);
+        padding: 3rem 0 2.5rem;
+        margin-top: 5rem;
+      }
+
+      footer.mcv2-footer .mcv2-footer-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 24px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      footer.mcv2-footer h4 {
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: var(--ink);
+        margin: 0 0 0.25rem;
+      }
+
+      footer.mcv2-footer .mcv2-footer-sub {
+        font-size: 0.9rem;
+        color: var(--muted);
+        margin: 0;
+      }
+
+      footer.mcv2-footer .mcv2-footer-social a {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        width: 2rem;
-        height: 2rem;
-        background-color: #13acbd;
-        color: white;
+        width: 40px;
+        height: 40px;
+        border: 1px solid var(--rule);
         border-radius: 50%;
-        font-weight: 700;
-        font-size: 0.875rem;
-        margin-right: 0.75rem;
-        flex-shrink: 0;
+        color: var(--ink);
+        text-decoration: none;
+        transition: border-color 0.2s ease;
+      }
+
+      footer.mcv2-footer .mcv2-footer-social a:hover {
+        border-color: var(--ink);
+      }
+
+      footer.mcv2-footer .mcv2-footer-copy {
+        width: 100%;
+        text-align: center;
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin: 2rem 0 0;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--rule);
+      }
+
+      /* Focus-visible: keyboard focus indicators */
+      main.mcv2 a:focus-visible,
+      main.mcv2 .mcv2-back:focus-visible {
+        outline: 2px solid var(--cobalt);
+        outline-offset: 2px;
+        border-radius: 1px;
+      }
+
+      main.mcv2 .mcv2-slab--cobalt a:focus-visible {
+        outline-color: var(--paper-on-cobalt);
+      }
+
+      nav.mcv2-nav .mcv2-nav-link:focus-visible,
+      nav.mcv2-nav .mcv2-nav-toggle:focus-visible {
+        outline: 2px solid var(--paper-on-cobalt);
+        outline-offset: 2px;
+        border-radius: 1px;
+      }
+
+      main.mcv2 .mcv2-toc-list a:focus-visible {
+        outline: 2px solid var(--toc-accent);
+        outline-offset: 2px;
+        border-radius: 1px;
+      }
+
+      footer.mcv2-footer .mcv2-footer-social a:focus-visible {
+        outline: 2px solid var(--ink);
+        outline-offset: 2px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        main.mcv2 *,
+        nav.mcv2-nav *,
+        footer.mcv2-footer * {
+          animation: none !important;
+          transition: none !important;
+        }
       }
     </style>
   </head>
-  <body class="text-gray-800 antialiased bg-white">
+  <body class="antialiased">
 
     <!-- Navigation -->
-    <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
+    <nav class="mcv2-nav w-full">
       <div class="container px-8 mx-auto flex flex-wrap items-center justify-between">
         <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
-          <a
-            class="text-md font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
-            href="index.html"
-          >Roy Wang</a>
+          <a class="mcv2-nav-brand uppercase" href="index.html">Roy Wang</a>
           <button
-            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+            class="mcv2-nav-toggle block lg:hidden"
             type="button"
             onclick="toggleNavbar('collapse-navbar')"
+            aria-label="Toggle navigation"
           >
-            <i class="text-white fas fa-bars"></i>
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"/>
+              <line x1="3" y1="6" x2="21" y2="6"/>
+              <line x1="3" y1="18" x2="21" y2="18"/>
+            </svg>
           </button>
         </div>
         <div
-          class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden rounded-lg shadow-lg"
+          class="lg:flex flex-grow items-center hidden"
           id="collapse-navbar"
         >
           <ul class="flex flex-col lg:flex-row list-none ml-auto">
-            <li class="nav-item">
-              <a
-                class="pl-6 py-3 flex items-center text-sm uppercase font-bold leading-snug text-teal-800 lg:text-white hover:opacity-75"
-                href="index.html#design-projects"
-              >Work</a>
-            </li>
-            <li class="nav-item">
-              <a
-                class="pl-6 py-3 flex items-center text-sm uppercase font-bold leading-snug text-teal-800 lg:text-white hover:opacity-75"
-                href="index.html#about-me"
-              >About</a>
-            </li>
+            <li><a class="mcv2-nav-link uppercase" href="index.html#design-projects">Work</a></li>
+            <li><a class="mcv2-nav-link uppercase" href="index.html#about-me">About</a></li>
           </ul>
         </div>
       </div>
     </nav>
     <!-- End of Navigation -->
 
-    <main id="main">
+    <main id="main" class="mcv2">
+
+      <!-- Floating TOC -->
+      <nav class="mcv2-toc" aria-label="On this page">
+        <p class="mcv2-toc-label">Contents</p>
+        <ol class="mcv2-toc-list">
+          <li><a href="#key-decision">The Reframe</a></li>
+          <li><a href="#research-judgment">Research</a></li>
+          <li><a href="#insights">5 Insights</a></li>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#process">Process</a></li>
+          <li><a href="#sprint">Sprint Reality</a></li>
+          <li><a href="#if-not-me">If Not Me</a></li>
+          <li><a href="#outcomes">Outcomes</a></li>
+          <li><a href="#lessons">Lessons</a></li>
+        </ol>
+      </nav>
+      <!-- End of TOC -->
 
       <!-- Hero -->
-      <div
-        class="relative pt-16 pb-32 flex content-center items-center justify-center"
-        style="min-height: 70vh"
-      >
-        <div class="absolute top-0 w-full h-full bg-center bg-cover hero-bg"></div>
-        <div class="container relative mx-auto mt-16 md:mt-2 px-4">
-          <div class="flex flex-wrap items-center pt-10">
-            <div class="w-full md:w-5/12">
-              <div class="px-4 text-white">
-                <p class="font-serif lg:text-xl" data-aos="fade-right">
-                  /Product Design · /UX Research · /Internship
-                </p>
-                <h1
-                  class="md:my-6 font-bold xl:text-4xl md:text-3xl text-2xl"
-                  data-aos="fade-up"
-                  data-aos-delay="200"
-                >
-                  MassChallenge — Alumni Platform Redesign
-                </h1>
-                <p
-                  class="md:mt-4 lg:text-xl text-white"
-                  data-aos="fade-right"
-                  data-aos-delay="400"
-                >
-                  Redesigned the post-program resource experience for 2,344+ startup alumni — reframing the problem from "increase engagement" to "provide value", which led senior leadership to sunset a $500K platform.
-                </p>
-              </div>
-            </div>
-            <div
-              class="w-full md:w-7/12 mt-8"
-              data-aos="fade-left"
-              data-aos-delay="400"
-            >
-              <img src="img/mc/hero-mc.png" alt="MassChallenge Cover" />
-            </div>
-          </div>
+      <section class="mcv2-slab mcv2-slab--cobalt">
+        <div class="mcv2-container mcv2-hero-block">
+          <p class="mcv2-eyebrow-meta">Product Design · UX Research · Internship</p>
+          <h1 class="mcv2-hero">MassChallenge: Alumni Platform Redesign</h1>
+          <p class="mcv2-lead">
+            Redesigned the post-program resource experience for 2,344+ startup alumni, reframing the problem from "increase engagement" to "provide value", which led senior leadership to sunset a $500K platform.
+          </p>
         </div>
-      </div>
+      </section>
+      <section class="mcv2-container mcv2-hero-image-wrap">
+        <img class="mcv2-hero-image" src="img/mc/hero-mc.png" alt="MassChallenge alumni platform redesign cover" />
+      </section>
       <!-- End of Hero -->
 
-      <!-- Project Details Bar -->
-      <div class="bg-gray-100">
-        <div class="container mx-auto px-4 pt-8 pb-6">
-          <div class="flex flex-wrap">
-            <div class="w-full md:w-2/6 mb-4 px-2">
-              <h6 class="sectionTitle">Type</h6>
-              <p class="bodyText">Product UX Internship · 10 Weeks</p>
-            </div>
-            <div class="w-full md:w-2/6 mb-4 px-2">
-              <h6 class="sectionTitle">What I Did</h6>
-              <p class="bodyText">UX Research, Problem Reframing, Interaction Design, Stakeholder Alignment</p>
-            </div>
-            <div class="w-full md:w-2/6 mb-4 px-2">
-              <h6 class="sectionTitle">My Role</h6>
-              <p class="bodyText">Product Designer (Intern)</p>
-            </div>
-            <div class="w-full md:w-2/6 mb-2 px-2">
-              <h6 class="sectionTitle">Tools</h6>
-              <p class="bodyText">Figma, Balsamiq, Optimal Workshop Reframer</p>
-            </div>
-            <div class="w-full md:w-2/6 mb-2 px-2">
-              <h6 class="sectionTitle">Team</h6>
-              <p class="bodyText">Senior UX Designer · Product Manager · 5 Stakeholders across 3 offices</p>
-            </div>
-            <div class="w-full md:w-2/6 mb-2 px-2">
-              <h6 class="sectionTitle">Impact</h6>
-              <p class="bodyText">~$500K platform sunset · Alumni directory opened to all startups</p>
-            </div>
+      <!-- Project Meta -->
+      <section class="mcv2-container" style="margin-top: 3rem;">
+        <div class="mcv2-meta-row">
+          <div>
+            <p class="mcv2-meta-label">Type</p>
+            <p class="mcv2-meta-value">Product UX Internship · 10 Weeks</p>
+          </div>
+          <div>
+            <p class="mcv2-meta-label">What I Did</p>
+            <p class="mcv2-meta-value">UX Research, Problem Reframing, Interaction Design, Stakeholder Alignment</p>
+          </div>
+          <div>
+            <p class="mcv2-meta-label">My Role</p>
+            <p class="mcv2-meta-value">Product Designer (Intern)</p>
+          </div>
+          <div>
+            <p class="mcv2-meta-label">Tools</p>
+            <p class="mcv2-meta-value">Figma, Balsamiq, Optimal Workshop Reframer</p>
+          </div>
+          <div>
+            <p class="mcv2-meta-label">Team</p>
+            <p class="mcv2-meta-value">Senior UX Designer · Product Manager · 5 Stakeholders across 3 offices</p>
+          </div>
+          <div>
+            <p class="mcv2-meta-label">Impact</p>
+            <p class="mcv2-meta-value">~$500K platform sunset · Alumni directory opened to all startups</p>
           </div>
         </div>
-      </div>
-      <!-- End of Project Details Bar -->
+      </section>
+      <!-- End of Project Meta -->
 
-      <!-- Main Content Part 1 -->
-      <div class="mt-8 mb-16 container mx-auto px-4">
+      <!-- The Reframe -->
+      <section id="key-decision" class="mcv2-container">
+        <h2 class="mcv2-section">Asking for the Ball: The Reframe</h2>
 
-        <!-- The Reframe -->
-        <div id="key-decision" data-aos="fade-up">
-          <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-10">Asking for the Ball: The Reframe</h2>
-          <div class="callout-box">
-            <p>"The brief said: increase alumni engagement. The real problem was: alumni had no reason to come back."</p>
+        <div class="mcv2-reframe-grid">
+          <div class="mcv2-reframe-prose">
+            <blockquote class="mcv2-quote">
+              "The brief said: increase alumni engagement. The real problem was: alumni had no reason to come back."
+            </blockquote>
+            <p>
+              MassChallenge had 2,344 alumni across 8 programs in 4 countries. None of them were coming back. The initial brief was straightforward: design features to increase engagement.
+            </p>
+            <p>
+              I didn't believe the brief. After conducting stakeholder interviews and analyzing behavior data, I discovered a crucial difference between stated preference and observed behavior. Alumni said they wanted networking, but their behavior showed they only maintained profiles on platforms that gave them something back (like Crunchbase).
+            </p>
+            <p>
+              I requested a meeting with the Product Manager. I brought the data and proposed that we were solving the wrong problem: <strong>this wasn't an engagement problem. It was a value problem.</strong> I asked for trust to change direction entirely toward a resource-matching system. The PM agreed, and the brief was rewritten to follow the new design direction.
+            </p>
           </div>
-          <div class="flex flex-wrap">
-            <div class="w-full lg:w-3/5 pr-0 lg:pr-10">
-              <p class="bodyText">
-                MassChallenge had 2,344 alumni across 8 programs in 4 countries. None of them were coming back. The initial brief was straightforward: design features to increase engagement.
-              </p>
-              <p class="bodyText">
-                I didn't believe the brief. After conducting stakeholder interviews and analyzing behavior data, I discovered a crucial difference between stated preference and observed behavior. Alumni said they wanted networking, but their behavior showed they only maintained profiles on platforms that gave them something back (like Crunchbase).
-              </p>
-              <p class="bodyText">
-                I requested a meeting with the Product Manager. I brought the data and proposed that we were solving the wrong problem: <strong>This wasn't an engagement problem. It was a value problem.</strong> I asked for trust to change direction entirely toward a resource-matching system. The PM agreed, and the brief was rewritten to follow the new design direction.
-              </p>
+
+          <aside class="mcv2-fork">
+            <span class="mcv2-fork-label">The Fork</span>
+            <div class="mcv2-fork-row">
+              <p><strong>Wrong direction:</strong> design re-engagement features (notifications, gamification) to push alumni back to a platform they abandoned.</p>
             </div>
-            <div class="w-full lg:w-2/5 mt-4 lg:mt-0">
-              <div class="decision-card mt-4">
-                <h6 class="sectionTitle">The Fork</h6>
-                <p style="font-size: 1rem; padding-bottom: 0.5rem;"><strong>Wrong direction:</strong> Design re-engagement features (notifications, gamification) to push alumni back to a platform they abandoned.</p>
-                <p style="font-size: 1rem; padding-bottom: 0;"><strong>Right direction:</strong> Design a resource-matching system that gives alumni a concrete business reason to return.</p>
-              </div>
+            <div class="mcv2-fork-row">
+              <p><strong>Right direction:</strong> design a resource-matching system that gives alumni a concrete business reason to return.</p>
             </div>
-          </div>
+          </aside>
         </div>
-        <!-- End of The Decision That Mattered Most -->
+      </section>
+      <!-- End of Reframe -->
 
-        <!-- Research that led to the judgment -->
-        <div id="research-judgment" class="mt-10" data-aos="fade-up">
-          <h2 class="text-3xl font-semibold text-gray-700 py-6">Research That Led to the Reframe</h2>
-          <p class="bodyText">
+      <!-- Research -->
+      <section id="research-judgment" class="mcv2-container">
+        <h2 class="mcv2-section">Research That Led to the Reframe</h2>
+        <div class="mcv2-prose">
+          <p>
             I set up 1:1 interviews with 5 stakeholders across 3 offices and conducted semi-structured interviews with 3 alumni. I also worked with the data team to analyze pre- and post-program survey responses.
           </p>
-          <p class="bodyText">
-            Two findings made the reframe undeniable:
+          <p>Two findings made the reframe undeniable.</p>
+        </div>
+
+        <div class="mcv2-findings">
+          <div class="mcv2-finding">
+            <h3 class="mcv2-sub">Finding 1: Alumni didn't know the platform existed</h3>
+            <p class="mcv2-finding-quote">"What is Mobilize? I was never told about that platform."</p>
+            <p>The social platform built for alumni had near-zero adoption. This wasn't a discoverability problem; alumni simply had no reason to use it.</p>
+          </div>
+          <div class="mcv2-finding">
+            <h3 class="mcv2-sub">Finding 2: Taxonomy mismatch blocked connections</h3>
+            <p class="mcv2-finding-quote">"There's a gap between the area MassChallenge called startups and what they call themselves."</p>
+            <p>Incorrect and outdated categorizations meant potential connections, between alumni, mentors, and partners, weren't happening.</p>
+          </div>
+        </div>
+
+        <div style="margin-top: 2.5rem;" class="mcv2-prose--wide">
+          <h3 class="mcv2-sub">The Struggle: Getting to Users</h3>
+          <p>
+            Recruiting alumni for interviews was harder than expected. For three weeks, almost no one responded to formal email invitations. Instead of waiting for perfect conditions, I changed my approach.
           </p>
-
-          <div class="flex flex-wrap -mx-2 mt-4 mb-8">
-            <div class="w-full md:w-1/2 px-2 mb-4">
-              <div class="decision-card h-full">
-                <h6 class="sectionTitle">Finding 1 — Alumni didn't know the platform existed</h6>
-                <p class="bodyText" style="padding-bottom: 0.5rem;">"What is Mobilize? I was never told about that platform."</p>
-                <p style="font-size: 0.95rem; color: #4a5568;">
-                  The social platform built for alumni had near-zero adoption. This wasn't a discoverability problem — alumni simply had no reason to use it.
-                </p>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 px-2 mb-4">
-              <div class="decision-card h-full">
-                <h6 class="sectionTitle">Finding 2 — Taxonomy mismatch blocked connections</h6>
-                <p class="bodyText" style="padding-bottom: 0.5rem;">"There's a gap between the area MassChallenge called startups and what they call themselves."</p>
-                <p style="font-size: 0.95rem; color: #4a5568;">
-                  Incorrect and outdated categorizations meant potential connections — between alumni, mentors, and partners — weren't happening.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-8 mb-4">
-            <h6 class="sectionTitle">The Struggle: Getting to Users</h6>
-            <p class="bodyText">
-              Recruiting alumni for interviews was harder than expected. For three weeks, almost no one responded to formal email invitations. Instead of waiting for perfect conditions, I changed my approach.
-            </p>
-            <p class="bodyText">
-              I started intercepting Alumni-in-Residence (AiRs) in the hallways for quick 20-minute sessions. I asked the Partnerships Coordinator for a specific list of top-engaging alumni and reached out to international program managers in Israel and Switzerland to make direct introductions. This pivot broke the silence and led to 10 high-signal interviews that formed the foundation of the reframe.
-            </p>
-          </div>
-        </div>
-        <!-- End of Research -->
-
-      </div>
-      <!-- End of Main Content Part 1 -->
-
-      <!-- Key Insights — accent background -->
-      <div class="pb-16 accent-bg">
-        <div class="container mx-auto pt-8 px-4">
-          <h2 class="text-3xl font-semibold text-white py-6 mt-10" data-aos="fade-up">
-            5 Insights That Drove the Design
-          </h2>
-          <p class="bodyText text-gray-300 mb-6" data-aos="fade-up">
-            Based on research across 5 stakeholders and 3 alumni, covering needs, behaviors, and constraints.
+          <p>
+            I started intercepting Alumni-in-Residence (AiRs) in the hallways for quick 20-minute sessions. I asked the Partnerships Coordinator for a specific list of top-engaging alumni and reached out to international program managers in Israel and Switzerland to make direct introductions. This pivot broke the silence and led to 10 high-signal interviews that formed the foundation of the reframe.
           </p>
-          <div class="flex flex-wrap -mx-2" data-aos="fade-up">
-            <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-              <div class="bg-white rounded-lg p-6 h-full">
-                <h6 class="sectionTitle text-center"><span class="pr-2">☠️</span>No Alumni Use the Platform</h6>
-                <p class="bodyText text-center" style="padding-bottom: 0.5rem;">Mobilize was built for alumni networking. Most never logged in after graduating.</p>
-                <p class="font-serif text-center text-gray-500">"What is Mobilize? I was never told about that platform."</p>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-              <div class="bg-white rounded-lg p-6 h-full">
-                <h6 class="sectionTitle text-center"><span class="pr-2">💾</span>Inaccurate Information</h6>
-                <p class="bodyText text-center" style="padding-bottom: 0.5rem;">Mismatched taxonomy blocked connections between alumni, partners, and staff.</p>
-                <p class="font-serif text-center text-gray-500">"There's a gap between what MassChallenge calls startups and what they call themselves."</p>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-              <div class="bg-white rounded-lg p-6 h-full">
-                <h6 class="sectionTitle text-center"><span class="pr-2">🎡</span>Alumni Want Events</h6>
-                <p class="bodyText text-center" style="padding-bottom: 0.5rem;">Alumni expressed strong interest in in-person meetups and activities hosted at MassChallenge.</p>
-                <p class="font-serif text-center text-gray-500">"I'd bring my own food as long as MassChallenge provides the place."</p>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-              <div class="bg-white rounded-lg p-6 h-full">
-                <h6 class="sectionTitle text-center"><span class="pr-2">👋</span>Bad Off-Boarding</h6>
-                <p class="bodyText text-center" style="padding-bottom: 0.5rem;">Most alumni had no contact with MassChallenge after the finale — no newsletter, no follow-up.</p>
-                <p class="font-serif text-center text-gray-500">"I didn't get any newsletter from MassChallenge after the finale."</p>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
-              <div class="bg-white rounded-lg p-6 h-full">
-                <h6 class="sectionTitle text-center"><span class="pr-2">💰</span>Partner Matching is Manual</h6>
-                <p class="bodyText text-center" style="padding-bottom: 0;">The primary business income depends on good partner–startup matching. The process was entirely manual, limiting scale.</p>
-              </div>
+        </div>
+      </section>
+      <!-- End of Research -->
+
+      <!-- 5 Insights -->
+      <section id="insights" class="mcv2-container">
+        <h2 class="mcv2-section">5 Insights That Drove the Design</h2>
+        <p class="mcv2-prose">
+          Based on research across 5 stakeholders and 3 alumni, covering needs, behaviors, and constraints.
+        </p>
+
+        <div class="mcv2-insights">
+          <div class="mcv2-insight">
+            <h3 class="mcv2-sub">No Alumni Use the Platform</h3>
+            <p>Mobilize was built for alumni networking. Most never logged in after graduating.</p>
+            <p class="mcv2-insight-quote">"What is Mobilize? I was never told about that platform."</p>
+          </div>
+          <div class="mcv2-insight">
+            <h3 class="mcv2-sub">Inaccurate Information</h3>
+            <p>Mismatched taxonomy blocked connections between alumni, partners, and staff.</p>
+            <p class="mcv2-insight-quote">"There's a gap between what MassChallenge calls startups and what they call themselves."</p>
+          </div>
+          <div class="mcv2-insight">
+            <h3 class="mcv2-sub">Alumni Want Events</h3>
+            <p>Alumni expressed strong interest in in-person meetups and activities hosted at MassChallenge.</p>
+            <p class="mcv2-insight-quote">"I'd bring my own food as long as MassChallenge provides the place."</p>
+          </div>
+          <div class="mcv2-insight">
+            <h3 class="mcv2-sub">Bad Off-Boarding</h3>
+            <p>Most alumni had no contact with MassChallenge after the finale. No newsletter, no follow-up.</p>
+            <p class="mcv2-insight-quote">"I didn't get any newsletter from MassChallenge after the finale."</p>
+          </div>
+          <div class="mcv2-insight">
+            <h3 class="mcv2-sub">Partner Matching is Manual</h3>
+            <p>The primary business income depends on good partner-startup matching. The process was entirely manual, limiting scale.</p>
+          </div>
+        </div>
+      </section>
+      <!-- End of 5 Insights -->
+
+      <!-- Key Solutions -->
+      <section id="solutions" class="mcv2-container">
+        <h2 class="mcv2-section">Key Solutions, Framed as Influence</h2>
+
+        <!-- Solution 1 -->
+        <div class="mcv2-solution">
+          <div class="mcv2-solution-body mcv2-prose">
+            <h3 class="mcv2-sub">Problem reframe led to a rewritten PM brief</h3>
+            <p>
+              After I presented research findings and the reframed problem statement, the PM updated the project brief from "improve alumni engagement" to "provide continued value to startups."
+            </p>
+            <p>
+              <strong>The design didn't follow a brief. The brief followed the design direction.</strong> This unlocked scope to build a matching system instead of iterating on the existing social platform.
+            </p>
+          </div>
+          <figure>
+            <img class="mcv2-figure" src="img/mc/impact-effort.jpg" alt="Impact-effort matrix used to align the team on scope" />
+            <figcaption>Impact-effort matrix used to align the team on scope.</figcaption>
+          </figure>
+        </div>
+
+        <!-- Solution 2 -->
+        <div class="mcv2-solution">
+          <div class="mcv2-solution-body mcv2-prose">
+            <h3 class="mcv2-sub">Matching system: leadership sunset a $500K platform</h3>
+            <p>
+              The matching system design demonstrated that a curated, goal-driven resource experience could replace what Mobilize was theoretically supposed to do, except actually used.
+            </p>
+            <p>
+              Following stakeholder walkthroughs, senior leadership decided to sunset Mobilize entirely, achieving a budget reduction of approximately $500K.
+            </p>
+            <p>
+              <strong>This wasn't a deliverable. It was a business decision triggered by the design.</strong>
+            </p>
+          </div>
+          <div class="mcv2-figure-stack">
+            <figure>
+              <img class="mcv2-figure" src="img/mc/Landing-Page.jpg" alt="Landing page of the new alumni resource platform" />
+            </figure>
+            <div class="mcv2-figure-stack mcv2-figure-stack--split">
+              <figure>
+                <img class="mcv2-figure" src="img/mc/Goal-Setting.png" alt="Goal-setting screen for first-time users" />
+              </figure>
+              <figure>
+                <img class="mcv2-figure" src="img/mc/Company-Specialty.png" alt="Company specialty keyword input" />
+              </figure>
             </div>
           </div>
         </div>
-      </div>
-      <!-- End of Key Insights -->
 
-      <!-- Main Content Part 2 -->
-      <div class="mt-8 mb-16 container mx-auto px-4">
-
-        <!-- Key Solutions -->
-        <div id="solutions" data-aos="fade-up">
-          <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-10">Key Solutions — Framed as Influence</h2>
-
-          <!-- Solution 1 -->
-          <div class="flex flex-wrap items-start mb-12" data-aos="fade-up">
-            <div class="w-full lg:w-1/2 pr-0 lg:pr-10">
-              <div class="flex items-start mb-3">
-                <span class="section-number">1</span>
-                <h3 class="text-2xl font-semibold">Problem reframe → PM rewrote the brief</h3>
-              </div>
-              <p class="bodyText">
-                After I presented research findings and the reframed problem statement, the PM updated the project brief from "improve alumni engagement" to "provide continued value to startups."
-              </p>
-              <p class="bodyText">
-                <strong>The design didn't follow a brief. The brief followed the design direction.</strong> This unlocked scope to build a matching system instead of iterating on the existing social platform.
-              </p>
-            </div>
-            <div class="w-full lg:w-1/2 mt-4 lg:mt-0">
-              <img
-                class="shadow-lg rounded"
-                src="img/mc/impact-effort.jpg"
-                alt="Impact Effort Matrix"
-              />
-              <p class="text-center text-sm text-gray-500 mt-2">Impact-effort matrix used to align team on scope</p>
-            </div>
+        <!-- Solution 3 -->
+        <div class="mcv2-solution">
+          <div class="mcv2-solution-body mcv2-prose">
+            <h3 class="mcv2-sub">Engineering constraint: bypassing a taxonomy mismatch</h3>
+            <p>
+              MassChallenge categorized startups by its own taxonomy, but startups described themselves differently. This mismatch meant the data team couldn't make accurate matches. However, <strong>overhauling the database schema was an impossible engineering constraint within a 10-week cycle.</strong>
+            </p>
+            <p>
+              Instead of a backend rewrite, I designed a UX intervention: a free-form keyword input for company specialty. By letting startups self-describe and mapping those inputs to actionable tags, I gave the data team accurate signals without requiring any database restructuring.
+            </p>
           </div>
+          <figure>
+            <img class="mcv2-figure" src="img/mc/Company-Specialty.png" alt="Free-form keyword input for company specialty" />
+            <figcaption>Free-form keyword input bypasses an expensive backend taxonomy rewrite.</figcaption>
+          </figure>
+        </div>
+      </section>
+      <!-- End of Key Solutions -->
 
-          <!-- Solution 2 -->
-          <div class="flex flex-wrap items-start mb-12" data-aos="fade-up">
-            <div class="w-full lg:w-1/2 pr-0 lg:pr-10">
-              <div class="flex items-start mb-3">
-                <span class="section-number">2</span>
-                <h3 class="text-2xl font-semibold">Matching system → leadership sunsetted a $500K platform</h3>
-              </div>
-              <p class="bodyText">
-                The matching system design demonstrated that a curated, goal-driven resource experience could replace what Mobilize was theoretically supposed to do — except actually used.
-              </p>
-              <p class="bodyText">
-                Following stakeholder walkthroughs, senior leadership decided to sunset Mobilize entirely, achieving a budget reduction of approximately $500K.
-              </p>
-              <p class="bodyText">
-                <strong>This wasn't a deliverable. It was a business decision triggered by the design.</strong>
-              </p>
-            </div>
-            <div class="w-full lg:w-1/2 mt-4 lg:mt-0">
-              <div class="flex flex-wrap">
-                <div class="w-full mb-4">
-                  <img class="shadow-lg rounded" src="img/mc/Landing-Page.jpg" alt="Landing Page" />
-                </div>
-                <div class="w-full md:w-1/2 pr-2">
-                  <img class="shadow-lg rounded" src="img/mc/Goal-Setting.png" alt="Goal Setting" />
-                </div>
-                <div class="w-full md:w-1/2 pl-2">
-                  <img class="shadow-lg rounded" src="img/mc/Company-Specialty.png" alt="Company Specialty" />
-                </div>
-              </div>
-            </div>
+      <!-- Process -->
+      <section id="process" class="mcv2-container">
+        <h2 class="mcv2-section">Process, The Judgments</h2>
+
+        <div class="mcv2-process">
+          <div class="mcv2-process-item">
+            <h3>Lead with data, not new research</h3>
+            <p>
+              Pre- and post-program survey data already showed alumni weren't returning. Using existing data, rather than running new research, accelerated stakeholder alignment in the first meeting and kept the project moving within the 10-week constraint.
+            </p>
           </div>
-
-          <!-- Solution 3 -->
-          <div class="flex flex-wrap items-start" data-aos="fade-up">
-            <div class="w-full lg:w-1/2 pr-0 lg:pr-10">
-              <div class="flex items-start mb-3">
-                <span class="section-number">3</span>
-                <h3 class="text-2xl font-semibold">Engineering Constraint: Bypassing a taxonomy mismatch</h3>
-              </div>
-              <p class="bodyText">
-                MassChallenge categorized startups by its own taxonomy, but startups described themselves differently. This mismatch meant the data team couldn't make accurate matches. However, <strong>overhauling the database schema was an impossible engineering constraint within a 10-week cycle.</strong>
-              </p>
-              <p class="bodyText">
-                Instead of a backend rewrite, I designed a UX intervention: a free-form keyword input for company specialty. By letting startups self-describe and mapping those inputs to actionable tags, I gave the data team accurate signals without requiring any database restructuring.
-              </p>
-            </div>
-            <div class="w-full lg:w-1/2 mt-4 lg:mt-0">
-              <img
-                class="shadow-lg rounded"
-                src="img/mc/Company-Specialty.png"
-                alt="Company Specialty keyword input"
-              />
-              <p class="text-center text-sm text-gray-500 mt-2">Free-form keyword input overrides the need for an expensive backend taxonomy rewrite</p>
-            </div>
+          <div class="mcv2-process-item">
+            <h3>Impact-effort matrix to narrow scope</h3>
+            <p>
+              After sharing 5 insights with the team, I facilitated an impact-effort mapping session. This produced shared agreement on which problem to solve, and just as importantly, what not to build in Phase 1.
+            </p>
+          </div>
+          <div class="mcv2-process-item">
+            <h3>JTBD to align with business mission</h3>
+            <p>
+              "As an entrepreneur, I want access to curated resources so that I can achieve my company goal." Framing the design in JTBD terms connected user needs directly to MassChallenge's mission: making it easy for entrepreneurs to launch and grow.
+            </p>
+          </div>
+          <div class="mcv2-process-item">
+            <h3>First-time vs. recurring users</h3>
+            <p>
+              Due to time constraints, I focused the design on first-time user onboarding, a deliberate call to create a strong first-touch rather than spread effort across both flows. Recurring user experience was scoped to Phase 2.
+            </p>
           </div>
         </div>
-        <!-- End of Key Solutions -->
 
-        <!-- Process -->
-        <div id="process" data-aos="fade-up">
-          <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-12">Process — The Judgments</h2>
-
-          <div class="flex flex-wrap -mx-2 mt-4">
-            <div class="w-full md:w-1/2 px-2 mb-4">
-              <div class="decision-card h-full">
-                <h6 class="sectionTitle">Lead with data, not new research</h6>
-                <p class="bodyText" style="padding-bottom: 0;">
-                  Pre- and post-program survey data already showed alumni weren't returning. Using existing data — rather than running new research — accelerated stakeholder alignment in the first meeting and kept the project moving within the 10-week constraint.
-                </p>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 px-2 mb-4">
-              <div class="decision-card h-full">
-                <h6 class="sectionTitle">Impact-effort matrix to narrow scope</h6>
-                <p class="bodyText" style="padding-bottom: 0;">
-                  After sharing 5 insights with the team, I facilitated an impact-effort mapping session. This produced shared agreement on which problem to solve — and just as importantly, what not to build in Phase 1.
-                </p>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 px-2 mb-4">
-              <div class="decision-card h-full">
-                <h6 class="sectionTitle">JTBD to align with business mission</h6>
-                <p class="bodyText" style="padding-bottom: 0;">
-                  "As an entrepreneur, I want access to curated resources so that I can achieve my company goal." Framing the design in JTBD terms connected user needs directly to MassChallenge's mission: making it easy for entrepreneurs to launch and grow.
-                </p>
-              </div>
-            </div>
-            <div class="w-full md:w-1/2 px-2 mb-4">
-              <div class="decision-card h-full">
-                <h6 class="sectionTitle">First-time vs. recurring users</h6>
-                <p class="bodyText" style="padding-bottom: 0;">
-                  Due to time constraints, I focused the design on first-time user onboarding — a deliberate call to create a strong first-touch rather than spread effort across both flows. Recurring user experience was scoped to Phase 2.
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Sprint Reality -->
-          <div class="mt-10 mb-8" data-aos="fade-up">
-            <h2 class="text-3xl font-semibold text-gray-700 py-6">Sprint Reality: Working with Engineering</h2>
-            <div class="flex flex-wrap items-start">
-              <div class="w-full lg:w-1/2 pr-0 lg:pr-10">
-                <p class="bodyText">
-                  Beyond the strategic platform redesign, I integrated directly into the engineering team's agile sprints to handle immediate UI needs and technical constraints.
-                </p>
-                <p class="bodyText">
-                  I was assigned an active sprint ticket: redesigning the "Confirm Remove Team Member" flow. Working within the constraints of their existing <strong>Semantic UI</strong> component library, I designed a responsive modal supporting 5 distinct breakpoints (Regular, Small, Tiny, Mini, Mobile). By defining clear Header, Body, and Footer state variations, I ensured the engineering team had exactly what they needed to implement the feature without friction.
-                </p>
-              </div>
-              <div class="w-full lg:w-1/2 mt-4 lg:mt-0">
-                <div class="callout-box" style="margin-top: 0;">
-                  <p>"This demonstrated my ability to transition seamlessly from high-level product strategy to shipping pixel-perfect, component-library-constrained features in a live engineering sprint."</p>
-                </div>
-              </div>
-            </div>
+        <!-- Sprint Reality -->
+        <div id="sprint" style="margin-top: 4rem;">
+          <h2 class="mcv2-section" style="margin-top: 0;">Sprint Reality: Working with Engineering</h2>
+          <div class="mcv2-prose--wide">
+            <p>
+              Beyond the strategic platform redesign, I integrated directly into the engineering team's agile sprints to handle immediate UI needs and technical constraints.
+            </p>
+            <p>
+              I was assigned an active sprint ticket: redesigning the "Confirm Remove Team Member" flow. Working within the constraints of their existing <strong>Semantic UI</strong> component library, I designed a responsive modal supporting 5 distinct breakpoints (Regular, Small, Tiny, Mini, Mobile). I defined Header, Body, and Footer state variations so the engineering team could implement the feature against a spec, not a sketch.
+            </p>
           </div>
         </div>
-        <!-- End of Process -->
+      </section>
+      <!-- End of Process -->
 
-        <!-- If Not Me -->
-        <div id="if-not-me" data-aos="fade-up">
-          <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-12">If Not Me</h2>
-          <div class="callout-box">
-            <p>Without the problem reframe, the project would have shipped re-engagement features on a platform alumni had already decided wasn't worth their time. Mobilize would have stayed. The $500K would have stayed. The mismatch would have stayed.</p>
-          </div>
-          <p class="bodyText">
+      <!-- If Not Me -->
+      <section id="if-not-me" class="mcv2-slab mcv2-slab--cobalt">
+        <div class="mcv2-container">
+          <h2 class="mcv2-section" style="margin-top: 0;">If Not Me</h2>
+          <blockquote class="mcv2-quote">
+            Without the problem reframe, the project would have shipped re-engagement features on a platform alumni had already decided wasn't worth their time. Mobilize would have stayed. The $500K would have stayed. The mismatch would have stayed.
+          </blockquote>
+          <p class="mcv2-prose">
             The matching system, the keyword input, and the scope decisions all trace back to the one judgment that mattered most: <strong>this is a value problem, not an engagement problem.</strong>
           </p>
         </div>
-        <!-- End of If Not Me -->
+      </section>
+      <!-- End of If Not Me -->
 
-      </div>
-      <!-- End of Main Content Part 2 -->
+      <!-- Outcomes -->
+      <section id="outcomes" class="mcv2-slab mcv2-slab--cobalt">
+        <div class="mcv2-container">
+          <h2 class="mcv2-section" style="margin-top: 0;">Outcomes</h2>
+          <p class="mcv2-outcome-prose">
+            Mobilize was sunset, freeing approximately <strong>$500K</strong> of budget previously spent maintaining a low-adoption social platform. The matching system replaced it with a curated, goal-driven resource experience. <strong>2,344+ alumni</strong> across 8 programs gained access to the open startup directory that had previously been restricted. Stakeholder walkthroughs returned positive feedback from Program Managers, the Data Manager, and the Managing Director, with <strong>5 of 5</strong> sessions endorsing the direction.
+          </p>
+        </div>
+      </section>
+      <section class="mcv2-container">
+        <figure style="margin-top: 3rem;">
+          <img class="mcv2-figure" src="img/mc/mockup.jpg" alt="Final mockup of the redesigned alumni resource platform" />
+        </figure>
+      </section>
+      <!-- End of Outcomes -->
 
-      <!-- Outcomes + Lessons — accent background -->
-      <div class="pb-16 accent-bg">
-        <div class="container mx-auto pt-8 px-4">
-
-          <!-- Outcomes -->
-          <div id="outcomes" data-aos="fade-up">
-            <h2 class="text-3xl font-semibold text-white py-6 mt-10">Outcomes</h2>
-            <div class="flex flex-wrap -mx-2 mt-4">
-              <div class="w-full md:w-1/3 px-2 mb-4">
-                <div class="bg-white rounded-lg p-6 text-center h-full">
-                  <div class="impact-number">~$500K</div>
-                  <p class="mt-2 text-gray-600">Budget reduction from sunsetting Mobilize — a low-adoption social platform replaced by the matching system</p>
-                </div>
-              </div>
-              <div class="w-full md:w-1/3 px-2 mb-4">
-                <div class="bg-white rounded-lg p-6 text-center h-full">
-                  <div class="impact-number">2,344+</div>
-                  <p class="mt-2 text-gray-600">Alumni across 8 programs now with access to an open startup directory — previously restricted</p>
-                </div>
-              </div>
-              <div class="w-full md:w-1/3 px-2 mb-4">
-                <div class="bg-white rounded-lg p-6 text-center h-full">
-                  <div class="impact-number">5/5</div>
-                  <p class="mt-2 text-gray-600">Stakeholder walkthroughs with positive feedback from Program Managers, Data Manager, and Managing Director</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="mt-8" data-aos="fade-up">
-              <img class="shadow-2xl rounded w-full" src="img/mc/mockup.jpg" alt="Final Mockup" />
-            </div>
+      <!-- Lessons -->
+      <section id="lessons" class="mcv2-container">
+        <h2 class="mcv2-section">Lessons Learned</h2>
+        <div class="mcv2-process">
+          <div class="mcv2-process-item">
+            <h3>Reframing is a design skill</h3>
+            <p>
+              The most impactful thing I did in this project wasn't a screen. It was changing what question we were answering. Knowing when to push back on a brief and how to make the alternative case is a skill as important as the design itself.
+            </p>
           </div>
-
-          <!-- Lessons Learned -->
-          <div id="lessons" class="mt-12" data-aos="fade-up">
-            <h2 class="text-3xl font-semibold text-white py-4">Lessons Learned</h2>
-            <div class="flex flex-wrap -mx-2 mt-4">
-              <div class="w-full md:w-1/2 px-2 mb-4">
-                <div class="bg-white rounded-lg p-6 h-full">
-                  <h6 class="sectionTitle">Reframing is a design skill</h6>
-                  <p class="bodyText" style="padding-bottom: 0;">
-                    The most impactful thing I did in this project wasn't a screen — it was changing what question we were answering. Knowing when to push back on a brief and how to make the alternative case is a skill as important as the design itself.
-                  </p>
-                </div>
-              </div>
-              <div class="w-full md:w-1/2 px-2 mb-4">
-                <div class="bg-white rounded-lg p-6 h-full">
-                  <h6 class="sectionTitle">Existing data moves faster than new research</h6>
-                  <p class="bodyText" style="padding-bottom: 0;">
-                    In a 10-week internship, choosing to use pre-existing survey data instead of running new user studies let me move to the design phase weeks earlier. Knowing when you already have enough signal is its own judgment call.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="flex justify-center mt-16 mx-auto">
-            <a href="#main">
-              <button
-                class="text-gray-300 bg-transparent border border-solid border-gray-300 hover:bg-teal-500 hover:border-transparent hover:text-white active:bg-gray-600 font-semibold uppercase px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1"
-                type="button"
-                style="transition: all 0.15s ease"
-              >
-                <i class="fas fa-arrow-up pr-3"></i> Back to Top
-              </button>
-            </a>
+          <div class="mcv2-process-item">
+            <h3>Existing data moves faster than new research</h3>
+            <p>
+              In a 10-week internship, choosing to use pre-existing survey data instead of running new user studies let me move to the design phase weeks earlier. Knowing when you already have enough signal is its own judgment call.
+            </p>
           </div>
         </div>
-      </div>
-      <!-- End of Outcomes + Lessons -->
+
+        <a class="mcv2-back" href="#main">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="19" x2="12" y2="5"/>
+            <polyline points="5 12 12 5 19 12"/>
+          </svg>
+          Back to top
+        </a>
+      </section>
+      <!-- End of Lessons -->
 
     </main>
 
     <!-- Footer -->
-    <footer class="relative bg-gray-300 pt-8 pb-6">
-      <div
-        class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
-        style="height: 80px; transform: translateZ(0)"
-      >
-        <svg
-          class="absolute bottom-0 overflow-hidden"
-          xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="none"
-          version="1.1"
-          viewBox="0 0 2560 100"
-          x="0"
-          y="0"
-        >
-          <polygon class="text-gray-300 fill-current" points="2560 0 2560 100 0 100"></polygon>
-        </svg>
-      </div>
-      <div class="container mx-auto px-4">
-        <div class="flex flex-wrap">
-          <div class="w-full lg:w-6/12 px-4">
-            <h4 class="text-3xl font-semibold">Let's keep in touch!</h4>
-            <h5 class="text-lg mt-0 mb-2 text-gray-700">Find me on social platforms</h5>
-            <div class="mt-6">
-              <a href="https://www.linkedin.com/in/falinwang/" rel="noopener noreferrer" target="_blank">
-                <i class="fab fa-linkedin-in bg-white text-blue-800 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center"></i>
-              </a>
-            </div>
-          </div>
+    <footer class="mcv2-footer">
+      <div class="mcv2-footer-inner">
+        <div>
+          <h4>Let's keep in touch</h4>
+          <p class="mcv2-footer-sub">Find me on LinkedIn.</p>
         </div>
-        <hr class="my-6 border-gray-400" />
-        <div class="flex flex-wrap items-center md:justify-between justify-center">
-          <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-            <div class="text-sm text-gray-600 font-semibold py-1">
-              Built with Love 💙 2026 Roy Wang
-            </div>
-          </div>
+        <div class="mcv2-footer-social">
+          <a href="https://www.linkedin.com/in/falinwang/" rel="noopener noreferrer" target="_blank" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.063 2.063 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+            </svg>
+          </a>
         </div>
+        <p class="mcv2-footer-copy">Hand-coded by Roy Wang, 2026.</p>
       </div>
     </footer>
     <!-- End of Footer -->
 
+    <script>
+      function toggleNavbar(collapseID) {
+        document.getElementById(collapseID).classList.toggle("hidden");
+        document.getElementById(collapseID).classList.toggle("block");
+      }
+
+      // TOC: scroll-spy + theme toggle (paper <-> cobalt)
+      (function () {
+        var toc = document.querySelector(".mcv2-toc");
+        if (!toc) return;
+
+        var links = Array.from(toc.querySelectorAll('a[href^="#"]'));
+        var sections = links
+          .map(function (link) { return document.getElementById(link.getAttribute("href").slice(1)); })
+          .filter(Boolean);
+
+        var activeId = null;
+        function setActive(id) {
+          if (id === activeId) return;
+          activeId = id;
+          links.forEach(function (link) {
+            link.classList.toggle("is-active", link.getAttribute("href") === "#" + id);
+          });
+          var el = id ? document.getElementById(id) : null;
+          var onCobalt =
+            !!el &&
+            (el.classList.contains("mcv2-slab--cobalt") ||
+              !!el.closest(".mcv2-slab--cobalt"));
+          toc.classList.toggle("on-cobalt", onCobalt);
+        }
+
+        var observer = new IntersectionObserver(
+          function (entries) {
+            var intersecting = entries.filter(function (e) { return e.isIntersecting; });
+            if (intersecting.length === 0) return;
+            intersecting.sort(function (a, b) { return b.intersectionRatio - a.intersectionRatio; });
+            setActive(intersecting[0].target.id);
+          },
+          {
+            rootMargin: "-40% 0px -40% 0px",
+            threshold: [0, 0.25, 0.5, 0.75, 1],
+          }
+        );
+
+        sections.forEach(function (s) { observer.observe(s); });
+      })();
+    </script>
   </body>
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
 </html>
