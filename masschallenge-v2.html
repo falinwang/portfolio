@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roy Wang | MassChallenge — Alumni Platform Redesign</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="img/favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="projectStyle.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/creativetimofficial/tailwind-starter-kit/compiled-tailwind.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+    />
+    <style>
+      .hero-bg { background-color: #13acbd; }
+      .accent-bg { background-color: #007694; }
+      .decision-card {
+        border-left: 4px solid #13acbd;
+        padding: 1rem 1.5rem;
+        background: #f7fafc;
+        margin-bottom: 1rem;
+        border-radius: 0 6px 6px 0;
+      }
+      .callout-box {
+        background-color: #e6f7f9;
+        border-left: 4px solid #13acbd;
+        padding: 1rem 1.5rem;
+        border-radius: 0 6px 6px 0;
+        margin: 1.5rem 0;
+      }
+      .callout-box p { margin: 0; font-style: italic; font-size: 1.1rem; color: #2d3748; }
+      .impact-number {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: #13acbd;
+        line-height: 1;
+      }
+      .section-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2rem;
+        height: 2rem;
+        background-color: #13acbd;
+        color: white;
+        border-radius: 50%;
+        font-weight: 700;
+        font-size: 0.875rem;
+        margin-right: 0.75rem;
+        flex-shrink: 0;
+      }
+    </style>
+  </head>
+  <body class="text-gray-800 antialiased bg-white">
+
+    <!-- Navigation -->
+    <nav class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg">
+      <div class="container px-8 mx-auto flex flex-wrap items-center justify-between">
+        <div class="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
+          <a
+            class="text-md font-bold leading-relaxed inline-block mr-4 py-2 whitespace-no-wrap uppercase text-white"
+            href="index.html"
+          >Roy Wang</a>
+          <button
+            class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+            type="button"
+            onclick="toggleNavbar('collapse-navbar')"
+          >
+            <i class="text-white fas fa-bars"></i>
+          </button>
+        </div>
+        <div
+          class="lg:flex flex-grow items-center bg-white lg:bg-transparent lg:shadow-none hidden rounded-lg shadow-lg"
+          id="collapse-navbar"
+        >
+          <ul class="flex flex-col lg:flex-row list-none ml-auto">
+            <li class="nav-item">
+              <a
+                class="pl-6 py-3 flex items-center text-sm uppercase font-bold leading-snug text-teal-800 lg:text-white hover:opacity-75"
+                href="index.html#design-projects"
+              >Work</a>
+            </li>
+            <li class="nav-item">
+              <a
+                class="pl-6 py-3 flex items-center text-sm uppercase font-bold leading-snug text-teal-800 lg:text-white hover:opacity-75"
+                href="index.html#about-me"
+              >About</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End of Navigation -->
+
+    <main id="main">
+
+      <!-- Hero -->
+      <div
+        class="relative pt-16 pb-32 flex content-center items-center justify-center"
+        style="min-height: 70vh"
+      >
+        <div class="absolute top-0 w-full h-full bg-center bg-cover hero-bg"></div>
+        <div class="container relative mx-auto mt-16 md:mt-2 px-4">
+          <div class="flex flex-wrap items-center pt-10">
+            <div class="w-full md:w-5/12">
+              <div class="px-4 text-white">
+                <p class="font-serif lg:text-xl" data-aos="fade-right">
+                  /Product Design · /UX Research · /Internship
+                </p>
+                <h1
+                  class="md:my-6 font-bold xl:text-4xl md:text-3xl text-2xl"
+                  data-aos="fade-up"
+                  data-aos-delay="200"
+                >
+                  MassChallenge — Alumni Platform Redesign
+                </h1>
+                <p
+                  class="md:mt-4 lg:text-xl text-white"
+                  data-aos="fade-right"
+                  data-aos-delay="400"
+                >
+                  Redesigned the post-program resource experience for 2,344+ startup alumni — reframing the problem from "increase engagement" to "provide value", which led senior leadership to sunset a $500K platform.
+                </p>
+              </div>
+            </div>
+            <div
+              class="w-full md:w-7/12 mt-8"
+              data-aos="fade-left"
+              data-aos-delay="400"
+            >
+              <img src="img/mc/hero-mc.png" alt="MassChallenge Cover" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Hero -->
+
+      <!-- Project Details Bar -->
+      <div class="bg-gray-100">
+        <div class="container mx-auto px-4 pt-8 pb-6">
+          <div class="flex flex-wrap">
+            <div class="w-full md:w-2/6 mb-4 px-2">
+              <h6 class="sectionTitle">Type</h6>
+              <p class="bodyText">Product UX Internship · 10 Weeks</p>
+            </div>
+            <div class="w-full md:w-2/6 mb-4 px-2">
+              <h6 class="sectionTitle">What I Did</h6>
+              <p class="bodyText">UX Research, Problem Reframing, Interaction Design, Stakeholder Alignment</p>
+            </div>
+            <div class="w-full md:w-2/6 mb-4 px-2">
+              <h6 class="sectionTitle">My Role</h6>
+              <p class="bodyText">Product Designer (Intern)</p>
+            </div>
+            <div class="w-full md:w-2/6 mb-2 px-2">
+              <h6 class="sectionTitle">Tools</h6>
+              <p class="bodyText">Figma, Balsamiq, Optimal Workshop Reframer</p>
+            </div>
+            <div class="w-full md:w-2/6 mb-2 px-2">
+              <h6 class="sectionTitle">Team</h6>
+              <p class="bodyText">Senior UX Designer · Product Manager · 5 Stakeholders across 3 offices</p>
+            </div>
+            <div class="w-full md:w-2/6 mb-2 px-2">
+              <h6 class="sectionTitle">Impact</h6>
+              <p class="bodyText">~$500K platform sunset · Alumni directory opened to all startups</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Project Details Bar -->
+
+      <!-- Main Content Part 1 -->
+      <div class="mt-8 mb-16 container mx-auto px-4">
+
+        <!-- The Reframe -->
+        <div id="key-decision" data-aos="fade-up">
+          <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-10">Asking for the Ball: The Reframe</h2>
+          <div class="callout-box">
+            <p>"The brief said: increase alumni engagement. The real problem was: alumni had no reason to come back."</p>
+          </div>
+          <div class="flex flex-wrap">
+            <div class="w-full lg:w-3/5 pr-0 lg:pr-10">
+              <p class="bodyText">
+                MassChallenge had 2,344 alumni across 8 programs in 4 countries. None of them were coming back. The initial brief was straightforward: design features to increase engagement.
+              </p>
+              <p class="bodyText">
+                I didn't believe the brief. After conducting stakeholder interviews and analyzing behavior data, I discovered a crucial difference between stated preference and observed behavior. Alumni said they wanted networking, but their behavior showed they only maintained profiles on platforms that gave them something back (like Crunchbase).
+              </p>
+              <p class="bodyText">
+                I requested a meeting with the Product Manager. I brought the data and proposed that we were solving the wrong problem: <strong>This wasn't an engagement problem. It was a value problem.</strong> I asked for trust to change direction entirely toward a resource-matching system. The PM agreed, and the brief was rewritten to follow the new design direction.
+              </p>
+            </div>
+            <div class="w-full lg:w-2/5 mt-4 lg:mt-0">
+              <div class="decision-card mt-4">
+                <h6 class="sectionTitle">The Fork</h6>
+                <p style="font-size: 1rem; padding-bottom: 0.5rem;"><strong>Wrong direction:</strong> Design re-engagement features (notifications, gamification) to push alumni back to a platform they abandoned.</p>
+                <p style="font-size: 1rem; padding-bottom: 0;"><strong>Right direction:</strong> Design a resource-matching system that gives alumni a concrete business reason to return.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of The Decision That Mattered Most -->
+
+        <!-- Research that led to the judgment -->
+        <div id="research-judgment" class="mt-10" data-aos="fade-up">
+          <h2 class="text-3xl font-semibold text-gray-700 py-6">Research That Led to the Reframe</h2>
+          <p class="bodyText">
+            I set up 1:1 interviews with 5 stakeholders across 3 offices and conducted semi-structured interviews with 3 alumni. I also worked with the data team to analyze pre- and post-program survey responses.
+          </p>
+          <p class="bodyText">
+            Two findings made the reframe undeniable:
+          </p>
+
+          <div class="flex flex-wrap -mx-2 mt-4 mb-8">
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card h-full">
+                <h6 class="sectionTitle">Finding 1 — Alumni didn't know the platform existed</h6>
+                <p class="bodyText" style="padding-bottom: 0.5rem;">"What is Mobilize? I was never told about that platform."</p>
+                <p style="font-size: 0.95rem; color: #4a5568;">
+                  The social platform built for alumni had near-zero adoption. This wasn't a discoverability problem — alumni simply had no reason to use it.
+                </p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card h-full">
+                <h6 class="sectionTitle">Finding 2 — Taxonomy mismatch blocked connections</h6>
+                <p class="bodyText" style="padding-bottom: 0.5rem;">"There's a gap between the area MassChallenge called startups and what they call themselves."</p>
+                <p style="font-size: 0.95rem; color: #4a5568;">
+                  Incorrect and outdated categorizations meant potential connections — between alumni, mentors, and partners — weren't happening.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-8 mb-4">
+            <h6 class="sectionTitle">The Struggle: Getting to Users</h6>
+            <p class="bodyText">
+              Recruiting alumni for interviews was harder than expected. For three weeks, almost no one responded to formal email invitations. Instead of waiting for perfect conditions, I changed my approach.
+            </p>
+            <p class="bodyText">
+              I started intercepting Alumni-in-Residence (AiRs) in the hallways for quick 20-minute sessions. I asked the Partnerships Coordinator for a specific list of top-engaging alumni and reached out to international program managers in Israel and Switzerland to make direct introductions. This pivot broke the silence and led to 10 high-signal interviews that formed the foundation of the reframe.
+            </p>
+          </div>
+        </div>
+        <!-- End of Research -->
+
+      </div>
+      <!-- End of Main Content Part 1 -->
+
+      <!-- Key Insights — accent background -->
+      <div class="pb-16 accent-bg">
+        <div class="container mx-auto pt-8 px-4">
+          <h2 class="text-3xl font-semibold text-white py-6 mt-10" data-aos="fade-up">
+            5 Insights That Drove the Design
+          </h2>
+          <p class="bodyText text-gray-300 mb-6" data-aos="fade-up">
+            Based on research across 5 stakeholders and 3 alumni, covering needs, behaviors, and constraints.
+          </p>
+          <div class="flex flex-wrap -mx-2" data-aos="fade-up">
+            <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
+              <div class="bg-white rounded-lg p-6 h-full">
+                <h6 class="sectionTitle text-center"><span class="pr-2">☠️</span>No Alumni Use the Platform</h6>
+                <p class="bodyText text-center" style="padding-bottom: 0.5rem;">Mobilize was built for alumni networking. Most never logged in after graduating.</p>
+                <p class="font-serif text-center text-gray-500">"What is Mobilize? I was never told about that platform."</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
+              <div class="bg-white rounded-lg p-6 h-full">
+                <h6 class="sectionTitle text-center"><span class="pr-2">💾</span>Inaccurate Information</h6>
+                <p class="bodyText text-center" style="padding-bottom: 0.5rem;">Mismatched taxonomy blocked connections between alumni, partners, and staff.</p>
+                <p class="font-serif text-center text-gray-500">"There's a gap between what MassChallenge calls startups and what they call themselves."</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
+              <div class="bg-white rounded-lg p-6 h-full">
+                <h6 class="sectionTitle text-center"><span class="pr-2">🎡</span>Alumni Want Events</h6>
+                <p class="bodyText text-center" style="padding-bottom: 0.5rem;">Alumni expressed strong interest in in-person meetups and activities hosted at MassChallenge.</p>
+                <p class="font-serif text-center text-gray-500">"I'd bring my own food as long as MassChallenge provides the place."</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
+              <div class="bg-white rounded-lg p-6 h-full">
+                <h6 class="sectionTitle text-center"><span class="pr-2">👋</span>Bad Off-Boarding</h6>
+                <p class="bodyText text-center" style="padding-bottom: 0.5rem;">Most alumni had no contact with MassChallenge after the finale — no newsletter, no follow-up.</p>
+                <p class="font-serif text-center text-gray-500">"I didn't get any newsletter from MassChallenge after the finale."</p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 lg:w-1/3 px-2 mb-4">
+              <div class="bg-white rounded-lg p-6 h-full">
+                <h6 class="sectionTitle text-center"><span class="pr-2">💰</span>Partner Matching is Manual</h6>
+                <p class="bodyText text-center" style="padding-bottom: 0;">The primary business income depends on good partner–startup matching. The process was entirely manual, limiting scale.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- End of Key Insights -->
+
+      <!-- Main Content Part 2 -->
+      <div class="mt-8 mb-16 container mx-auto px-4">
+
+        <!-- Key Solutions -->
+        <div id="solutions" data-aos="fade-up">
+          <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-10">Key Solutions — Framed as Influence</h2>
+
+          <!-- Solution 1 -->
+          <div class="flex flex-wrap items-start mb-12" data-aos="fade-up">
+            <div class="w-full lg:w-1/2 pr-0 lg:pr-10">
+              <div class="flex items-start mb-3">
+                <span class="section-number">1</span>
+                <h3 class="text-2xl font-semibold">Problem reframe → PM rewrote the brief</h3>
+              </div>
+              <p class="bodyText">
+                After I presented research findings and the reframed problem statement, the PM updated the project brief from "improve alumni engagement" to "provide continued value to startups."
+              </p>
+              <p class="bodyText">
+                <strong>The design didn't follow a brief. The brief followed the design direction.</strong> This unlocked scope to build a matching system instead of iterating on the existing social platform.
+              </p>
+            </div>
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0">
+              <img
+                class="shadow-lg rounded"
+                src="img/mc/impact-effort.jpg"
+                alt="Impact Effort Matrix"
+              />
+              <p class="text-center text-sm text-gray-500 mt-2">Impact-effort matrix used to align team on scope</p>
+            </div>
+          </div>
+
+          <!-- Solution 2 -->
+          <div class="flex flex-wrap items-start mb-12" data-aos="fade-up">
+            <div class="w-full lg:w-1/2 pr-0 lg:pr-10">
+              <div class="flex items-start mb-3">
+                <span class="section-number">2</span>
+                <h3 class="text-2xl font-semibold">Matching system → leadership sunsetted a $500K platform</h3>
+              </div>
+              <p class="bodyText">
+                The matching system design demonstrated that a curated, goal-driven resource experience could replace what Mobilize was theoretically supposed to do — except actually used.
+              </p>
+              <p class="bodyText">
+                Following stakeholder walkthroughs, senior leadership decided to sunset Mobilize entirely, achieving a budget reduction of approximately $500K.
+              </p>
+              <p class="bodyText">
+                <strong>This wasn't a deliverable. It was a business decision triggered by the design.</strong>
+              </p>
+            </div>
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0">
+              <div class="flex flex-wrap">
+                <div class="w-full mb-4">
+                  <img class="shadow-lg rounded" src="img/mc/Landing-Page.jpg" alt="Landing Page" />
+                </div>
+                <div class="w-full md:w-1/2 pr-2">
+                  <img class="shadow-lg rounded" src="img/mc/Goal-Setting.png" alt="Goal Setting" />
+                </div>
+                <div class="w-full md:w-1/2 pl-2">
+                  <img class="shadow-lg rounded" src="img/mc/Company-Specialty.png" alt="Company Specialty" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Solution 3 -->
+          <div class="flex flex-wrap items-start" data-aos="fade-up">
+            <div class="w-full lg:w-1/2 pr-0 lg:pr-10">
+              <div class="flex items-start mb-3">
+                <span class="section-number">3</span>
+                <h3 class="text-2xl font-semibold">Engineering Constraint: Bypassing a taxonomy mismatch</h3>
+              </div>
+              <p class="bodyText">
+                MassChallenge categorized startups by its own taxonomy, but startups described themselves differently. This mismatch meant the data team couldn't make accurate matches. However, <strong>overhauling the database schema was an impossible engineering constraint within a 10-week cycle.</strong>
+              </p>
+              <p class="bodyText">
+                Instead of a backend rewrite, I designed a UX intervention: a free-form keyword input for company specialty. By letting startups self-describe and mapping those inputs to actionable tags, I gave the data team accurate signals without requiring any database restructuring.
+              </p>
+            </div>
+            <div class="w-full lg:w-1/2 mt-4 lg:mt-0">
+              <img
+                class="shadow-lg rounded"
+                src="img/mc/Company-Specialty.png"
+                alt="Company Specialty keyword input"
+              />
+              <p class="text-center text-sm text-gray-500 mt-2">Free-form keyword input overrides the need for an expensive backend taxonomy rewrite</p>
+            </div>
+          </div>
+        </div>
+        <!-- End of Key Solutions -->
+
+        <!-- Process -->
+        <div id="process" data-aos="fade-up">
+          <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-12">Process — The Judgments</h2>
+
+          <div class="flex flex-wrap -mx-2 mt-4">
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card h-full">
+                <h6 class="sectionTitle">Lead with data, not new research</h6>
+                <p class="bodyText" style="padding-bottom: 0;">
+                  Pre- and post-program survey data already showed alumni weren't returning. Using existing data — rather than running new research — accelerated stakeholder alignment in the first meeting and kept the project moving within the 10-week constraint.
+                </p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card h-full">
+                <h6 class="sectionTitle">Impact-effort matrix to narrow scope</h6>
+                <p class="bodyText" style="padding-bottom: 0;">
+                  After sharing 5 insights with the team, I facilitated an impact-effort mapping session. This produced shared agreement on which problem to solve — and just as importantly, what not to build in Phase 1.
+                </p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card h-full">
+                <h6 class="sectionTitle">JTBD to align with business mission</h6>
+                <p class="bodyText" style="padding-bottom: 0;">
+                  "As an entrepreneur, I want access to curated resources so that I can achieve my company goal." Framing the design in JTBD terms connected user needs directly to MassChallenge's mission: making it easy for entrepreneurs to launch and grow.
+                </p>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2 px-2 mb-4">
+              <div class="decision-card h-full">
+                <h6 class="sectionTitle">First-time vs. recurring users</h6>
+                <p class="bodyText" style="padding-bottom: 0;">
+                  Due to time constraints, I focused the design on first-time user onboarding — a deliberate call to create a strong first-touch rather than spread effort across both flows. Recurring user experience was scoped to Phase 2.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sprint Reality -->
+          <div class="mt-10 mb-8" data-aos="fade-up">
+            <h2 class="text-3xl font-semibold text-gray-700 py-6">Sprint Reality: Working with Engineering</h2>
+            <div class="flex flex-wrap items-start">
+              <div class="w-full lg:w-1/2 pr-0 lg:pr-10">
+                <p class="bodyText">
+                  Beyond the strategic platform redesign, I integrated directly into the engineering team's agile sprints to handle immediate UI needs and technical constraints.
+                </p>
+                <p class="bodyText">
+                  I was assigned an active sprint ticket: redesigning the "Confirm Remove Team Member" flow. Working within the constraints of their existing <strong>Semantic UI</strong> component library, I designed a responsive modal supporting 5 distinct breakpoints (Regular, Small, Tiny, Mini, Mobile). By defining clear Header, Body, and Footer state variations, I ensured the engineering team had exactly what they needed to implement the feature without friction.
+                </p>
+              </div>
+              <div class="w-full lg:w-1/2 mt-4 lg:mt-0">
+                <div class="callout-box" style="margin-top: 0;">
+                  <p>"This demonstrated my ability to transition seamlessly from high-level product strategy to shipping pixel-perfect, component-library-constrained features in a live engineering sprint."</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of Process -->
+
+        <!-- If Not Me -->
+        <div id="if-not-me" data-aos="fade-up">
+          <h2 class="text-3xl font-semibold text-gray-700 py-6 mt-12">If Not Me</h2>
+          <div class="callout-box">
+            <p>Without the problem reframe, the project would have shipped re-engagement features on a platform alumni had already decided wasn't worth their time. Mobilize would have stayed. The $500K would have stayed. The mismatch would have stayed.</p>
+          </div>
+          <p class="bodyText">
+            The matching system, the keyword input, and the scope decisions all trace back to the one judgment that mattered most: <strong>this is a value problem, not an engagement problem.</strong>
+          </p>
+        </div>
+        <!-- End of If Not Me -->
+
+      </div>
+      <!-- End of Main Content Part 2 -->
+
+      <!-- Outcomes + Lessons — accent background -->
+      <div class="pb-16 accent-bg">
+        <div class="container mx-auto pt-8 px-4">
+
+          <!-- Outcomes -->
+          <div id="outcomes" data-aos="fade-up">
+            <h2 class="text-3xl font-semibold text-white py-6 mt-10">Outcomes</h2>
+            <div class="flex flex-wrap -mx-2 mt-4">
+              <div class="w-full md:w-1/3 px-2 mb-4">
+                <div class="bg-white rounded-lg p-6 text-center h-full">
+                  <div class="impact-number">~$500K</div>
+                  <p class="mt-2 text-gray-600">Budget reduction from sunsetting Mobilize — a low-adoption social platform replaced by the matching system</p>
+                </div>
+              </div>
+              <div class="w-full md:w-1/3 px-2 mb-4">
+                <div class="bg-white rounded-lg p-6 text-center h-full">
+                  <div class="impact-number">2,344+</div>
+                  <p class="mt-2 text-gray-600">Alumni across 8 programs now with access to an open startup directory — previously restricted</p>
+                </div>
+              </div>
+              <div class="w-full md:w-1/3 px-2 mb-4">
+                <div class="bg-white rounded-lg p-6 text-center h-full">
+                  <div class="impact-number">5/5</div>
+                  <p class="mt-2 text-gray-600">Stakeholder walkthroughs with positive feedback from Program Managers, Data Manager, and Managing Director</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8" data-aos="fade-up">
+              <img class="shadow-2xl rounded w-full" src="img/mc/mockup.jpg" alt="Final Mockup" />
+            </div>
+          </div>
+
+          <!-- Lessons Learned -->
+          <div id="lessons" class="mt-12" data-aos="fade-up">
+            <h2 class="text-3xl font-semibold text-white py-4">Lessons Learned</h2>
+            <div class="flex flex-wrap -mx-2 mt-4">
+              <div class="w-full md:w-1/2 px-2 mb-4">
+                <div class="bg-white rounded-lg p-6 h-full">
+                  <h6 class="sectionTitle">Reframing is a design skill</h6>
+                  <p class="bodyText" style="padding-bottom: 0;">
+                    The most impactful thing I did in this project wasn't a screen — it was changing what question we were answering. Knowing when to push back on a brief and how to make the alternative case is a skill as important as the design itself.
+                  </p>
+                </div>
+              </div>
+              <div class="w-full md:w-1/2 px-2 mb-4">
+                <div class="bg-white rounded-lg p-6 h-full">
+                  <h6 class="sectionTitle">Existing data moves faster than new research</h6>
+                  <p class="bodyText" style="padding-bottom: 0;">
+                    In a 10-week internship, choosing to use pre-existing survey data instead of running new user studies let me move to the design phase weeks earlier. Knowing when you already have enough signal is its own judgment call.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-center mt-16 mx-auto">
+            <a href="#main">
+              <button
+                class="text-gray-300 bg-transparent border border-solid border-gray-300 hover:bg-teal-500 hover:border-transparent hover:text-white active:bg-gray-600 font-semibold uppercase px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1"
+                type="button"
+                style="transition: all 0.15s ease"
+              >
+                <i class="fas fa-arrow-up pr-3"></i> Back to Top
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+      <!-- End of Outcomes + Lessons -->
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="relative bg-gray-300 pt-8 pb-6">
+      <div
+        class="bottom-auto top-0 left-0 right-0 w-full absolute pointer-events-none overflow-hidden -mt-20"
+        style="height: 80px; transform: translateZ(0)"
+      >
+        <svg
+          class="absolute bottom-0 overflow-hidden"
+          xmlns="http://www.w3.org/2000/svg"
+          preserveAspectRatio="none"
+          version="1.1"
+          viewBox="0 0 2560 100"
+          x="0"
+          y="0"
+        >
+          <polygon class="text-gray-300 fill-current" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+      </div>
+      <div class="container mx-auto px-4">
+        <div class="flex flex-wrap">
+          <div class="w-full lg:w-6/12 px-4">
+            <h4 class="text-3xl font-semibold">Let's keep in touch!</h4>
+            <h5 class="text-lg mt-0 mb-2 text-gray-700">Find me on social platforms</h5>
+            <div class="mt-6">
+              <a href="https://www.linkedin.com/in/falinwang/" rel="noopener noreferrer" target="_blank">
+                <i class="fab fa-linkedin-in bg-white text-blue-800 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <hr class="my-6 border-gray-400" />
+        <div class="flex flex-wrap items-center md:justify-between justify-center">
+          <div class="w-full md:w-4/12 px-4 mx-auto text-center">
+            <div class="text-sm text-gray-600 font-semibold py-1">
+              Built with Love 💙 2026 Roy Wang
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- End of Footer -->
+
+  </body>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="script.js"></script>
+</html>
