@@ -14,16 +14,20 @@
     <style>
       /* mcv2: editorial chrome (scoped to this page) */
       :root {
-        --cobalt: oklch(42% 0.20 255);
-        --cobalt-deep: oklch(28% 0.18 258);
-        --cobalt-rgb: 31, 53, 181; /* #1F35B5 for selection alpha */
-        --paper: #fcfcfc;
-        --ink: #1b1b1f;
-        --muted: #5e5e66;
-        --rule: #eaeaec;
-        --paper-on-cobalt: #ffffff;
-        --muted-on-cobalt: #c0c6e0;
-        --rule-on-cobalt: rgba(255, 255, 255, 0.18);
+        /* Green editorial palette (skydesigner-inspired) */
+        --paper: #f7f9f2;
+        --ink: #101604;
+        --ink-rgb: 16, 22, 4;
+        --muted: #595959;
+        --rule: #d5dcd0;
+        --accent: #a0c347;
+        --accent-text: #5c7028;
+        --outcome-text: #4d6e06;
+        --surface-mint: #e6ecd6;
+        --surface-beige: #eef3e4;
+        --paper-on-dark: #ffffff;
+        --muted-on-dark: rgba(255, 255, 255, 0.6);
+        --rule-on-dark: rgba(255, 255, 255, 0.18);
       }
 
       html {
@@ -31,7 +35,7 @@
       }
 
       ::selection {
-        background: rgba(var(--cobalt-rgb), 0.18);
+        background: rgba(var(--ink-rgb), 0.18);
         color: inherit;
       }
 
@@ -102,6 +106,25 @@
         line-height: 1.15;
         letter-spacing: -0.02em;
         margin: 5rem 0 1.5rem;
+        color: var(--ink);
+      }
+
+      /* Semantic role: evidence sections (Research, Insights, Process) */
+      main.mcv2 .mcv2-role--evidence h2.mcv2-section {
+        color: var(--accent-text);
+      }
+      main.mcv2 .mcv2-role--evidence .mcv2-finding,
+      main.mcv2 .mcv2-role--evidence .mcv2-insight,
+      main.mcv2 .mcv2-role--evidence .mcv2-process-item {
+        border-top-color: var(--accent-text);
+      }
+
+      /* Semantic role: outcome sections (Solutions, Outcomes) */
+      main.mcv2 .mcv2-role--outcome h2.mcv2-section {
+        color: var(--outcome-text);
+      }
+      main.mcv2 .mcv2-role--outcome .mcv2-solution {
+        border-top-color: var(--outcome-text);
       }
 
       main.mcv2 h3.mcv2-sub {
@@ -121,7 +144,7 @@
 
       main.mcv2 p strong {
         font-weight: 600;
-        color: var(--cobalt);
+        color: var(--ink);
       }
 
       /* Full-bleed slab system */
@@ -130,56 +153,66 @@
         padding: 0;
       }
 
-      main.mcv2 .mcv2-slab--cobalt {
-        background: var(--cobalt);
-        color: var(--paper-on-cobalt);
+      main.mcv2 .mcv2-slab--dark {
+        background: var(--ink);
+        color: var(--paper-on-dark);
         padding: 5rem 0;
       }
 
-      main.mcv2 .mcv2-slab--cobalt h1,
-      main.mcv2 .mcv2-slab--cobalt h2,
-      main.mcv2 .mcv2-slab--cobalt h3,
-      main.mcv2 .mcv2-slab--cobalt p,
-      main.mcv2 .mcv2-slab--cobalt blockquote {
-        color: var(--paper-on-cobalt);
+      main.mcv2 .mcv2-slab--mint {
+        background: var(--surface-mint);
+        padding: 5rem 0;
       }
 
-      main.mcv2 .mcv2-slab--cobalt p strong {
-        color: var(--paper-on-cobalt);
+      main.mcv2 .mcv2-slab--beige {
+        background: var(--surface-beige);
+        padding: 5rem 0;
+      }
+
+      main.mcv2 .mcv2-slab--dark h1,
+      main.mcv2 .mcv2-slab--dark h2,
+      main.mcv2 .mcv2-slab--dark h3,
+      main.mcv2 .mcv2-slab--dark p,
+      main.mcv2 .mcv2-slab--dark blockquote {
+        color: var(--paper-on-dark);
+      }
+
+      main.mcv2 .mcv2-slab--dark p strong {
+        color: var(--paper-on-dark);
         font-weight: 600;
       }
 
-      main.mcv2 .mcv2-slab--cobalt .mcv2-eyebrow-meta {
-        color: var(--muted-on-cobalt);
+      main.mcv2 .mcv2-slab--dark .mcv2-eyebrow-meta {
+        color: var(--muted-on-dark);
       }
 
-      main.mcv2 .mcv2-slab--cobalt .mcv2-lead {
-        color: var(--paper-on-cobalt);
+      main.mcv2 .mcv2-slab--dark .mcv2-lead {
+        color: var(--paper-on-dark);
         line-height: 1.5;
       }
 
-      main.mcv2 .mcv2-slab--cobalt .mcv2-outcome-prose {
-        color: var(--paper-on-cobalt);
+      main.mcv2 .mcv2-slab--dark .mcv2-outcome-prose {
+        color: var(--paper-on-dark);
         line-height: 1.65;
       }
 
-      main.mcv2 .mcv2-slab--cobalt p {
+      main.mcv2 .mcv2-slab--dark p {
         line-height: 1.7;
       }
 
-      main.mcv2 .mcv2-slab--cobalt blockquote.mcv2-quote {
-        border-left-color: var(--rule-on-cobalt);
+      main.mcv2 .mcv2-slab--dark blockquote.mcv2-quote {
+        border-left-color: var(--rule-on-dark);
       }
 
-      main.mcv2 .mcv2-slab--cobalt a {
-        color: var(--paper-on-cobalt);
-        text-decoration-color: var(--rule-on-cobalt);
+      main.mcv2 .mcv2-slab--dark a {
+        color: var(--paper-on-dark);
+        text-decoration-color: var(--rule-on-dark);
       }
-      main.mcv2 .mcv2-slab--cobalt a:hover {
-        text-decoration-color: var(--paper-on-cobalt);
+      main.mcv2 .mcv2-slab--dark a:hover {
+        text-decoration-color: var(--paper-on-dark);
       }
 
-      /* Floating TOC: fixed-right, theme-aware (paper vs cobalt sections) */
+      /* Floating TOC: fixed-right, theme-aware (paper vs dark sections) */
       main.mcv2 .mcv2-toc {
         position: fixed;
         top: 50%;
@@ -191,13 +224,13 @@
 
         --toc-fg: var(--ink);
         --toc-fg-muted: var(--muted);
-        --toc-accent: var(--cobalt);
+        --toc-accent: var(--accent);
       }
 
       main.mcv2 .mcv2-toc.on-cobalt {
-        --toc-fg: var(--paper-on-cobalt);
-        --toc-fg-muted: var(--muted-on-cobalt);
-        --toc-accent: var(--paper-on-cobalt);
+        --toc-fg: var(--paper-on-dark);
+        --toc-fg-muted: var(--muted-on-dark);
+        --toc-accent: var(--paper-on-dark);
       }
 
       main.mcv2 .mcv2-toc-label {
@@ -534,8 +567,8 @@
       }
 
       main.mcv2 a:hover {
-        color: var(--cobalt);
-        text-decoration-color: var(--cobalt);
+        color: var(--accent-text);
+        text-decoration-color: var(--accent-text);
       }
 
       main.mcv2 .mcv2-back {
@@ -556,16 +589,16 @@
         margin-right: 0.4rem;
       }
 
-      /* Nav merges into the cobalt hero block (no seam) */
+      /* Nav: paper bg, sits above hero */
       nav.mcv2-nav {
         position: relative;
-        background: var(--cobalt);
-        border-bottom: 0;
+        background: var(--paper);
+        border-bottom: 1px solid var(--rule);
         padding: 1.5rem 0 1.25rem;
       }
 
       nav.mcv2-nav .mcv2-nav-brand {
-        color: var(--paper-on-cobalt);
+        color: var(--ink);
         font-weight: 600;
         font-size: 0.95rem;
         letter-spacing: 0.02em;
@@ -573,30 +606,30 @@
       }
 
       nav.mcv2-nav .mcv2-nav-link {
-        color: var(--paper-on-cobalt);
+        color: var(--muted);
         font-size: 0.9rem;
         letter-spacing: 0.01em;
         text-decoration: none;
         padding: 0.25rem 0;
         margin-left: 1.5rem;
         border-bottom: 1px solid transparent;
-        transition: border-color 0.2s ease;
+        transition: color 0.2s ease, border-color 0.2s ease;
       }
 
       nav.mcv2-nav .mcv2-nav-link:hover {
-        color: var(--paper-on-cobalt);
-        border-bottom-color: var(--paper-on-cobalt);
+        color: var(--ink);
+        border-bottom-color: var(--accent);
       }
 
       nav.mcv2-nav .mcv2-nav-toggle {
-        color: var(--paper-on-cobalt);
+        color: var(--ink);
         background: transparent;
         border: 0;
         padding: 0.25rem 0.5rem;
         cursor: pointer;
       }
 
-      /* When the mobile menu collapses open on cobalt nav, give it a paper bg */
+      /* Mobile menu */
       nav.mcv2-nav #collapse-navbar {
         background: transparent;
       }
@@ -606,6 +639,7 @@
           border-radius: 4px;
           margin-top: 0.75rem;
           padding: 0.5rem 1rem;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.06);
         }
         nav.mcv2-nav #collapse-navbar:not(.hidden) .mcv2-nav-link {
           color: var(--ink);
@@ -613,7 +647,7 @@
         }
       }
 
-      /* Hero: cobalt slab, white serif, image below on paper */
+      /* Hero: dark green slab, white serif, image below on paper */
       main.mcv2 .mcv2-hero-block {
         padding: 3rem 0 4rem;
       }
@@ -693,18 +727,18 @@
       /* Focus-visible: keyboard focus indicators */
       main.mcv2 a:focus-visible,
       main.mcv2 .mcv2-back:focus-visible {
-        outline: 2px solid var(--cobalt);
+        outline: 2px solid var(--accent-text);
         outline-offset: 2px;
         border-radius: 1px;
       }
 
-      main.mcv2 .mcv2-slab--cobalt a:focus-visible {
-        outline-color: var(--paper-on-cobalt);
+      main.mcv2 .mcv2-slab--dark a:focus-visible {
+        outline-color: var(--paper-on-dark);
       }
 
       nav.mcv2-nav .mcv2-nav-link:focus-visible,
       nav.mcv2-nav .mcv2-nav-toggle:focus-visible {
-        outline: 2px solid var(--paper-on-cobalt);
+        outline: 2px solid var(--accent-text);
         outline-offset: 2px;
         border-radius: 1px;
       }
@@ -786,7 +820,7 @@
       <!-- End of TOC -->
 
       <!-- Hero -->
-      <section class="mcv2-slab mcv2-slab--cobalt">
+      <section class="mcv2-slab mcv2-slab--dark">
         <div class="mcv2-container mcv2-hero-block">
           <p class="mcv2-eyebrow-meta">Product Design · UX Research · Internship</p>
           <h1 class="mcv2-hero">MassChallenge: Alumni Platform Redesign</h1>
@@ -865,7 +899,7 @@
       <!-- End of Reframe -->
 
       <!-- Research -->
-      <section id="research-judgment" class="mcv2-container">
+      <section id="research-judgment" class="mcv2-container mcv2-role--evidence">
         <h2 class="mcv2-section">Research That Led to the Reframe</h2>
         <div class="mcv2-prose">
           <p>
@@ -900,7 +934,7 @@
       <!-- End of Research -->
 
       <!-- 5 Insights -->
-      <section id="insights" class="mcv2-container">
+      <section id="insights" class="mcv2-container mcv2-role--evidence">
         <h2 class="mcv2-section">5 Insights That Drove the Design</h2>
         <p class="mcv2-prose">
           Based on research across 5 stakeholders and 3 alumni, covering needs, behaviors, and constraints.
@@ -936,7 +970,7 @@
       <!-- End of 5 Insights -->
 
       <!-- Key Solutions -->
-      <section id="solutions" class="mcv2-container">
+      <section id="solutions" class="mcv2-container mcv2-role--outcome">
         <h2 class="mcv2-section">Key Solutions, Framed as Influence</h2>
 
         <!-- Solution 1 -->
@@ -1005,7 +1039,7 @@
       <!-- End of Key Solutions -->
 
       <!-- Process -->
-      <section id="process" class="mcv2-container">
+      <section id="process" class="mcv2-container mcv2-role--evidence">
         <h2 class="mcv2-section">Process, The Judgments</h2>
 
         <div class="mcv2-process">
@@ -1051,7 +1085,7 @@
       <!-- End of Process -->
 
       <!-- If Not Me -->
-      <section id="if-not-me" class="mcv2-slab mcv2-slab--cobalt">
+      <section id="if-not-me" class="mcv2-slab mcv2-slab--mint">
         <div class="mcv2-container">
           <h2 class="mcv2-section" style="margin-top: 0;">If Not Me</h2>
           <blockquote class="mcv2-quote">
@@ -1065,7 +1099,7 @@
       <!-- End of If Not Me -->
 
       <!-- Outcomes -->
-      <section id="outcomes" class="mcv2-slab mcv2-slab--cobalt">
+      <section id="outcomes" class="mcv2-slab mcv2-slab--beige mcv2-role--outcome">
         <div class="mcv2-container">
           <h2 class="mcv2-section" style="margin-top: 0;">Outcomes</h2>
           <p class="mcv2-outcome-prose">
@@ -1124,7 +1158,7 @@
             </svg>
           </a>
         </div>
-        <p class="mcv2-footer-copy">Hand-coded by Roy Wang, 2026.</p>
+        <p class="mcv2-footer-copy">ROY2026.</p>
       </div>
     </footer>
     <!-- End of Footer -->
@@ -1135,7 +1169,7 @@
         document.getElementById(collapseID).classList.toggle("block");
       }
 
-      // TOC: scroll-spy + theme toggle (paper <-> cobalt)
+      // TOC: scroll-spy + theme toggle (paper <-> dark)
       (function () {
         var toc = document.querySelector(".mcv2-toc");
         if (!toc) return;
@@ -1155,8 +1189,8 @@
           var el = id ? document.getElementById(id) : null;
           var onCobalt =
             !!el &&
-            (el.classList.contains("mcv2-slab--cobalt") ||
-              !!el.closest(".mcv2-slab--cobalt"));
+            (el.classList.contains("mcv2-slab--dark") ||
+              !!el.closest(".mcv2-slab--dark"));
           toc.classList.toggle("on-cobalt", onCobalt);
         }
 
