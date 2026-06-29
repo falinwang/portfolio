@@ -1,0 +1,1378 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MassChallenge 2019 日記考古分析</title>
+    <style>
+      :root {
+        --ink: #171717;
+        --paper: #f8f7f2;
+        --surface: #ffffff;
+        --soft: #eef1e8;
+        --line: #d7d8cf;
+        --muted: #676b61;
+        --green: #2f6f4e;
+        --blue: #305c8f;
+        --amber: #b36b19;
+        --red: #9b3f46;
+        --lavender: #6c5a8f;
+        --shadow: 0 14px 34px rgba(22, 24, 20, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+        line-height: 1.65;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .shell {
+        width: min(1180px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+
+      .top {
+        min-height: 88vh;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 470px);
+        gap: 36px;
+        align-items: center;
+        padding: 28px 0 44px;
+      }
+
+      .hero-copy {
+        max-width: 780px;
+      }
+
+      .kicker {
+        margin: 0 0 18px;
+        color: var(--green);
+        font-size: 0.85rem;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3 {
+        line-height: 1.12;
+        letter-spacing: 0;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: clamp(2.4rem, 6vw, 5.8rem);
+        max-width: 10ch;
+      }
+
+      .lead {
+        margin: 24px 0 0;
+        max-width: 62ch;
+        font-size: clamp(1.08rem, 1.8vw, 1.35rem);
+        color: #343730;
+      }
+
+      .en {
+        display: block;
+        margin-top: 0.35rem;
+        color: var(--muted);
+        font-size: 0.88em;
+        line-height: 1.45;
+      }
+
+      .en-title {
+        display: block;
+        margin-top: 0.35rem;
+        color: var(--muted);
+        font-size: 0.72em;
+        font-weight: 650;
+        line-height: 1.25;
+      }
+
+      .term {
+        white-space: nowrap;
+      }
+
+      .hero-panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .hero-panel img {
+        width: 100%;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        background: #dde3d8;
+      }
+
+      .hero-panel-body {
+        padding: 22px;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .stat {
+        border-top: 2px solid var(--ink);
+        padding-top: 10px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.65rem;
+        line-height: 1;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 7px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .nav {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        border-block: 1px solid var(--line);
+        background: rgba(248, 247, 242, 0.94);
+        backdrop-filter: blur(12px);
+      }
+
+      .nav-inner {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 10px 0;
+      }
+
+      .nav a,
+      .chip,
+      .tool-button {
+        min-height: 38px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--surface);
+        color: var(--ink);
+        padding: 8px 14px;
+        text-decoration: none;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+
+      .nav a:hover,
+      .chip:hover,
+      .tool-button:hover,
+      .chip.active {
+        border-color: var(--ink);
+        background: var(--ink);
+        color: white;
+      }
+
+      section {
+        padding: 72px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-head {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(280px, 1.1fr);
+        gap: 44px;
+        align-items: end;
+        margin-bottom: 34px;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+      }
+
+      .section-note {
+        margin: 0;
+        color: var(--muted);
+        font-size: 1.02rem;
+      }
+
+      .grid {
+        display: grid;
+        gap: 18px;
+      }
+
+      .grid.cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .grid.cols-2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .finding,
+      .story-card,
+      .quote-card,
+      .risk-card,
+      .image-card {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+      }
+
+      .finding,
+      .quote-card,
+      .risk-card {
+        padding: 22px;
+      }
+
+      .finding h3,
+      .quote-card h3,
+      .risk-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.18rem;
+      }
+
+      .finding p,
+      .quote-card p,
+      .risk-card p {
+        margin: 0;
+        color: #343730;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 26px;
+        border-radius: 999px;
+        padding: 3px 9px;
+        background: var(--soft);
+        color: #2f342c;
+        font-size: 0.78rem;
+        font-weight: 750;
+      }
+
+      .tag.green {
+        background: rgba(47, 111, 78, 0.12);
+        color: var(--green);
+      }
+
+      .tag.blue {
+        background: rgba(48, 92, 143, 0.12);
+        color: var(--blue);
+      }
+
+      .tag.amber {
+        background: rgba(179, 107, 25, 0.13);
+        color: var(--amber);
+      }
+
+      .tag.red {
+        background: rgba(155, 63, 70, 0.12);
+        color: var(--red);
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .search {
+        flex: 1 1 280px;
+        min-height: 42px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: white;
+        padding: 9px 15px;
+        color: var(--ink);
+      }
+
+      .stories {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .story-card {
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        min-height: 360px;
+        overflow: hidden;
+      }
+
+      .story-top {
+        padding: 22px 22px 0;
+      }
+
+      .story-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin-bottom: 16px;
+      }
+
+      .story-card h3 {
+        margin: 0 0 12px;
+        font-size: 1.55rem;
+      }
+
+      .story-card p {
+        margin: 0 0 14px;
+        color: #343730;
+      }
+
+      .story-body {
+        padding: 0 22px 8px;
+      }
+
+      .score-row {
+        display: grid;
+        grid-template-columns: 110px 1fr 42px;
+        gap: 10px;
+        align-items: center;
+        margin: 10px 0;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .bar {
+        height: 9px;
+        border-radius: 999px;
+        background: #e7e4da;
+        overflow: hidden;
+      }
+
+      .bar span {
+        display: block;
+        height: 100%;
+        width: calc(var(--score) * 20%);
+        background: linear-gradient(90deg, var(--green), var(--blue));
+      }
+
+      details {
+        border-top: 1px solid var(--line);
+        padding: 0 22px;
+      }
+
+      summary {
+        min-height: 54px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        cursor: pointer;
+        font-weight: 800;
+      }
+
+      summary::after {
+        content: "+";
+        font-size: 1.2rem;
+      }
+
+      details[open] summary::after {
+        content: "-";
+      }
+
+      .evidence {
+        padding-bottom: 18px;
+        color: #343730;
+      }
+
+      .evidence ul {
+        margin: 10px 0 0;
+        padding-left: 19px;
+      }
+
+      .timeline {
+        position: relative;
+        display: grid;
+        gap: 14px;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 92px;
+        top: 0;
+        bottom: 0;
+        width: 1px;
+        background: var(--line);
+      }
+
+      .event {
+        display: grid;
+        grid-template-columns: 74px 1fr;
+        gap: 36px;
+        align-items: start;
+      }
+
+      .date {
+        position: relative;
+        z-index: 1;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        background: var(--paper);
+        padding: 7px 9px;
+        text-align: center;
+        font-weight: 850;
+      }
+
+      .event-body {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--surface);
+        padding: 18px;
+      }
+
+      .event-body h3 {
+        margin: 0 0 8px;
+        font-size: 1.12rem;
+      }
+
+      .event-body p {
+        margin: 0;
+        color: #343730;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .image-card {
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .image-card img {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        object-fit: cover;
+        background: #e2e4dc;
+      }
+
+      .image-card figcaption {
+        padding: 13px 14px 15px;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .image-card strong {
+        display: block;
+        margin-bottom: 4px;
+        color: var(--ink);
+      }
+
+      .matrix {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .matrix-cell {
+        min-height: 170px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: white;
+        padding: 17px;
+      }
+
+      .matrix-cell h3 {
+        margin: 0 0 10px;
+        font-size: 1.02rem;
+      }
+
+      .matrix-cell p {
+        margin: 0;
+        color: #343730;
+        font-size: 0.95rem;
+      }
+
+      .quote-card {
+        border-left: 4px solid var(--green);
+      }
+
+      .quote-card blockquote {
+        margin: 0 0 12px;
+        font-size: 1.2rem;
+        line-height: 1.45;
+      }
+
+      .quote-card cite {
+        color: var(--muted);
+        font-style: normal;
+        font-size: 0.92rem;
+      }
+
+      .pitch {
+        display: grid;
+        grid-template-columns: 0.8fr 1.2fr;
+        gap: 20px;
+      }
+
+      .pitch-box {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: #171717;
+        color: white;
+        padding: 24px;
+      }
+
+      .pitch-box h3,
+      .pitch-box p,
+      .pitch-box li {
+        color: white;
+      }
+
+      .pitch-box p,
+      .pitch-box li {
+        color: rgba(255, 255, 255, 0.82);
+      }
+
+      .pitch-box h3 {
+        margin: 0 0 12px;
+        font-size: 1.35rem;
+      }
+
+      .pitch-box ul {
+        margin: 0;
+        padding-left: 19px;
+      }
+
+      .footer-note {
+        padding: 36px 0 54px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      dialog {
+        width: min(980px, calc(100% - 28px));
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0;
+        background: white;
+        box-shadow: var(--shadow);
+      }
+
+      dialog::backdrop {
+        background: rgba(0, 0, 0, 0.58);
+      }
+
+      .dialog-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 14px;
+        padding: 12px 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .dialog-head strong {
+        font-size: 0.98rem;
+      }
+
+      .dialog-head button {
+        width: 36px;
+        height: 36px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: white;
+        cursor: pointer;
+      }
+
+      .dialog-body {
+        padding: 14px;
+      }
+
+      #modalImage {
+        width: 100%;
+        max-height: 74vh;
+        object-fit: contain;
+      }
+
+      .hidden {
+        display: none !important;
+      }
+
+      @media (max-width: 920px) {
+        .top,
+        .section-head,
+        .pitch {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          max-width: 12ch;
+        }
+
+        .stories,
+        .grid.cols-3,
+        .grid.cols-2,
+        .gallery,
+        .matrix {
+          grid-template-columns: 1fr;
+        }
+
+        .timeline::before {
+          left: 37px;
+        }
+
+        .event {
+          grid-template-columns: 74px 1fr;
+          gap: 16px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .shell {
+          width: min(100% - 22px, 1180px);
+        }
+
+        section {
+          padding: 52px 0;
+        }
+
+        .hero-stats {
+          grid-template-columns: 1fr;
+        }
+
+        .event {
+          grid-template-columns: 1fr;
+          gap: 8px;
+        }
+
+        .timeline::before {
+          display: none;
+        }
+
+        .date {
+          width: max-content;
+        }
+
+        .score-row {
+          grid-template-columns: 92px 1fr 36px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="shell top" id="top">
+      <div class="hero-copy">
+        <p class="kicker">2019 MassChallenge 實習日記分析 <span class="en">MassChallenge 2019 Internship Diary Analysis</span></p>
+        <h1>把舊日記挖成新故事</h1>
+        <p class="lead">
+          這份互動報告把 2019 年 MassChallenge 實習日記拆解成可用於作品集、面試與自我定位的故事資產。重點不是懷舊，而是判斷：哪些經驗到了 2026 年仍然有價值，哪些需要重新包裝，哪些不能過度聲稱。
+          <span class="en">This interactive report turns the 2019 MassChallenge internship diaries into story assets for portfolio, interviews, and positioning. The question is not nostalgia; it is what still matters in 2026, what needs reframing, and what should not be overstated.</span>
+        </p>
+      </div>
+      <aside class="hero-panel" aria-label="分析摘要">
+        <img src="img/mc/hero-mc.png" alt="MassChallenge 專案視覺 / MassChallenge project visual" />
+        <div class="hero-panel-body">
+          <div class="hero-stats">
+            <div class="stat">
+              <strong>42</strong>
+              <span>篇日記 / 專案筆記</span>
+            </div>
+            <div class="stat">
+              <strong>8</strong>
+              <span>可挖掘故事線</span>
+            </div>
+            <div class="stat">
+              <strong>2026</strong>
+              <span>重新定位為資料輔助產品與 AI 時代的配對問題 <span class="en">Data-informed product and AI-era matching</span></span>
+            </div>
+            <div class="stat">
+              <strong>高</strong>
+              <span>作品集與面試複用價值</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </header>
+
+    <nav class="nav" aria-label="頁面導覽">
+      <div class="shell nav-inner">
+        <a href="#summary">總結</a>
+        <a href="#stories">故事卡</a>
+        <a href="#timeline">時間軸</a>
+        <a href="#matrix">2026 價值</a>
+        <a href="#evidence">素材證據</a>
+        <a href="#pitch">面試用法</a>
+        <a href="#risks">風險</a>
+      </div>
+    </nav>
+
+    <main>
+      <section id="summary">
+        <div class="shell">
+          <div class="section-head">
+            <h2>核心判斷</h2>
+            <p class="section-note">
+              這批日記真正有價值的地方，不是「我做了校友平台改版」，而是你當時已經在做問題重構、資料品質判斷、跨利害關係人對齊，以及資源配對系統的早期產品思考。
+              <span class="en">The value is not simply "I redesigned an alumni platform." The stronger story is problem reframing, data-quality judgment, stakeholder alignment, and early product thinking around resource matching.</span>
+            </p>
+          </div>
+          <div class="grid cols-3">
+            <article class="finding">
+              <span class="tag green">最強主線</span>
+              <h3>從參與度問題改寫成價值問題 <span class="en-title">From engagement to value problem</span></h3>
+              <p>
+                日記反覆顯示：低使用率不是介面摩擦，而是平台只向校友索取資料，卻沒有給回足夠價值。這是最適合放進作品集和產品經理、產品設計面試的故事。
+                <span class="en">The diaries repeatedly show that low usage was not just interface friction. The platform asked alumni for data without giving enough value back.</span>
+              </p>
+            </article>
+            <article class="finding">
+              <span class="tag blue">2026 轉譯</span>
+              <h3>資源匹配不是過時平台題</h3>
+              <p>
+                以今天的語言來看，這是生命週期產品、知識圖譜、分類語彙、推薦體驗、客戶關係資料品質的交界題。不要硬說成 AI 專案，但可以說它是 AI 時代配對系統的前身。
+                <span class="en">In today's language, this sits between lifecycle product, knowledge graph, taxonomy, recommendation UX, and CRM data quality. It is not an AI project, but it is relevant to AI-era matching systems.</span>
+              </p>
+            </article>
+            <article class="finding">
+              <span class="tag amber">最大提醒</span>
+              <h3>影響數字要分層說</h3>
+              <p>
+                既有草稿提到約 50 萬美元的平台退場。日記能支撐「為什麼 Mobilize 不值得繼續」的因果鏈，但公開使用前要再查證精確合約金額、決策負責人與時間點。
+                <span class="en">The existing draft mentions an approximately $500K platform sunset. The diaries support the causal logic, but the exact contract value, decision owner, and timeline should be verified before public use.</span>
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="stories">
+        <div class="shell">
+          <div class="section-head">
+            <h2>可挖掘故事卡</h2>
+            <p class="section-note">
+              用篩選器看不同用途：作品集主故事、面試情境題、2026 年仍有市場語言的能力證據，或只能當背景素材的片段。
+              <span class="en">Use the filters to separate portfolio stories, interview stories, 2026-relevant capability signals, and background-only material.</span>
+            </p>
+          </div>
+          <div class="toolbar" aria-label="故事篩選">
+            <input
+              class="search"
+              id="search"
+              type="search"
+              placeholder="搜尋：分類語彙 taxonomy、訪談 interview、儀表板 dashboard、AI、任務簡報 brief..."
+              aria-label="搜尋故事"
+            />
+            <button class="chip active" data-filter="all">全部 All</button>
+            <button class="chip" data-filter="portfolio">作品集 Portfolio</button>
+            <button class="chip" data-filter="interview">面試 Interview</button>
+            <button class="chip" data-filter="ai">AI 時代 2026 / AI</button>
+            <button class="chip" data-filter="ops">資料 / 營運 Data / Ops</button>
+          </div>
+          <div class="stories" id="storyGrid"></div>
+        </div>
+      </section>
+
+      <section id="timeline">
+        <div class="shell">
+          <div class="section-head">
+            <h2>故事形成時間軸</h2>
+            <p class="section-note">
+              這條時間軸可以幫你在面試時講清楚「我不是一開始就知道答案，而是怎麼逐步改變策略」。
+              <span class="en">This timeline helps you explain that the answer did not appear on day one; the strategy changed as evidence accumulated.</span>
+            </p>
+          </div>
+          <div class="timeline">
+            <article class="event">
+              <div class="date">6/17</div>
+              <div class="event-body">
+                <h3>進入環境，建立人際地圖</h3>
+                <p>
+                  第一天記下入職引導、設計主管、同事，以及資料、成長、工程等角色。這是後續跨部門研究的起點。
+                  <span class="en">Day one captured onboarding and the early map of design, data, growth, and engineering stakeholders.</span>
+                </p>
+              </div>
+            </article>
+            <article class="event">
+              <div class="date">6/19</div>
+              <div class="event-body">
+                <h3>研究問題被定義出來</h3>
+                <p>
+                  開始準備利害關係人訪談問題，關鍵問題已經包含校友價值、回訪使用者、Mobilize 平台，以及既有資料如何被蒐集。
+                  <span class="en">The stakeholder questions already included alumni value, returning users, Mobilize, and how data was captured.</span>
+                </p>
+              </div>
+            </article>
+            <article class="event">
+              <div class="date">6/21</div>
+              <div class="event-body">
+                <h3>北極星指標、推薦值與校友系統研究 <span class="en-title">North Star Metric, NPS, and alumni-system study</span></h3>
+                <p>
+                  你開始把參與度往「持續提供價值」與「領先指標」推進，這讓後來的問題重構有理論支架。
+                  <span class="en">Engagement started to become a question of continuous value and leading indicators.</span>
+                </p>
+              </div>
+            </article>
+            <article class="event">
+              <div class="date">7/01</div>
+              <div class="event-body">
+                <h3>關鍵問題重構成形 <span class="en-title">Key reframe takes shape</span></h3>
+                <p>
+                  利害關係人整理裡已經出現資源配對、合作夥伴入口、校友機會、公司資料不準，以及「低參與是因為沒有價值」這幾個核心訊號。
+                  <span class="en">The synthesis surfaced matching, partner portal, alumni opportunities, weak startup profiles, and low engagement caused by weak value.</span>
+                </p>
+              </div>
+            </article>
+            <article class="event">
+              <div class="date">7/08</div>
+              <div class="event-body">
+                <h3>招募受訪者卡住，開始調整話術</h3>
+                <p>
+                  你重寫追蹤信，從單純的「訪談邀請」改成「了解加速器結束後的挑戰，以及什麼支援真的有用」。
+                  <span class="en">The follow-up email shifted from a generic interview request to learning about post-accelerator challenges and useful support.</span>
+                </p>
+              </div>
+            </article>
+            <article class="event">
+              <div class="date">7/18</div>
+              <div class="event-body">
+                <h3>研究方法從正式招募轉為機會式訪談 <span class="en-title">From formal recruiting to opportunistic interviewing</span></h3>
+                <p>
+                  設計主管建議看到駐點校友就直接抓 5 到 20 分鐘訪談。這是很好的實戰研究故事：在限制下換方法，而不是等完美條件。
+                  <span class="en">The research approach changed to short, opportunistic interviews with Alumni-in-Residence when formal recruiting stalled.</span>
+                </p>
+              </div>
+            </article>
+            <article class="event">
+              <div class="date">7/29</div>
+              <div class="event-body">
+                <h3>以色列專案訪談打開組織策略層 <span class="en-title">Israel-program interview opens the organizational layer</span></h3>
+                <p>
+                  以色列專案的訪談把問題推到全組織目標、分類語彙錯位、Mobilize 採用率，以及為什麼要維持多年校友關係。
+                  <span class="en">The interview reframed the issue around organization-wide goals, taxonomy mismatch, Mobilize adoption, and long-term alumni relationships.</span>
+                </p>
+              </div>
+            </article>
+            <article class="event">
+              <div class="date">8/01</div>
+              <div class="event-body">
+                <h3>親和圖整理與原型發想 <span class="en-title">Affinity synthesis and prototype brainstorming</span></h3>
+                <p>
+                  日記顯示你進入親和圖筆記、人物誌、實習成果展示，以及與主管和產品夥伴對齊洞察的階段。故事從研究轉進設計決策。
+                  <span class="en">The work moved from affinity notes and personas into prototype direction, showcase preparation, and stakeholder alignment.</span>
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="matrix">
+        <div class="shell">
+          <div class="section-head">
+            <h2>2026 還有什麼價值？</h2>
+            <p class="section-note">
+              答案是：有，而且比「2019 的 UI」更有價值。價值主要在問題定義與系統思考，而不是視覺稿本身。
+              <span class="en">Yes, it still has value in 2026. The strongest value is problem definition and systems thinking, not the 2019 interface visuals themselves.</span>
+            </p>
+          </div>
+          <div class="matrix">
+            <article class="matrix-cell">
+              <span class="tag green">高價值</span>
+              <h3>產品策略 <span class="en-title">Product Strategy</span></h3>
+              <p>
+                從利害關係人的需求裡抽出真正的商業問題，能證明你不是只接需求做畫面，而是會問「這個功能是否該存在」。
+                <span class="en">Extracting the real business problem from stakeholder asks shows that you can question whether a feature should exist at all.</span>
+              </p>
+            </article>
+            <article class="matrix-cell">
+              <span class="tag blue">高價值</span>
+              <h3>資料品質與分類語彙 <span class="en-title">Data Quality / Taxonomy</span></h3>
+              <p>
+                新創公司的自我描述與組織分類不一致，是今天客戶關係管理、AI 搜尋、推薦系統、知識圖譜都會遇到的硬問題。
+                <span class="en">The mismatch between startup self-description and organizational taxonomy is central to CRM, AI search, recommendation systems, and knowledge graphs.</span>
+              </p>
+            </article>
+            <article class="matrix-cell">
+              <span class="tag amber">中高價值</span>
+              <h3>限制下的研究執行 <span class="en-title">Research Ops Under Constraint</span></h3>
+              <p>
+                受訪者難找、時間短、資料分散，你仍改變招募方法、用既有資料加速決策。這比「完美流程」更可信。
+                <span class="en">Recruiting was difficult, time was short, and data was scattered. Changing methods under constraint is more credible than showing a perfect process.</span>
+              </p>
+            </article>
+            <article class="matrix-cell">
+              <span class="tag red">需重包裝</span>
+              <h3>介面畫面 <span class="en-title">UI Screens</span></h3>
+              <p>
+                2019 年的視覺和互動樣式可能老了，但可作為決策證物。展示時要讓畫面服務於故事，而不是只展示畫面。
+                <span class="en">The 2019 screens may look dated, but they still work as decision artifacts if the visuals support the story.</span>
+              </p>
+            </article>
+          </div>
+          <div class="grid cols-2" style="margin-top: 18px">
+            <article class="quote-card">
+              <blockquote>
+                「2019 年的專案價值不在校友平台，而在你辨識出參與度其實是價值交換問題。」
+                <span class="en">The value of the 2019 project is not the alumni platform; it is recognizing that engagement was a value-exchange problem.</span>
+              </blockquote>
+              <cite>適合放在作品集的核心論點 <span class="en">Portfolio thesis</span></cite>
+            </article>
+            <article class="quote-card">
+              <blockquote>
+                「不要把它說成 AI 專案；把它說成 AI 產品時代仍然關鍵的配對、分類語彙、資料品質問題。」
+                <span class="en">Do not call it an AI project. Call it a matching, taxonomy, and data-quality problem that remains critical in the AI product era.</span>
+              </blockquote>
+              <cite>適合 2026 面試時的安全定位 <span class="en">Safe positioning for 2026 interviews</span></cite>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="evidence">
+        <div class="shell">
+          <div class="section-head">
+            <h2>素材證據圖廊</h2>
+            <p class="section-note">
+              點圖可放大。這些圖適合在作品集裡當「我真的做過研究與設計判斷」的證據，而不是當裝飾。
+              <span class="en">Click any image to enlarge it. These are evidence of research and design judgment, not decoration.</span>
+            </p>
+          </div>
+          <div class="gallery">
+            <figure class="image-card" data-title="親和圖整理 / Affinity Diagram" data-src="img/mc/affnity-diagram.png">
+              <img src="img/mc/affnity-diagram.png" alt="親和圖整理 / Affinity diagram" />
+              <figcaption>
+                <strong>親和圖整理 <span class="en">Affinity Diagram</span></strong>
+                支撐「從訪談轉成洞察」。
+              </figcaption>
+            </figure>
+            <figure class="image-card" data-title="目標設定 / Goal Setting" data-src="img/mc/Goal-Setting.png">
+              <img src="img/mc/Goal-Setting.png" alt="目標設定介面 / Goal setting interface" />
+              <figcaption>
+                <strong>目標設定 <span class="en">Goal Setting</span></strong>
+                支撐「用新創目標驅動資源配對」。
+              </figcaption>
+            </figure>
+            <figure class="image-card" data-title="公司專長 / Company Specialty" data-src="img/mc/Company-Specialty.png">
+              <img src="img/mc/Company-Specialty.png" alt="公司專長介面 / Company specialty interface" />
+              <figcaption>
+                <strong>公司專長 <span class="en">Company Specialty</span></strong>
+                支撐「分類語彙與自由關鍵字」的資料品質故事。
+              </figcaption>
+            </figure>
+            <figure class="image-card" data-title="影響力與投入成本 / Impact Effort" data-src="img/mc/impact-effort.jpg">
+              <img src="img/mc/impact-effort.jpg" alt="影響力與投入成本排序 / Impact effort prioritization" />
+              <figcaption>
+                <strong>影響力 / 投入成本 <span class="en">Impact / Effort</span></strong>
+                支撐「如何在 10 週內收斂範圍」。
+              </figcaption>
+            </figure>
+            <figure class="image-card" data-title="首次使用流程 / First-Time User Flow" data-src="img/mc/user-flow-first.jpg">
+              <img src="img/mc/user-flow-first.jpg" alt="首次使用者流程 / First time user flow" />
+              <figcaption>
+                <strong>首次使用流程 <span class="en">First-Time User Flow</span></strong>
+                支撐「把第一次價值感做對」。
+              </figcaption>
+            </figure>
+            <figure class="image-card" data-title="原型模型 / Prototype Mockup" data-src="img/mc/mockup.jpg">
+              <img src="img/mc/mockup.jpg" alt="原型模型 / Prototype mockup" />
+              <figcaption>
+                <strong>原型模型 <span class="en">Prototype Mockup</span></strong>
+                支撐「可被領導層討論的替代方案」。
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section id="pitch">
+        <div class="shell">
+          <div class="section-head">
+            <h2>面試與作品集用法</h2>
+            <p class="section-note">
+              最推薦把它包成「我如何在低明確度、高限制、跨部門資料混亂的情境下，重新定義問題並推動設計方向」。
+              <span class="en">The strongest framing: how you redefined the problem and moved the design direction forward under ambiguity, constraints, and messy cross-functional data.</span>
+            </p>
+          </div>
+          <div class="pitch">
+            <div class="pitch-box">
+              <h3>30 秒版本</h3>
+              <p>
+                「MassChallenge 原本要我提升校友參與度，但研究後我發現校友不是不會用平台，而是平台沒有提供回報價值。我把問題改寫成『持續提供價值』，設計以新創目標驅動的資源配對流程，同時處理公司分類語彙不準造成的配對問題。」
+                <span class="en">MassChallenge originally asked me to improve alumni engagement. Through research, I found that alumni did not avoid the platform because they could not use it; they avoided it because it did not return value. I reframed the work around continued value delivery, designed a goal-driven resource-matching flow, and addressed the taxonomy problem behind poor matching.</span>
+              </p>
+            </div>
+            <div class="pitch-box">
+              <h3>情境任務行動結果結構 <span class="en-title">STAR Structure</span></h3>
+              <ul>
+                <li><strong>情境：</strong>2,000 多名校友、Mobilize 採用率低、40% 個人資料不準、利害關係人對目標不一致。<span class="en">Situation: 2,000+ alumni, low Mobilize adoption, 40% inaccurate profiles, and misaligned stakeholder goals.</span></li>
+                <li><strong>任務：</strong>在 10 週內找出為什麼校友不回來，並提出可落地的產品方向。<span class="en">Task: Find why alumni were not returning and propose a feasible product direction within ten weeks.</span></li>
+                <li><strong>行動：</strong>進行利害關係人訪談、競品分析、既有問卷與資料整理、校友訪談、親和圖分析、影響力與投入成本排序。<span class="en">Action: Stakeholder interviews, competitive analysis, existing survey/data synthesis, alumni interviews, affinity mapping, and impact-effort prioritization.</span></li>
+                <li><strong>結果：</strong>將任務簡報從「提升參與度」改成「持續提供價值」；提出以目標驅動的資源配對，以及自由填寫公司專長的資料輸入方式。50 萬美元影響需查證後再公開聲稱。<span class="en">Result: Reframed the brief from engagement to continued value, proposed goal-driven resource matching and free-form specialty input. The $500K impact should be verified before public claims.</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="risks">
+        <div class="shell">
+          <div class="section-head">
+            <h2>公開前風險</h2>
+            <p class="section-note">
+              這批日記很有料，但也有內部連結、姓名、電子郵件、平台資料與商業數字。公開作品集要先清理。
+              <span class="en">The diaries are rich, but they include internal links, names, emails, platform details, and business numbers. Clean them before public use.</span>
+            </p>
+          </div>
+          <div class="grid cols-3">
+            <article class="risk-card">
+              <span class="tag red">必做</span>
+              <h3>匿名化</h3>
+              <p>
+                把人名改成職稱；所有電子郵件、電話、SharePoint、Calendly、內部平台網址都不要公開。
+                <span class="en">Replace names with roles. Do not publish emails, phone numbers, SharePoint links, Calendly links, or internal-platform URLs.</span>
+              </p>
+            </article>
+            <article class="risk-card">
+              <span class="tag amber">必查</span>
+              <h3>50 萬美元與平台退場因果 <span class="en-title">$500K and platform-sunset causality</span></h3>
+              <p>
+                可以說「原型幫助建立替代路徑」，但若要說「觸發退場」或「節省 50 萬美元」，需要文件或當事人確認。
+                <span class="en">You can say the prototype helped create a replacement path. Claims like "triggered sunset" or "saved $500K" need confirmation.</span>
+              </p>
+            </article>
+            <article class="risk-card">
+              <span class="tag blue">建議</span>
+              <h3>避免 AI 過度包裝</h3>
+              <p>
+                2019 年沒有 AI 實作。2026 年的說法應該是「配對系統、分類語彙、資料品質」，再延伸到 AI 時代仍然相關。
+                <span class="en">There was no AI implementation in 2019. The 2026 framing should be matching system, taxonomy, and data quality, then extend to AI-era relevance.</span>
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="shell footer-note">
+      分析來源：<code>raw-data/masschallenge MC日記</code>、既有 MassChallenge 作品草稿與
+      <code>Portfolio-Claude-Code/img/mc</code> 圖像素材。此 HTML 是研究分析稿，不等同公開作品集最終版。
+      <span class="en">Sources: the MassChallenge diary folder, existing MassChallenge portfolio drafts, and image assets under <code>Portfolio-Claude-Code/img/mc</code>. This is an analysis draft, not the final public portfolio page.</span>
+    </footer>
+
+    <dialog id="imageDialog">
+      <div class="dialog-head">
+        <strong id="modalTitle">圖片 / Image</strong>
+        <button id="closeDialog" aria-label="關閉">×</button>
+      </div>
+      <div class="dialog-body">
+        <img id="modalImage" src="" alt="" />
+      </div>
+    </dialog>
+
+    <script>
+      const stories = [
+        {
+          titleZh: "把任務簡報從參與度改寫成價值交付",
+          titleEn: "Reframing the brief from engagement to value delivery",
+          tags: ["portfolio", "interview"],
+          labelZh: "主故事",
+          labelEn: "Main story",
+          color: "green",
+          search: "brief engagement value delivery Mobilize alumni stakeholder PM product strategy 任務簡報 參與度 價值交付",
+          summaryZh: "最強故事線。日記顯示你沒有接受「提升參與度」這個表層任務，而是用訪談和使用行為指出校友沒有回來，是因為平台沒有提供足夠回報價值。",
+          summaryEn: "The strongest storyline: you did not accept the surface-level engagement brief. Interviews and behavior showed that alumni were not returning because the platform did not return enough value.",
+          valueZh: "2026 年可對應產品策略、服務設計、生命週期參與、顧客價值交換。",
+          valueEn: "Relevant to product strategy, service design, lifecycle engagement, and customer value exchange in 2026.",
+          scores: { portfolio: 5, interview: 5, current: 5 },
+          evidence: [
+            { zh: "0701 Day 11：校友參與度低，原因是看不到花時間的價值。", en: "0701 Day 11: alumni engagement was low because the time investment did not feel valuable." },
+            { zh: "Kevin 訪談筆記：只在問卷時接觸校友，造成信任赤字。", en: "Kevin notes: alumni were mostly contacted for surveys, creating a trust deficit." },
+            { zh: "Joe 訪談筆記：校友更新 Crunchbase 的頻率高於更新內部系統。", en: "Joe notes: alumni updated Crunchbase more than the internal system." },
+            { zh: "0729 Day 27：以色列專案訪談明確指出校友關係需要全組織目標。", en: "0729 Day 27: the Israel-program interview made the need for an organization-wide alumni goal explicit." }
+          ],
+          useZh: "作品集第一章。可以用這句作為核心論點：「多數參與度問題，其實是價值問題穿上參與度的外衣。」",
+          useEn: "Use this as the first portfolio chapter. Thesis: most engagement problems are value problems wearing engagement's clothes."
+        },
+        {
+          titleZh: "以目標驅動的資源配對系統",
+          titleEn: "Goal-driven resource matching system",
+          tags: ["portfolio", "ai"],
+          labelZh: "2026 可轉譯",
+          labelEn: "2026 translation",
+          color: "blue",
+          search: "resource matching recommendation mentors partners investors goals AI product 資源配對 推薦系統 新創目標",
+          summaryZh: "你的設計方向不是把校友拉回社群平台，而是讓新創設定目前目標，再把導師、合作夥伴、活動、辦公時間等資源與目標配對。",
+          summaryEn: "The design direction was not to pull alumni back into a social platform. It let startups set current goals and matched them with mentors, partners, events, and office hours.",
+          valueZh: "今天可以轉譯成推薦系統體驗、AI 輔助資源探索、企業對企業市場配對；但要說清楚 2019 年是產品設計原型，不是 AI 實作。",
+          valueEn: "Today this maps to recommendation UX, AI-assisted resource discovery, and B2B marketplace matching, while still being clear that the 2019 work was a product-design prototype, not an AI implementation.",
+          scores: { portfolio: 5, interview: 4, current: 5 },
+          evidence: [
+            { zh: "0701 Day 11：已經寫到給新創、導師、合作夥伴的推薦清單。", en: "0701 Day 11: notes already describe recommendation lists for startups, mentors, and partners." },
+            { zh: "Ideation：創業者想取得經過整理的資源，以達成公司目標。", en: "Ideation: entrepreneurs wanted curated resources to achieve company goals." },
+            { zh: "概念測試回饋：目標可以連到課程、導師、合作夥伴與同儕教練。", en: "Concept testing: goals could link to curriculum, mentors, partners, and peer coaching." },
+            { zh: "目標設定圖與首次使用流程圖可作為視覺證據。", en: "Goal-setting and first-time user-flow screens can serve as visual evidence." }
+          ],
+          useZh: "適合投遞 AI 產品、市場配對、客戶關係管理、社群平台、加速器或創投平台相關角色。",
+          useEn: "Useful for AI product, marketplace, CRM, community platform, accelerator, and venture-platform roles."
+        },
+        {
+          titleZh: "分類語彙錯位與自由填寫公司專長",
+          titleEn: "Taxonomy mismatch and free-form specialty input",
+          tags: ["portfolio", "ai", "ops"],
+          labelZh: "資料品質",
+          labelEn: "Data quality",
+          color: "amber",
+          search: "taxonomy keyword specialty startup profile data quality CRM knowledge graph 分類語彙 關鍵字 資料品質 知識圖譜",
+          summaryZh: "日記裡最有現代感的細節：組織用自己的分類理解新創，但新創用完全不同的語言描述自己，導致合作夥伴配對失準。",
+          summaryEn: "The most contemporary detail: the organization classified startups in one language, while startups described themselves in another, which broke partner matching.",
+          valueZh: "2026 年這是 AI 搜尋、檢索增強生成、客戶關係資料補強、知識圖譜、語意配對的核心問題。你的解法是用自由關鍵字讓使用者自我描述，降低分類語彙鎖定。",
+          valueEn: "In 2026, this is central to AI search, retrieval-augmented generation, CRM enrichment, knowledge graphs, and semantic matching. Your solution used free-form keywords to reduce taxonomy lock-in.",
+          scores: { portfolio: 5, interview: 5, current: 5 },
+          evidence: [
+            { zh: "0729 Day 27：行動產業、醫療科技、食品分類之間出現錯位案例。", en: "0729 Day 27: examples show mismatch across mobility, medtech, and food categories." },
+            { zh: "Joe 訪談筆記：合作夥伴會問「找出所有做 X 的新創」，但產業分類很難準確。", en: "Joe notes: partners asked for all startups doing X, but industry taxonomy made that difficult." },
+            { zh: "0701 Day 11：新創公司資料不足以代表實際業務。", en: "0701 Day 11: startup profiles were not accurate enough to represent what companies actually did." },
+            { zh: "公司專長畫面可作為設計證據。", en: "The Company Specialty screen can serve as design evidence." }
+          ],
+          useZh: "面試時可說：「我發現配對問題不是演算法先決，而是資料語言沒有對齊。」",
+          useEn: "Interview line: I found that the matching problem was not algorithm-first; the data language was misaligned."
+        },
+        {
+          titleZh: "在受訪者招募失敗時改變研究方法",
+          titleEn: "Changing research methods when recruiting failed",
+          tags: ["interview"],
+          labelZh: "研究韌性",
+          labelEn: "Research resilience",
+          color: "red",
+          search: "interview recruiting AiR hallway research constraint user research 訪談 招募 研究限制",
+          summaryZh: "日記很誠實地寫出受訪者招募困難。你從正式電子郵件與排程連結，改成請專案同事介紹、抓駐點校友做短訪談、接受遠端或走廊訪談。",
+          summaryEn: "The diaries are honest about recruiting difficulty. You moved from formal emails and scheduling links to staff introductions, short Alumni-in-Residence conversations, remote calls, and hallway interviews.",
+          valueZh: "成熟研究故事。它證明你知道研究不是照流程跑，而是在限制下取得可信訊號。",
+          valueEn: "A mature research story: research is not just following a process; it is getting credible signals under constraint.",
+          scores: { portfolio: 4, interview: 5, current: 4 },
+          evidence: [
+            { zh: "一對一筆記：只拿到一個回覆，並反省需要更努力招募受訪者。", en: "One-on-one notes: only one response came in, and the recruiting approach needed to improve." },
+            { zh: "0718 Day 22：看到駐點校友就直接抓 5 到 20 分鐘訪談。", en: "0718 Day 22: talk to Alumni-in-Residence directly for five to twenty minutes when possible." },
+            { zh: "0708 Day 14：追蹤信被重寫成更清楚的價值主張。", en: "0708 Day 14: the follow-up email was rewritten with a clearer value proposition." },
+            { zh: "0711 Day 17：向校友專案負責人請求前 50 名校友名單。", en: "0711 Day 17: asked the alumni-program owner for a top-50 alumni list." }
+          ],
+          useZh: "用於回答「研究沒有照計畫進行時，你怎麼辦？」",
+          useEn: "Useful for the interview question: Tell me about a time research did not go as planned."
+        },
+        {
+          titleZh: "儀表板支線：依決策者分層資訊",
+          titleEn: "Dashboard side story: segmenting information by decision maker",
+          tags: ["ops"],
+          labelZh: "支線故事",
+          labelEn: "Side story",
+          color: "blue",
+          search: "Chartio dashboard analytical operational KPI executives data team 儀表板 分析型 操作型 資料團隊",
+          summaryZh: "這不是主線，但可用來補強資料產品能力：你區分資料團隊需要分析型儀表板，主管團隊需要操作型儀表板，並思考互動圖表與資訊減量。",
+          summaryEn: "Not the main story, but useful for data-product positioning: the data team needed analytical dashboards, while executives needed operational dashboards, with interactive charts and reduced information load.",
+          valueZh: "2026 年仍可用於內部工具、營運儀表板、分析體驗與利害關係人導向的資訊架構。",
+          valueEn: "Still relevant to internal tools, operations dashboards, analytics UX, and stakeholder-specific information architecture.",
+          scores: { portfolio: 3, interview: 4, current: 4 },
+          evidence: [
+            { zh: "0624 Day six：區分操作型儀表板與分析型儀表板。", en: "0624 Day six: distinguished operational dashboards from analytical dashboards." },
+            { zh: "Rachel 會議：資料團隊需要分析型，主管團隊需要操作型。", en: "Rachel meeting: data teams needed analytical dashboards; executives needed operational dashboards." },
+            { zh: "0624 筆記：減少資訊量、辨識使用者與需求。", en: "0624 notes: reduce information, identify users, and identify needs." }
+          ],
+          useZh: "不建議當 MassChallenge 主作品，但可當支線故事或面試補充。",
+          useEn: "Do not make it the main MassChallenge portfolio piece; use it as a side story or interview supplement."
+        },
+        {
+          titleZh: "競品分析從功能表轉成網絡價值模型",
+          titleEn: "Turning competitor analysis into a network-value model",
+          tags: ["portfolio", "interview"],
+          labelZh: "策略研究",
+          labelEn: "Strategic research",
+          color: "green",
+          search: "Y Combinator Techstars competitor analysis alumni network Bookface community 競品分析 校友網絡",
+          summaryZh: "你比較 Y Combinator、Techstars、500 Startups，不只是看功能，而是在看校友網絡為什麼有價值：早期參與、封閉網絡、同儕接觸、校友產生內容。",
+          summaryEn: "You compared Y Combinator, Techstars, and 500 Startups not only by features, but by why alumni networks create value: early engagement, exclusive networks, peer access, and alumni-generated content.",
+          valueZh: "今天可以包成生態系策略或平台防禦性分析，而不只是使用者體驗競品稽核。",
+          valueEn: "Today this can be framed as ecosystem strategy or platform defensibility, not just a UX competitive audit.",
+          scores: { portfolio: 4, interview: 4, current: 4 },
+          evidence: [
+            { zh: "競品分析：整理 YC Bookface、分類社群、校友展示日等機制。", en: "Competitive analysis: documented YC Bookface, category-specific communities, and alumni demo days." },
+            { zh: "0701 Day 11：競品摘要提到早期導入、全球價值、只使用單一平台。", en: "0701 Day 11: competitor summary included early onboarding, global value, and using one platform." },
+            { zh: "0715 Day 19：整理社群平台功能清單。", en: "0715 Day 19: catalogued community-platform capabilities." }
+          ],
+          useZh: "適合放在作品集研究章節，但要避免變成功能清單；重點是網絡價值。",
+          useEn: "Useful in the research chapter, as long as the focus stays on network value rather than a feature checklist."
+        },
+        {
+          titleZh: "信任問題：校友不是冷漠，是被消耗",
+          titleEn: "Trust problem: alumni were not cold; they were depleted",
+          tags: ["portfolio", "interview"],
+          labelZh: "洞察",
+          labelEn: "Insight",
+          color: "red",
+          search: "trust bad faith surveys newsletter unsubscribe individual email alumni value 信任 問卷 電子報 校友",
+          summaryZh: "日記裡最有人味的洞察：校友不是不願意幫忙，他們願意幫認真的人，但不想被平台式、大眾式、只索取的訊息打擾。",
+          summaryEn: "The most human insight: alumni were not unwilling to help. They were willing to help serious founders, but not to be interrupted by generic, extractive platform messaging.",
+          valueZh: "2026 年的社群、創作者、企業生命週期、客戶成功都仍然適用。這是信任設計，不只是參與度設計。",
+          valueEn: "Still relevant to community, creator, B2B lifecycle, and customer success work in 2026. This is trust design, not just engagement design.",
+          scores: { portfolio: 5, interview: 5, current: 5 },
+          evidence: [
+            { zh: "0718 訪談筆記：若新創認真且會執行，校友很願意給建議。", en: "0718 interview notes: alumni were willing to advise serious startups that would act on advice." },
+            { zh: "Kevin 訪談筆記：個人化電子郵件回覆率高於大量發送郵件。", en: "Kevin notes: individual email had a higher response rate than mass email." },
+            { zh: "Joe 訪談筆記：組織只索取資料，卻沒有提供加值機會。", en: "Joe notes: the organization asked for data without providing value-add opportunities." },
+            { zh: "0729 Day 27：使用者會因為價值而來，不需要用點擊誘餌製造互動。", en: "0729 Day 27: users come for value; clickbait interaction is not the point." }
+          ],
+          useZh: "適合當作品集情緒核心，讓案例不只是策略圖，而是有使用者心理。",
+          useEn: "Use this as the emotional core so the case is not only strategy diagrams, but also user psychology."
+        },
+        {
+          titleZh: "從實習生位置推動跨角色對齊",
+          titleEn: "Driving cross-functional alignment from an intern role",
+          tags: ["interview", "portfolio"],
+          labelZh: "成長故事",
+          labelEn: "Growth story",
+          color: "amber",
+          search: "intern stakeholder alignment Hugh Jeff PM leadership influence showcase 實習生 利害關係人 對齊 影響力",
+          summaryZh: "日記顯示你不是只被動交付：你安排一對一、訪談利害關係人、同步設計主管與產品夥伴、準備成果展示、請專案同事協助招募、尋找更多洞察來源。",
+          summaryEn: "The diaries show you were not passively delivering tasks. You scheduled one-on-ones, interviewed stakeholders, aligned with design and product partners, prepared a showcase, asked for recruiting help, and looked for more sources of insight.",
+          valueZh: "這可以講成高度主動性的故事：權限不高，但主動把資料、人與決策拉到同一張圖上。",
+          valueEn: "A high-agency story: limited authority, but active work to bring data, people, and decisions into the same frame.",
+          scores: { portfolio: 4, interview: 5, current: 4 },
+          evidence: [
+            { zh: "一對一筆記：每週記錄目標、需要協助之處、做得好與不好的地方。", en: "One-on-one notes: weekly goals, help needed, what went well, and what did not go well." },
+            { zh: "0801 Day 30：與主管和產品夥伴進行親和圖洞察整理。", en: "0801 Day 30: affinity-session alignment with design and product partners." },
+            { zh: "0718 Day 22：透過多位同事尋找校友與專案訪談對象。", en: "0718 Day 22: used multiple staff contacts to recruit alumni and program interviewees." },
+            { zh: "Showcase Outline：整理校友專案、介面設計與實習目標。", en: "Showcase Outline: organized the alumni project, UI work, and internship goals." }
+          ],
+          useZh: "適合回答領導力、模糊情境、利害關係人管理相關問題。",
+          useEn: "Useful for leadership, ambiguity, and stakeholder-management interview questions."
+        }
+      ];
+
+      const tagLabels = {
+        portfolio: "作品集 Portfolio",
+        interview: "面試 Interview",
+        ai: "2026 / AI",
+        ops: "資料 / 營運 Data / Ops"
+      };
+
+      const storyGrid = document.querySelector("#storyGrid");
+      const searchInput = document.querySelector("#search");
+      const chips = [...document.querySelectorAll("[data-filter]")];
+      let activeFilter = "all";
+
+      function tagClass(color) {
+        return color ? `tag ${color}` : "tag";
+      }
+
+      function renderStories() {
+        const query = searchInput.value.trim().toLowerCase();
+        storyGrid.innerHTML = "";
+        stories
+          .filter((story) => {
+            const matchesFilter =
+              activeFilter === "all" || story.tags.includes(activeFilter);
+            const haystack = `${story.titleZh} ${story.titleEn} ${story.summaryZh} ${story.summaryEn} ${story.valueZh} ${story.valueEn} ${story.search}`.toLowerCase();
+            return matchesFilter && (!query || haystack.includes(query));
+          })
+          .forEach((story) => {
+            const card = document.createElement("article");
+            card.className = "story-card";
+            card.innerHTML = `
+              <div class="story-top">
+                <div class="story-meta">
+                  <span class="${tagClass(story.color)}">${story.labelZh} ${story.labelEn}</span>
+                  ${story.tags
+                    .map((tag) => `<span class="tag">${tagLabels[tag]}</span>`)
+                    .join("")}
+                </div>
+                <h3>${story.titleZh}<span class="en-title">${story.titleEn}</span></h3>
+                <p>${story.summaryZh}<span class="en">${story.summaryEn}</span></p>
+              </div>
+              <div class="story-body">
+                <p><strong>2026 價值：</strong>${story.valueZh}<span class="en">${story.valueEn}</span></p>
+                <div class="score-row">
+                  <span>作品集</span>
+                  <div class="bar" style="--score:${story.scores.portfolio}"><span></span></div>
+                  <strong>${story.scores.portfolio}/5</strong>
+                </div>
+                <div class="score-row">
+                  <span>面試</span>
+                  <div class="bar" style="--score:${story.scores.interview}"><span></span></div>
+                  <strong>${story.scores.interview}/5</strong>
+                </div>
+                <div class="score-row">
+                  <span>當代性</span>
+                  <div class="bar" style="--score:${story.scores.current}"><span></span></div>
+                  <strong>${story.scores.current}/5</strong>
+                </div>
+              </div>
+              <details>
+                <summary>證據與用法</summary>
+                <div class="evidence">
+                  <p><strong>建議用法：</strong>${story.useZh}<span class="en">${story.useEn}</span></p>
+                  <ul>
+                    ${story.evidence.map((item) => `<li>${item.zh}<span class="en">${item.en}</span></li>`).join("")}
+                  </ul>
+                </div>
+              </details>
+            `;
+            storyGrid.appendChild(card);
+          });
+      }
+
+      chips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+          chips.forEach((item) => item.classList.remove("active"));
+          chip.classList.add("active");
+          activeFilter = chip.dataset.filter;
+          renderStories();
+        });
+      });
+
+      searchInput.addEventListener("input", renderStories);
+      renderStories();
+
+      const dialog = document.querySelector("#imageDialog");
+      const modalImage = document.querySelector("#modalImage");
+      const modalTitle = document.querySelector("#modalTitle");
+      const closeDialog = document.querySelector("#closeDialog");
+
+      document.querySelectorAll(".image-card").forEach((card) => {
+        card.addEventListener("click", () => {
+          modalImage.src = card.dataset.src;
+          modalImage.alt = card.dataset.title;
+          modalTitle.textContent = card.dataset.title;
+          dialog.showModal();
+        });
+      });
+
+      closeDialog.addEventListener("click", () => dialog.close());
+      dialog.addEventListener("click", (event) => {
+        if (event.target === dialog) dialog.close();
+      });
+    </script>
+  </body>
+</html>
