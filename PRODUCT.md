@@ -32,6 +32,15 @@ Voice rules (apply to all case-study and landing copy):
 - No "Hi I'm Roy 👋" + emoji as design language.
 - No AI-tinged voice ("how AI helped us streamline our process"). This is a credibility kill at the target tier.
 
+Homepage project-card language borrows Fueled's consequence-first compression without its agency-as-hero framing:
+- Lead with a tension, reframe, consequential decision, or changed condition, not the artifact name.
+- Follow with one sentence naming Roy's specific contribution, why it mattered, and only sourced evidence.
+- Prefer judgment verbs with concrete objects: reframed the brief, clarified the decision model, reduced a workflow, surfaced a constraint, tested a hypothesis.
+- Use `I` as the default narrative subject. The portfolio exists to make Roy's decisions, contribution, and accountability legible.
+- Use `we` only for a specific, genuinely shared team action after Roy's individual role is clear. Never use collective language to blur authorship, and never imply sole ownership of a shared outcome.
+- Make the claim inspectable. A strong card remains meaningful without a client logo and can survive a follow-up question in an interview.
+- Full analysis and copy formulas: [Fueled Work page analysis](research/fueled-work-page-analysis.md#distilled-portfolio-language).
+
 ## Anti-references
 
 The portfolio must **not** look or read like any of these:

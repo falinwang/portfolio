@@ -20,6 +20,10 @@ colors:
 
 # Design System: Roy Wang Portfolio
 
+## Reference studies
+
+- [Fueled Work page analysis](research/fueled-work-page-analysis.md) — outcome-first project indexing, cinematic cover-card anatomy, and a documented adopt/adapt/reject decision for the portfolio.
+
 ## 1. Overview
 
 **Creative North Star: "The Quiet Press"**
@@ -35,7 +39,7 @@ This system explicitly rejects the saturated portfolio defaults: generic Cargo/W
 - 3-color semantic palette: Argument (dark green), Evidence (olive), Outcome (vibrant green) — applied through section headings and 1px top rules, not full-bleed slabs
 - One committed dark green slab on the hero for the opening statement; surface washes (mint, beige) for If Not Me and Outcomes
 - Serif display + sans body — editorial canon, not single-sans product-marketing
-- Responsive motion only — hover/focus/page transitions; zero scroll-driven choreography
+- Restrained editorial motion — hover/focus/page transitions plus selective, one-time reveals on the homepage Featured Work sequence
 - Vibe-coded by Roy in hand-written HTML/CSS (and React + Tailwind where it earns its place)
 - The case-study layout itself enforces the *Trailer, Not Museum* principle from PRODUCT.md
 
@@ -136,8 +140,19 @@ All primitives committed on masschallenge-v2. Case-study primitives are page-loc
 - **Focus-visible**: 2px solid outline, 2px offset, 1px border-radius. Dark olive ring on paper; white ring on dark slabs; ink ring in footer; olive accent ring on TOC.
 - **Selection**: `rgba(var(--ink-rgb), 0.18)` background, color inherit (green-tinted).
 
+### Motion direction
+
+The motion reference is Fueled's Work page: calm, confident entrances that give large project covers rhythm without competing with the work. Motion is part of the homepage's editorial pacing, not a site-wide decoration layer.
+
+- **Featured Work entrance**: Each featured card may reveal once as it approaches the viewport, using `opacity: 0 → 1` and `translateY(12–20px) → 0` over 320–450ms with an ease-out curve such as `cubic-bezier(0, 0, 0.2, 1)`.
+- **Content stagger**: Within a card, cover, title, and supporting metadata may stagger by 60–90ms. Keep the sequence under 600ms total and do not replay it when the visitor scrolls back.
+- **Cover response**: On hover or keyboard focus, the image may scale from `1` to no more than `1.02` while the overlay shifts subtly over 250–300ms. The CTA and essential copy remain visible without hover.
+- **Scope**: Use this choreography only for the homepage hero and 3–4 Featured Work cards. Case-study reading sections remain still except for direct interaction feedback and page transitions.
+- **Implementation boundary**: Animate only `transform` and `opacity`; trigger once with `IntersectionObserver`; render content visible if JavaScript fails.
+- **Reduced motion**: Under `prefers-reduced-motion: reduce`, remove translation and stagger. Show content immediately or use a brief opacity-only crossfade.
+
 ### Retired v1 patterns
-The following v1 primitives are permanently retired and must not reappear: `.sectionTitle` (uppercase teal label), `.decision-card` (colored `border-left` side-stripe), `.callout-box` (same side-stripe pattern), AOS scroll-fade wrappers, vanilla-tilt 3D card hover. The side-stripe pattern violates impeccable's absolute ban on colored side-borders >1px.
+The following v1 primitives are permanently retired and must not reappear: `.sectionTitle` (uppercase teal label), `.decision-card` (colored `border-left` side-stripe), `.callout-box` (same side-stripe pattern), generic AOS wrappers applied across reading sections, vanilla-tilt 3D card hover. The side-stripe pattern violates impeccable's absolute ban on colored side-borders >1px.
 
 ## 6. Do's and Don'ts
 
@@ -158,7 +173,7 @@ The following v1 primitives are permanently retired and must not reappear: `.sec
 - **Don't** use cream / sand / beige / parchment / linen / bone body backgrounds. The warm-tinted neutral (OKLCH L 0.84–0.97, C < 0.06, hue 40–100) is the saturated AI default of 2026. The current `--paper` token (`#f7f9f2`) is green-tinted (hue ~80-120, chroma ~0.005), which sits outside the warm band — it reads as a deliberate green editorial tint, not the AI-default warm body bg.
 - **Don't** use tiny tracked uppercase eyebrows above every section. The 2023-era kicker is now AI grammar, not voice.
 - **Don't** use numbered section markers (`01 · About / 02 · Process`) as decorative scaffolding. Numbers earn their place only when the section actually IS a sequence the reader needs ordered.
-- **Don't** ship scroll-driven reveal animations (AOS fade-up, fade-right, fade-left). The current v1 leans on this and it's a tell. Motion is for response and feedback, not entrances.
+- **Don't** apply generic scroll reveals to every section, replay entrances on reverse scroll, add parallax or scroll hijacking, or hide essential content behind animation. The only approved scroll-triggered entrance is the restrained, one-time homepage Featured Work sequence defined above.
 - **Don't** include 2018 device mockups (hand-holding iPhone, isometric MacBook-on-desk renders, stacked-device hero compositions). Agency-deck aesthetic, not designer-site aesthetic.
 - **Don't** write AI-tinged marketing voice ("how AI helped us streamline / supercharge / transform / leverage"). This is the credibility kill at the target tier; the writing register is editorial, not promotional.
 - **Don't** use "Hi I'm Roy 👋" plus emoji as design language anywhere on the site.
