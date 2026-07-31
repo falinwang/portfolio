@@ -126,6 +126,52 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="terrain-section" aria-labelledby="terrain-title">
+        <div className="terrain-intro">
+          <p className="section-label">Product terrain / A working vocabulary</p>
+          <h2 id="terrain-title">The territory I work in.</h2>
+          <p>
+            The problems, systems, and practices I keep returning to—because
+            that&apos;s where design can change more than the interface.
+          </p>
+        </div>
+        <div className="terrain-grid">
+          <article>
+            <h3>Problems</h3>
+            <ul>
+              <li className="terrain-primary">Ambiguous briefs</li>
+              <li>Complex workflows</li>
+              <li>Trust systems</li>
+              <li>Operational debt</li>
+              <li>Accessibility gaps</li>
+              <li>Conversion friction</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Systems</h3>
+            <ul>
+              <li>AI-assisted workflows</li>
+              <li>Enterprise SaaS</li>
+              <li>LegalTech</li>
+              <li className="terrain-primary">Design systems</li>
+              <li>Marketplaces</li>
+              <li>Digital health</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Practice</h3>
+            <ul>
+              <li className="terrain-primary">Problem reframing</li>
+              <li>Working prototypes</li>
+              <li>Cross-functional delivery</li>
+              <li>Information architecture</li>
+              <li>User research</li>
+              <li>WCAG 2.2</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
       <section className="work-section" id="work">
         <div className="section-heading">
           <p className="section-label">Selected work / 2020—Now</p>

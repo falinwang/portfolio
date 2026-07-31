@@ -272,6 +272,88 @@ nav a:hover,
   text-transform: uppercase;
 }
 
+.terrain-section {
+  padding: clamp(5rem, 9vw, 9rem) 3vw;
+  border-bottom: 1px solid var(--ink);
+}
+
+.terrain-intro {
+  display: grid;
+  grid-template-columns: 1fr 2.1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: clamp(4rem, 7vw, 7rem);
+}
+
+.terrain-intro h2 {
+  max-width: 9ch;
+  margin: 0;
+  font-size: clamp(2.8rem, 5.8vw, 6.4rem);
+  font-weight: 710;
+  line-height: 0.92;
+  letter-spacing: -0.065em;
+}
+
+.terrain-intro > p:last-child {
+  max-width: 25rem;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.terrain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--ink);
+}
+
+.terrain-grid article {
+  min-width: 0;
+  padding: 1.4rem clamp(1.2rem, 2.2vw, 2.6rem) 2rem;
+  border-right: 1px solid var(--ink);
+}
+
+.terrain-grid article:first-child {
+  padding-left: 0;
+}
+
+.terrain-grid article:last-child {
+  padding-right: 0;
+  border-right: 0;
+}
+
+.terrain-grid h3 {
+  margin: 0 0 clamp(2.6rem, 5vw, 5rem);
+  color: var(--rust);
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.terrain-grid ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.terrain-grid li {
+  padding: 0.46rem 0;
+  color: #77736b;
+  font-size: clamp(1.35rem, 2.3vw, 2.7rem);
+  font-weight: 580;
+  line-height: 1.03;
+  letter-spacing: -0.045em;
+}
+
+.terrain-grid .terrain-primary {
+  color: var(--blue);
+  font-size: clamp(1.8rem, 3vw, 3.7rem);
+  font-weight: 700;
+}
+
 .work-section {
   padding: clamp(5rem, 10vw, 10rem) 3vw;
 }
@@ -578,12 +660,34 @@ footer a {
   }
 
   .section-heading,
-  .section-heading-light {
+  .section-heading-light,
+  .terrain-intro {
     grid-template-columns: 1fr;
   }
 
-  .section-heading h2 {
+  .section-heading h2,
+  .terrain-intro h2 {
     max-width: 13ch;
+  }
+
+  .terrain-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .terrain-grid article,
+  .terrain-grid article:first-child,
+  .terrain-grid article:last-child {
+    padding: 1.4rem 0 2.4rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--ink);
+  }
+
+  .terrain-grid article:last-child {
+    border-bottom: 0;
+  }
+
+  .terrain-grid h3 {
+    margin-bottom: 2rem;
   }
 
   .case-body {
@@ -627,6 +731,7 @@ footer a {
   }
 
   .hero,
+  .terrain-section,
   .work-section,
   .approach-section,
   .about-section,
