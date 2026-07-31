@@ -121,16 +121,8 @@ export default function Home() {
           <span>years designing products</span>
         </div>
         <div>
-          <strong>300K+</strong>
-          <span>law firms served</span>
-        </div>
-        <div>
           <strong>4</strong>
           <span>design systems evolved</span>
-        </div>
-        <div>
-          <strong>React</strong>
-          <span>as a prototyping medium</span>
         </div>
       </section>
 

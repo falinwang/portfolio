@@ -242,7 +242,7 @@ nav a:hover,
 
 .proof-strip {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   border-top: 1px solid var(--ink);
   border-bottom: 1px solid var(--ink);
 }
@@ -575,18 +575,6 @@ footer a {
     width: 62vw;
     height: 62vw;
     opacity: 0.45;
-  }
-
-  .proof-strip {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .proof-strip > div:nth-child(2) {
-    border-right: 0;
-  }
-
-  .proof-strip > div:nth-child(-n + 2) {
-    border-bottom: 1px solid var(--ink);
   }
 
   .section-heading,
