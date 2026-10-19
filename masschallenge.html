@@ -42,71 +42,105 @@
     </style>
 
     <style>
-      #main { --mc-section-offset: 88px; }
+      #main {
+        --mc-section-offset: 24px;
+        padding-bottom: calc(112px + env(safe-area-inset-bottom, 0px));
+      }
       #mc-section-nav {
-        position: sticky;
-        top: 0;
-        z-index: 40;
+        position: fixed;
+        left: 50%;
+        bottom: calc(24px + env(safe-area-inset-bottom, 0px));
+        z-index: 60;
+        max-width: calc(100vw - 32px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+        padding: 6px;
+        border: 1px solid #e5e7eb;
+        border-radius: 9999px;
         background: #fff;
-        border-bottom: 1px solid #d1d5db;
+        box-shadow: 0 6px 24px rgba(0, 50, 65, 0.12);
+        opacity: 0;
+        visibility: hidden;
+        transform: translate(-50%, 8px);
+        transition: opacity 160ms ease, transform 160ms ease, visibility 160ms;
       }
-      #mc-section-nav .mc-section-links {
+      #mc-section-nav[data-visible="true"] {
+        opacity: 1;
+        visibility: visible;
+        transform: translate(-50%, 0);
+      }
+      #mc-section-nav ul { list-style: none; margin: 0; padding: 0; }
+      #mc-section-nav .mc-section-links { display: flex; gap: 4px; }
+      #mc-section-nav a,
+      #mc-section-nav button {
         display: flex;
-        gap: 1.5rem;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      #mc-section-nav a {
-        display: block;
-        padding: 1rem 0;
-        border-bottom: 3px solid transparent;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        min-height: 44px;
+        padding: 10px 16px;
+        border: 0;
+        border-radius: 9999px;
         color: #374151;
-        font-weight: 700;
+        background: transparent;
+        font: inherit;
+        font-size: 0.875rem;
+        font-weight: 600;
+        line-height: 1.5;
+        text-decoration: none;
       }
+      #mc-section-nav a:hover { background: #edf8f9; }
       #mc-section-nav a[aria-current="location"] {
-        color: #007694;
-        border-bottom-color: #13acbd;
+        background: #007694;
+        color: #fff;
       }
-      #mc-section-nav a:hover { color: #007694; }
       #mc-section-nav a:focus-visible,
-      #mc-section-nav select:focus-visible {
+      #mc-section-nav button:focus-visible {
         outline: 3px solid #007694;
-        outline-offset: 3px;
+        outline-offset: 2px;
       }
-      #mc-section-nav .mc-section-mobile { display: none; }
+      #mc-section-nav .mc-section-toggle,
+      #mc-section-nav .mc-section-menu { display: none; }
       #main #Project-Overview,
       #main #Research,
       #main #Define,
       #main #Design-Ideation,
-      #main #Validation {
-        scroll-margin-top: var(--mc-section-offset);
-      }
+      #main #Validation { scroll-margin-top: var(--mc-section-offset); }
       @media (max-width: 767px) {
+        #mc-section-nav { bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
         #mc-section-nav .mc-section-links { display: none; }
-        #mc-section-nav .mc-section-mobile {
+        #mc-section-nav .mc-section-toggle {
           display: flex;
-          align-items: center;
-          gap: 1rem;
-          padding: 0.75rem 0;
+          gap: 16px;
+          cursor: pointer;
         }
-        #mc-section-nav label {
-          color: #374151;
-          font-weight: 700;
+        #mc-section-nav .mc-section-toggle svg {
+          width: 16px;
+          height: 16px;
           flex-shrink: 0;
+          transition: transform 160ms ease;
         }
-        #mc-section-nav select {
-          min-width: 0;
-          width: 100%;
-          min-height: 44px;
-          padding: 0.5rem;
-          border: 1px solid #007694;
-          border-radius: 8px;
+        #mc-section-nav .mc-section-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
+        #mc-section-nav .mc-section-menu:not([hidden]) {
+          display: block;
+          position: absolute;
+          bottom: calc(100% + 8px);
+          left: 50%;
+          transform: translateX(-50%);
+          width: 240px;
+          max-width: calc(100vw - 32px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px));
+          max-height: min(60vh, 360px);
+          overflow-y: auto;
+          overscroll-behavior: contain;
+          padding: 8px;
+          border: 1px solid #e5e7eb;
+          border-radius: 16px;
           background: #fff;
-          color: #007694;
-          font: inherit;
+          box-shadow: 0 6px 24px rgba(0, 50, 65, 0.12);
         }
-        #mc-section-nav noscript a { display: inline-block; margin-right: 1rem; }
+        #mc-section-nav .mc-section-menu a { justify-content: flex-start; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #mc-section-nav,
+        #mc-section-nav .mc-section-toggle svg { transition: none; }
       }
     </style>
   </head>
@@ -220,33 +254,28 @@
         </div>
       </div>
       <!-- End of Splash Page -->
-      <nav id="mc-section-nav" aria-label="Case study sections">
-        <div class="container mx-auto px-4">
-          <ul class="mc-section-links">
-            <li><a href="#Project-Overview" aria-current="location">Overview</a></li>
-            <li><a href="#Research">Research</a></li>
-            <li><a href="#Define">Define</a></li>
-            <li><a href="#Design-Ideation">Design</a></li>
-            <li><a href="#Validation">Results</a></li>
-          </ul>
-          <div class="mc-section-mobile">
-            <label for="mc-section-select">Section</label>
-            <select id="mc-section-select">
-              <option value="Project-Overview">Overview</option>
-              <option value="Research">Research</option>
-              <option value="Define">Define</option>
-              <option value="Design-Ideation">Design</option>
-              <option value="Validation">Results</option>
-            </select>
-          </div>
-          <noscript>
-            <a href="#Project-Overview">Overview</a>
-            <a href="#Research">Research</a>
-            <a href="#Define">Define</a>
-            <a href="#Design-Ideation">Design</a>
-            <a href="#Validation">Results</a>
-          </noscript>
-        </div>
+      <nav id="mc-section-nav" aria-label="Case study sections" aria-hidden="true" inert>
+        <ul class="mc-section-links">
+          <li><a href="#Project-Overview" aria-current="location">Overview</a></li>
+          <li><a href="#Research">Research</a></li>
+          <li><a href="#Define">Define</a></li>
+          <li><a href="#Design-Ideation">Design</a></li>
+          <li><a href="#Validation">Results</a></li>
+        </ul>
+        <button class="mc-section-toggle" type="button" aria-expanded="false"
+          aria-controls="mc-section-menu" aria-label="Case study sections: 01 / Overview">
+          <span id="mc-section-current">01 / Overview</span>
+          <svg viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+            <path d="m4 6 4 4 4-4" stroke="currentColor" stroke-width="1.5" />
+          </svg>
+        </button>
+        <ul id="mc-section-menu" class="mc-section-menu" hidden>
+          <li><a href="#Project-Overview" aria-current="location">Overview</a></li>
+          <li><a href="#Research">Research</a></li>
+          <li><a href="#Define">Define</a></li>
+          <li><a href="#Design-Ideation">Design</a></li>
+          <li><a href="#Validation">Results</a></li>
+        </ul>
       </nav>
 
       <!-- Project Details -->
@@ -1115,22 +1144,42 @@
       (() => {
         const nav = document.getElementById("mc-section-nav");
         const main = document.getElementById("main");
-        const select = document.getElementById("mc-section-select");
-        const links = Array.from(nav.querySelectorAll(".mc-section-links a"));
-        const sections = links.map(link =>
-          document.getElementById(link.hash.slice(1))
-        );
+        const hero = nav.previousElementSibling;
+        const footer = document.querySelector("footer");
+        const toggle = nav.querySelector(".mc-section-toggle");
+        const menu = document.getElementById("mc-section-menu");
+        const label = document.getElementById("mc-section-current");
+        const desktopLinks = Array.from(nav.querySelectorAll(".mc-section-links a"));
+        const menuLinks = Array.from(menu.querySelectorAll("a"));
+        const links = desktopLinks.concat(menuLinks);
+        const sections = desktopLinks.map(link => document.getElementById(link.hash.slice(1)));
+        const mobile = window.matchMedia("(max-width: 767px)");
         const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
-        let offset = 88;
+        let current = sections[0];
+        let visible = false;
         let scheduled = false;
+        const offset = 24;
 
-        function updateActiveSection() {
+        function closeMenu(restoreFocus = false) {
+          const wasOpen = !menu.hidden;
+          menu.hidden = true;
+          toggle.setAttribute("aria-expanded", "false");
+          if (wasOpen && restoreFocus) toggle.focus({ preventScroll: true });
+        }
+
+        function openMenu() {
+          if (!visible || !mobile.matches) return;
+          menu.hidden = false;
+          toggle.setAttribute("aria-expanded", "true");
+          const active = menuLinks.find(link => link.hash === "#" + current.id);
+          (active || menuLinks[0]).focus({ preventScroll: true });
+        }
+
+        function update() {
           scheduled = false;
-          let current = sections[0];
+          current = sections[0];
           for (const section of sections) {
-            if (section.getBoundingClientRect().top <= offset + 1) {
-              current = section;
-            }
+            if (section.getBoundingClientRect().top <= offset + 1) current = section;
           }
           for (const link of links) {
             if (link.hash === "#" + current.id) {
@@ -1139,33 +1188,55 @@
               link.removeAttribute("aria-current");
             }
           }
-          select.value = current.id;
+          const index = sections.indexOf(current);
+          const text = String(index + 1).padStart(2, "0") + " / " + desktopLinks[index].textContent;
+          label.textContent = text;
+          toggle.setAttribute("aria-label", "Case study sections: " + text);
+
+          const shouldShow = hero.getBoundingClientRect().bottom <= 0 &&
+            footer.getBoundingClientRect().top > window.innerHeight + 80;
+          if (visible !== shouldShow) {
+            if (!shouldShow) {
+              if (nav.contains(document.activeElement)) focusSection(current);
+              closeMenu();
+            }
+            visible = shouldShow;
+            nav.inert = !visible;
+            nav.setAttribute("aria-hidden", String(!visible));
+            nav.dataset.visible = String(visible);
+          }
+          if (!mobile.matches) {
+            const hadMobileFocus = menu.contains(document.activeElement) ||
+              document.activeElement === toggle;
+            closeMenu();
+            if (visible && hadMobileFocus) desktopLinks[index].focus({ preventScroll: true });
+          } else if (visible && desktopLinks.includes(document.activeElement)) {
+            toggle.focus({ preventScroll: true });
+          }
         }
 
         function scheduleUpdate() {
           if (!scheduled) {
             scheduled = true;
-            window.requestAnimationFrame(updateActiveSection);
+            window.requestAnimationFrame(update);
           }
         }
 
-        function updateOffset() {
-          offset = nav.getBoundingClientRect().height + 16;
-          main.style.setProperty("--mc-section-offset", offset + "px");
-          scheduleUpdate();
+        function focusSection(section) {
+          section.setAttribute("tabindex", "-1");
+          section.focus({ preventScroll: true });
         }
 
-        function navigate(id) {
+        function navigate(id, { history = true, smooth = true, focus = true } = {}) {
           const target = document.getElementById(id);
           if (!sections.includes(target)) return;
-          updateOffset();
-          if (window.location.hash !== "#" + id) {
+          closeMenu();
+          if (history && window.location.hash !== "#" + id) {
             window.history.pushState(null, "", "#" + id);
           }
-          target.setAttribute("tabindex", "-1");
-          target.focus({ preventScroll: true });
+          if (focus) focusSection(target);
           target.scrollIntoView({
-            behavior: reducedMotion.matches ? "auto" : "smooth",
+            behavior: smooth && !reducedMotion.matches ? "smooth" : "auto",
             block: "start"
           });
           scheduleUpdate();
@@ -1179,16 +1250,69 @@
             navigate(link.hash.slice(1));
           });
         }
-        select.addEventListener("change", () => navigate(select.value));
-        window.addEventListener("scroll", scheduleUpdate, { passive: true });
-        window.addEventListener("resize", updateOffset);
-        window.addEventListener("hashchange", scheduleUpdate);
-        window.addEventListener("popstate", scheduleUpdate);
-        window.addEventListener("load", updateOffset);
-        if ("ResizeObserver" in window) {
-          new ResizeObserver(updateOffset).observe(nav);
+        toggle.addEventListener("click", () => menu.hidden ? openMenu() : closeMenu(true));
+        toggle.addEventListener("keydown", event => {
+          if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+            event.preventDefault();
+            openMenu();
+          }
+        });
+        nav.addEventListener("keydown", event => {
+          if (event.key === "Escape" && !menu.hidden) {
+            event.preventDefault();
+            closeMenu(true);
+          }
+        });
+        menu.addEventListener("keydown", event => {
+          const index = menuLinks.indexOf(document.activeElement);
+          let next;
+          if (event.key === "ArrowDown") next = (index + 1) % menuLinks.length;
+          if (event.key === "ArrowUp") next = (index - 1 + menuLinks.length) % menuLinks.length;
+          if (event.key === "Home") next = 0;
+          if (event.key === "End") next = menuLinks.length - 1;
+          if (next !== undefined) {
+            event.preventDefault();
+            menuLinks[next].focus();
+          }
+        });
+        document.addEventListener("pointerdown", event => {
+          if (!nav.contains(event.target)) closeMenu();
+        });
+        nav.addEventListener("focusout", () => {
+          window.requestAnimationFrame(() => {
+            if (!nav.contains(document.activeElement)) closeMenu();
+          });
+        });
+        document.addEventListener("focusin", event => {
+          if (!visible || nav.contains(event.target) || !main.contains(event.target)) return;
+          if (!event.target.matches("a, button, input, select, textarea, [contenteditable='true']")) return;
+          const rect = event.target.getBoundingClientRect();
+          const top = nav.getBoundingClientRect().top - 16;
+          if (rect.bottom > top && rect.top < window.innerHeight) {
+            window.scrollBy({ top: rect.bottom - top, behavior: "auto" });
+          }
+        });
+        function restoreHash() {
+          const id = window.location.hash.slice(1);
+          if (sections.some(section => section.id === id)) {
+            navigate(id, { history: false, smooth: false, focus: false });
+          } else {
+            closeMenu();
+            scheduleUpdate();
+          }
         }
-        updateOffset();
+        window.addEventListener("scroll", scheduleUpdate, { passive: true });
+        window.addEventListener("resize", scheduleUpdate);
+        window.addEventListener("hashchange", restoreHash);
+        window.addEventListener("popstate", restoreHash);
+        window.addEventListener("load", scheduleUpdate);
+        mobile.addEventListener("change", scheduleUpdate);
+        if ("ResizeObserver" in window) {
+          const observer = new ResizeObserver(scheduleUpdate);
+          observer.observe(main);
+          observer.observe(footer);
+        }
+        update();
       })();
     </script>
   </body>
