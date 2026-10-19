@@ -40,6 +40,75 @@
         border-radius: 8px;
       }
     </style>
+
+    <style>
+      #main { --mc-section-offset: 88px; }
+      #mc-section-nav {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        background: #fff;
+        border-bottom: 1px solid #d1d5db;
+      }
+      #mc-section-nav .mc-section-links {
+        display: flex;
+        gap: 1.5rem;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      #mc-section-nav a {
+        display: block;
+        padding: 1rem 0;
+        border-bottom: 3px solid transparent;
+        color: #374151;
+        font-weight: 700;
+      }
+      #mc-section-nav a[aria-current="location"] {
+        color: #007694;
+        border-bottom-color: #13acbd;
+      }
+      #mc-section-nav a:hover { color: #007694; }
+      #mc-section-nav a:focus-visible,
+      #mc-section-nav select:focus-visible {
+        outline: 3px solid #007694;
+        outline-offset: 3px;
+      }
+      #mc-section-nav .mc-section-mobile { display: none; }
+      #main #Project-Overview,
+      #main #Research,
+      #main #Define,
+      #main #Design-Ideation,
+      #main #Validation {
+        scroll-margin-top: var(--mc-section-offset);
+      }
+      @media (max-width: 767px) {
+        #mc-section-nav .mc-section-links { display: none; }
+        #mc-section-nav .mc-section-mobile {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+          padding: 0.75rem 0;
+        }
+        #mc-section-nav label {
+          color: #374151;
+          font-weight: 700;
+          flex-shrink: 0;
+        }
+        #mc-section-nav select {
+          min-width: 0;
+          width: 100%;
+          min-height: 44px;
+          padding: 0.5rem;
+          border: 1px solid #007694;
+          border-radius: 8px;
+          background: #fff;
+          color: #007694;
+          font: inherit;
+        }
+        #mc-section-nav noscript a { display: inline-block; margin-right: 1rem; }
+      }
+    </style>
   </head>
   <body class="text-gray-800 antialiased">
     <!-- Navigation -->
@@ -151,6 +220,35 @@
         </div>
       </div>
       <!-- End of Splash Page -->
+      <nav id="mc-section-nav" aria-label="Case study sections">
+        <div class="container mx-auto px-4">
+          <ul class="mc-section-links">
+            <li><a href="#Project-Overview" aria-current="location">Overview</a></li>
+            <li><a href="#Research">Research</a></li>
+            <li><a href="#Define">Define</a></li>
+            <li><a href="#Design-Ideation">Design</a></li>
+            <li><a href="#Validation">Results</a></li>
+          </ul>
+          <div class="mc-section-mobile">
+            <label for="mc-section-select">Section</label>
+            <select id="mc-section-select">
+              <option value="Project-Overview">Overview</option>
+              <option value="Research">Research</option>
+              <option value="Define">Define</option>
+              <option value="Design-Ideation">Design</option>
+              <option value="Validation">Results</option>
+            </select>
+          </div>
+          <noscript>
+            <a href="#Project-Overview">Overview</a>
+            <a href="#Research">Research</a>
+            <a href="#Define">Define</a>
+            <a href="#Design-Ideation">Design</a>
+            <a href="#Validation">Results</a>
+          </noscript>
+        </div>
+      </nav>
+
       <!-- Project Details -->
       <div class="bg-gray-100">
         <div class="container mx-auto px-4 pt-8 py-4">
@@ -1013,6 +1111,86 @@
       </div>
     </footer>
     <!-- End of Footer Section -->
+    <script>
+      (() => {
+        const nav = document.getElementById("mc-section-nav");
+        const main = document.getElementById("main");
+        const select = document.getElementById("mc-section-select");
+        const links = Array.from(nav.querySelectorAll(".mc-section-links a"));
+        const sections = links.map(link =>
+          document.getElementById(link.hash.slice(1))
+        );
+        const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+        let offset = 88;
+        let scheduled = false;
+
+        function updateActiveSection() {
+          scheduled = false;
+          let current = sections[0];
+          for (const section of sections) {
+            if (section.getBoundingClientRect().top <= offset + 1) {
+              current = section;
+            }
+          }
+          for (const link of links) {
+            if (link.hash === "#" + current.id) {
+              link.setAttribute("aria-current", "location");
+            } else {
+              link.removeAttribute("aria-current");
+            }
+          }
+          select.value = current.id;
+        }
+
+        function scheduleUpdate() {
+          if (!scheduled) {
+            scheduled = true;
+            window.requestAnimationFrame(updateActiveSection);
+          }
+        }
+
+        function updateOffset() {
+          offset = nav.getBoundingClientRect().height + 16;
+          main.style.setProperty("--mc-section-offset", offset + "px");
+          scheduleUpdate();
+        }
+
+        function navigate(id) {
+          const target = document.getElementById(id);
+          if (!sections.includes(target)) return;
+          updateOffset();
+          if (window.location.hash !== "#" + id) {
+            window.history.pushState(null, "", "#" + id);
+          }
+          target.setAttribute("tabindex", "-1");
+          target.focus({ preventScroll: true });
+          target.scrollIntoView({
+            behavior: reducedMotion.matches ? "auto" : "smooth",
+            block: "start"
+          });
+          scheduleUpdate();
+        }
+
+        for (const link of links) {
+          link.addEventListener("click", event => {
+            if (event.button !== 0 || event.metaKey || event.ctrlKey ||
+                event.shiftKey || event.altKey) return;
+            event.preventDefault();
+            navigate(link.hash.slice(1));
+          });
+        }
+        select.addEventListener("change", () => navigate(select.value));
+        window.addEventListener("scroll", scheduleUpdate, { passive: true });
+        window.addEventListener("resize", updateOffset);
+        window.addEventListener("hashchange", scheduleUpdate);
+        window.addEventListener("popstate", scheduleUpdate);
+        window.addEventListener("load", updateOffset);
+        if ("ResizeObserver" in window) {
+          new ResizeObserver(updateOffset).observe(nav);
+        }
+        updateOffset();
+      })();
+    </script>
   </body>
   <!-- AOS.js -->
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
