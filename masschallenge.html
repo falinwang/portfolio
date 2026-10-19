@@ -27,6 +27,19 @@
       rel="stylesheet"
       href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
     />
+    <style>
+      #main .mc-radius-section {
+        border-radius: 24px;
+      }
+
+      #main .mc-radius-card {
+        border-radius: 16px;
+      }
+
+      #main .mc-radius-media {
+        border-radius: 8px;
+      }
+    </style>
   </head>
   <body class="text-gray-800 antialiased">
     <!-- Navigation -->
@@ -132,7 +145,7 @@
               </div>
             </div>
             <div class="w-full md:w-7/12 mt-4 md:flex-shrink-0 mt-8">
-              <img src="img/mc/hero-mc.png" alt="MassChallenge Cover" />
+              <img class="mc-radius-media" src="img/mc/hero-mc.png" alt="MassChallenge Cover" />
             </div>
           </div>
         </div>
@@ -190,7 +203,7 @@
             </div>
             <div class="w-full lg:w-2/5">
               <div class="p-4 m-4">
-                <img src="img/mc/map.png" alt="Office Map" />
+                <img class="mc-radius-media" src="img/mc/map.png" alt="Office Map" />
               </div>
             </div>
           </div>
@@ -208,17 +221,17 @@
             <div class="">
               <div class="p-4 flex flex-wrap mx-auto">
                 <img
-                  class="shadow-md rounded-lg my-2 mx-auto sm:w-11/12 md:w-full"
+                  class="shadow-md my-2 mx-auto sm:w-11/12 md:w-full mc-radius-media"
                   src="img/mc/Landing-Page.jpg"
                   alt="Landing Page"
                 />
                 <img
-                  class="shadow-md rounded-lg my-2 mx-auto sm:w-11/12 md:w-full"
+                  class="shadow-md my-2 mx-auto sm:w-11/12 md:w-full mc-radius-media"
                   src="img/mc/Goal-Setting.png"
                   alt="Goal Setting Page"
                 />
                 <img
-                  class="shadow-md rounded-lg my-2 mx-auto sm:w-11/12 md:w-full"
+                  class="shadow-md my-2 mx-auto sm:w-11/12 md:w-full mc-radius-media"
                   src="img/mc/Company-Specialty.png"
                   alt="Company Specialty"
                 />
@@ -243,7 +256,7 @@
               </p>
             </div>
             <div class="mt-6">
-              <img src="img/mc/Process-list.png" alt="Process" />
+              <img class="mc-radius-media" src="img/mc/Process-list.png" alt="Process" />
             </div>
           </div>
         </div>
@@ -251,15 +264,14 @@
         <!-- Research -->
         <div id="Research" class="mt-10 mb-8">
           <h2 class="text-3xl font-semibold text-gray-700 py-6">Research</h2>
-          <div class="bg-gray-100 p-4 md:p-8 mt-8 rounded-lg"
-            style="border-radius: 24px">
+          <div class="bg-gray-100 p-4 md:p-8 mt-8 mc-radius-section">
             <h3 class="text-2xl py-4 mb-2 tracking-wide px-2 font-bold">
               Key Research Findings
             </h3>
             <div class="flex flex-wrap mt-4">
               <div class="w-full px-2 mb-4">
-                <div class="h-full p-8 rounded-lg"
-                  style="background-color: rgba(19, 172, 189, 0.12); border-radius: 20px">
+                <div class="h-full p-8 mc-radius-card"
+                  style="background-color: rgba(19, 172, 189, 0.12)">
                   <p class="sectionTitle text-teal-800">01</p>
                   <h4 class="text-2xl md:text-3xl font-bold py-2">Platform use dropped after graduation.</h4>
                   <p class="bodyText">
@@ -268,8 +280,7 @@
                 </div>
               </div>
               <div class="w-full md:w-3/6 px-2 mb-4">
-                <div class="h-full border-solid border border-gray-300 p-6 rounded-lg bg-white"
-                  style="border-radius: 20px">
+                <div class="h-full border-solid border border-gray-300 p-6 mc-radius-card bg-white">
                   <p class="sectionTitle text-teal-800">02</p>
                   <h4 class="text-xl font-bold py-2">Outdated information hindered connections.</h4>
                   <p class="bodyText">
@@ -279,8 +290,7 @@
                 </div>
               </div>
               <div class="w-full md:w-3/6 px-2 mb-4">
-                <div class="h-full border-solid border border-gray-300 p-6 rounded-lg bg-white"
-                  style="border-radius: 20px">
+                <div class="h-full border-solid border border-gray-300 p-6 mc-radius-card bg-white">
                   <p class="sectionTitle text-teal-800">03</p>
                   <h4 class="text-xl font-bold py-2">Alumni wanted more events.</h4>
                   <p class="bodyText">
@@ -289,8 +299,7 @@
                 </div>
               </div>
               <div class="w-full md:w-3/6 px-2 mb-4">
-                <div class="h-full border-solid border border-gray-300 p-6 rounded-lg bg-white"
-                  style="border-radius: 20px">
+                <div class="h-full border-solid border border-gray-300 p-6 mc-radius-card bg-white">
                   <p class="sectionTitle text-teal-800">04</p>
                   <h4 class="text-xl font-bold py-2">Contact was limited after graduation.</h4>
                   <p class="bodyText">
@@ -299,8 +308,7 @@
                 </div>
               </div>
               <div class="w-full md:w-3/6 px-2 mb-4">
-                <div class="h-full border-solid border border-gray-300 p-6 rounded-lg bg-white"
-                  style="border-radius: 20px">
+                <div class="h-full border-solid border border-gray-300 p-6 mc-radius-card bg-white">
                   <p class="sectionTitle text-teal-800">05</p>
                   <h4 class="text-xl font-bold py-2">Partner matching required manual work.</h4>
                   <p class="bodyText">
@@ -317,7 +325,7 @@
             <div class="flex flex-wrap justify-center space-between mt-2 mb-8">
               <!-- Stakeholder Interviews -->
               <div
-                class="flex-grow w-full lg:w-1/4 border-solid border border-gray-400 p-8 rounded-lg m-2"
+                class="flex-grow w-full lg:w-1/4 border-solid border border-gray-400 p-8 mc-radius-card m-2"
               >
                 <h6 class="sectionTitle">Stakeholders Interview</h6>
                 <p class="bodyText">5 interviews across 3 offices</p>
@@ -331,7 +339,7 @@
               </div>
               <!-- User Interview -->
               <div
-                class="flex-grow w-full lg:w-1/4 border-solid border border-gray-400 p-8 rounded-lg m-2"
+                class="flex-grow w-full lg:w-1/4 border-solid border border-gray-400 p-8 mc-radius-card m-2"
               >
                 <h6 class="sectionTitle">Alumni Interviews</h6>
                 <p class="bodyText">3 interviews across 3 programs</p>
@@ -343,7 +351,7 @@
               </div>
               <!-- Survey -->
               <div
-                class="flex-grow w-full lg:w-1/4 border-solid border border-gray-400 p-8 rounded-lg m-2"
+                class="flex-grow w-full lg:w-1/4 border-solid border border-gray-400 p-8 mc-radius-card m-2"
               >
                 <h6 class="sectionTitle">Survey Analysis</h6>
                 <p class="bodyText">Pre- and post-program surveys</p>
@@ -354,7 +362,7 @@
               </div>
               <!-- Comparative Analysis -->
               <div
-                class="w-full border-solid border border-gray-400 p-8 rounded-lg m-2"
+                class="w-full border-solid border border-gray-400 p-8 mc-radius-card m-2"
               >
                 <h6 class="sectionTitle">Comparative Analysis</h6>
                 <p class="bodyText">
@@ -373,7 +381,7 @@
                 <div class="flex flex-wrap justify-center mt-4">
                   <div class="px-4">
                     <img
-                      class="shadow-md rounded p-2"
+                      class="shadow-md p-2 mc-radius-media"
                       src="img/mc/comparative_analysis.png"
                       alt="Startup Accelerator Comparative Analysis"
                     />
@@ -383,7 +391,7 @@
                   </div>
                   <div class="px-4">
                     <img
-                      class="shadow-md rounded p-2"
+                      class="shadow-md p-2 mc-radius-media"
                       src="img/mc/comparative_analysis.png"
                       alt="Startup Accelerator Comparative Analysis"
                     />
@@ -398,14 +406,14 @@
               <div class="flex flex-wrap justify-center">
                 <div class="lg:w-3/6">
                   <img
-                    class="mx-auto shadow-lg rounded m-4"
+                    class="mx-auto shadow-lg m-4 mc-radius-media"
                     src="img/mc/persona_1.png"
                     alt="Persona 1"
                   />
                 </div>
                 <div class="lg:w-3/6">
                   <img
-                    class="mx-auto shadow-lg rounded m-4"
+                    class="mx-auto shadow-lg m-4 mc-radius-media"
                     src="img/mc/persona_2.png"
                     alt="Persona 2"
                   />
@@ -425,7 +433,7 @@
                 into five themes.
               </p>
               <img
-                class="mx-auto shadow-lg rounded m-4 lg:w-4/6"
+                class="mx-auto shadow-lg m-4 lg:w-4/6 mc-radius-media"
                 src="img/mc/affnity-diagram.png"
                 alt="Affinity Diagramming"
               />
@@ -457,7 +465,7 @@
               </p>
             </div>
             <div class="w-full lg:w-2/5 px-4 py-6">
-              <div class="border border-gray-400 p-8 rounded-lg bg-white">
+              <div class="border border-gray-400 p-8 mc-radius-card bg-white">
                 <blockquote class="font-serif text-2xl">
                   “There is a gap between the area what we (MassChallenge) called
                   startups and what they call themselves ”
@@ -487,7 +495,7 @@
             </div>
             <div class="w-full lg:w-4/6">
               <img
-                class="mx-auto shadow-lg rounded m-4"
+                class="mx-auto shadow-lg m-4 mc-radius-media"
                 src="img/mc/impact-effort-refined.png"
                 alt="Impact Effort Matrix"
               />
@@ -560,14 +568,14 @@
             <div class="flex flex-wrap justify-center mt-4">
               <div class="px-4 md:w-3/6">
                 <img
-                  class="mx-auto shadow-lg rounded m-4"
+                  class="mx-auto shadow-lg m-4 mc-radius-media"
                   src="img/mc/brainstorming_1.png"
                   alt="Startup Accelerator Comparative Analysis"
                 />
               </div>
               <div class="px-4 md:w-3/6">
                 <img
-                  class="mx-auto shadow-lg rounded m-4"
+                  class="mx-auto shadow-lg m-4 mc-radius-media"
                   src="img/mc/brainstorming_2.png"
                   alt="Startup Accelerator Comparative Analysis"
                 />
@@ -594,7 +602,7 @@
                 <img
                   src="img/mc/storyboard.png"
                   alt="Storyboarding"
-                  class="mx-auto shadow-lg rounded m-4"
+                  class="mx-auto shadow-lg m-4 mc-radius-media"
                 />
               </div>
             </div>
@@ -623,7 +631,7 @@
             <div class="flex flex-wrap justify-center mt-4">
               <div class="mx-auto px-4">
                 <img
-                  class="p-2 svgFile"
+                  class="p-2 svgFile mc-radius-media"
                   src="img/mc/undraw_envelope_n8lc.png"
                   alt="The First Time Users"
                 />
@@ -631,7 +639,7 @@
               </div>
               <div class="mx-auto px-4">
                 <img
-                  class="p-2 svgFile"
+                  class="p-2 svgFile mc-radius-media"
                   src="img/mc/undraw_business_deal_cpi9.png"
                   alt="Recurring Users"
                 />
@@ -642,7 +650,7 @@
               <section>
                 <h3 class="text-2xl py-4 tracking-wide">First-Time Users</h3>
                 <img
-                  class="p-2 m-2 svgFile"
+                  class="p-2 m-2 svgFile mc-radius-media"
                   src="img/mc/undraw_envelope_n8lc.png"
                   alt="The First Time Users"
                 />
@@ -670,14 +678,14 @@
                 </ol>
               </section>
               <div class="mx-auto w-full">
-                <img src="img/mc/user-flow-first.jpg" alt="User Flow Diagram" />
+                <img class="mc-radius-media" src="img/mc/user-flow-first.jpg" alt="User Flow Diagram" />
               </div>
             </div>
             <div id="Recurring-Users">
               <section>
                 <h3 class="text-2xl py-4 tracking-wide">Recurring Users</h3>
                 <img
-                  class="p-2 m-2 svgFile"
+                  class="p-2 m-2 svgFile mc-radius-media"
                   src="img/mc/undraw_business_deal_cpi9.png"
                   alt="Recurring Users"
                 />
@@ -713,7 +721,7 @@
                 </ol>
               </section>
               <div class="mx-auto w-full">
-                <img
+                <img class="mc-radius-media"
                   src="img/mc/user-flow-recurring.jpg"
                   alt="User Flow Diagram"
                 />
@@ -747,7 +755,7 @@
               </div>
               <div class="lg:w-6/12 mx-auto">
                 <img
-                  class="shadow-lg rounded m-2"
+                  class="shadow-lg m-2 mc-radius-media"
                   src="img/mc/wireframe.png"
                   alt="Wireframes"
                 />
@@ -764,7 +772,7 @@
             <h3 class="text-2xl py-4 tracking-wide">Landing Page</h3>
             <div class="mx-auto lg:w-3/5">
               <img
-                class="shadow-xl rounded m-2"
+                class="shadow-xl m-2 mc-radius-media"
                 src="img/mc/Landing-Page _v4.jpg"
                 alt="Full Landing Page"
               />
@@ -777,7 +785,7 @@
             </p>
             <div class="mx-auto lg:w-3/5">
               <img
-                class="shadow-xl rounded m-2"
+                class="shadow-xl m-2 mc-radius-media"
                 src="img/mc/Goal-Setting.png"
                 alt="Goal Setting Page"
               />
@@ -791,7 +799,7 @@
             </p>
             <div class="mx-auto lg:w-3/5">
               <img
-                class="shadow-xl rounded m-2"
+                class="shadow-xl m-2 mc-radius-media"
                 src="img/mc/Company-Specialty.png"
                 alt="Company Specialty Page"
               />
@@ -831,7 +839,7 @@
                 </div>
                 <div class="mx-auto p-2 w-2/5">
                   <img
-                    class="shadow-lg rounded"
+                    class="shadow-lg mc-radius-media"
                     src="img/mc/IMG_4363.jpg"
                     alt="Mock up"
                   />
@@ -898,7 +906,7 @@
           </div>
           <div class="mt-10 w-full">
             <img
-              class="shadow-2xl rounded"
+              class="shadow-2xl mc-radius-media"
               src="img/mc/mockup.jpg"
               alt="Mock up"
             />
