@@ -143,10 +143,73 @@
         #mc-section-nav .mc-section-toggle svg { transition: none; }
       }
     </style>
+    <!-- MassChallenge-only contrast refinements; shared styles remain unchanged. -->
+    <style>
+      #mc-case-study #main .sectionTitle:not(.text-teal-800),
+      #mc-case-study #JTBD .mc-accessible-teal {
+        color: #006875;
+      }
+      #mc-case-study #main .sectionTitle.text-teal-800 {
+        color: #285e61;
+      }
+      #mc-case-study .mc-dark-surface .text-teal-200 {
+        color: #E3FAFA;
+      }
+      #mc-case-study #mc-main-nav #collapse-navbar a:hover {
+        opacity: 1;
+        color: #007694;
+      }
+      #mc-case-study #mc-main-nav a:focus-visible,
+      #mc-case-study #mc-main-nav button:focus-visible {
+        outline: 3px solid #fff;
+        outline-offset: 3px;
+      }
+      #mc-case-study #mc-main-nav #collapse-navbar a:focus-visible {
+        outline-color: #006875;
+      }
+      #mc-case-study #main a:not([href^="#"]):focus-visible,
+      #mc-case-study footer a:focus-visible {
+        outline: 3px solid #006875;
+        outline-offset: 3px;
+      }
+      #mc-case-study #main .mc-dark-surface a:focus-visible,
+      #mc-case-study #main .mc-back-to-top:focus-visible {
+        outline: 3px solid #E3FAFA;
+        outline-offset: 3px;
+      }
+      #mc-case-study #main .mc-back-to-top {
+        color: #fff;
+        border-color: #E3FAFA;
+      }
+      #mc-case-study #main .mc-back-to-top:hover {
+        color: #fff;
+        background-color: #006875;
+        border-color: #E3FAFA;
+      }
+      #mc-case-study #main .mc-back-to-top:active {
+        color: #fff;
+        background-color: #007694;
+        border-color: #E3FAFA;
+      }
+      #mc-case-study footer .text-gray-600 {
+        color: #4a5568;
+      }
+      #mc-case-study footer .fa-twitter {
+        color: #006875;
+      }
+      @media (min-width: 1024px) {
+        #mc-case-study #mc-main-nav #collapse-navbar a:hover {
+          color: #E3FAFA;
+        }
+        #mc-case-study #mc-main-nav #collapse-navbar a:focus-visible {
+          outline-color: #fff;
+        }
+      }
+    </style>
   </head>
-  <body class="text-gray-800 antialiased">
+  <body id="mc-case-study" class="text-gray-800 antialiased">
     <!-- Navigation -->
-    <nav
+    <nav id="mc-main-nav"
       class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
     >
       <div
@@ -225,7 +288,7 @@
         <!-- Background Image -->
         <div
           class="absolute top-0 w-full h-full bg-center bg-cover"
-          style="background-color: #13acbd"
+          style="background-color: #006875"
         ></div>
         <!-- Text Over Main Background -->
         <div class="container relative mx-auto mt-16 md:mt-2 px-4">
@@ -572,7 +635,7 @@
       </div>
       <!-- End of Project Content Part 1  -->
       <!-- Research results blue bg -->
-      <div class="pb-40" style="background-color: #007694">
+      <div class="pb-40 mc-dark-surface" style="background-color: #007694">
         <div class="container mx-auto pt-8 py-4 px-4">
           <div class="flex flex-wrap items-center mt-10">
             <div class="w-full lg:w-3/5 px-4 py-6 text-white">
@@ -766,7 +829,7 @@
                   As an entrepreneur,
                 </p>
                 <p class="text-3xl md:text-4xl lg:text-5xl font-semibold leading-snug text-gray-800">
-                  I want to access <span style="color: #13ACBD">curated resources</span>,
+                  I want to access <span class="mc-accessible-teal">curated resources</span>,
                   including experts and events, so I can reach my company’s goals.
                 </p>
                 <span class="block mt-8" style="width: 44px; height: 3px; background-color: #13ACBD" aria-hidden="true"></span>
@@ -998,7 +1061,7 @@
       </div>
       <!-- End of Part 2 -->
       <!-- Next Steps -->
-      <div class="pb-40 text-white" style="background-color: #007694">
+      <div class="pb-40 text-white mc-dark-surface" style="background-color: #007694">
         <div class="container mx-auto pt-8 py-4 px-4">
           <div id="Validation">
             <h2 class="text-3xl font-semibold py-5 mt-10">Validation</h2>
@@ -1111,7 +1174,7 @@
           <div class="flex justify-center mt-20 mx-auto">
             <a href="#main">
               <button
-                class="text-gray-300 bg-transparent border border-solid border-gray-300 hover:bg-teal-500 hover:border-transparent hover:text-white active:bg-gray-600 font-semibold uppercase px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1"
+                class="mc-back-to-top text-gray-300 bg-transparent border border-solid border-gray-300 hover:bg-teal-500 hover:border-transparent hover:text-white active:bg-gray-600 font-semibold uppercase px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1"
                 type="button"
                 style="transition: all 0.15s ease"
                 data-aos="flip-left"
