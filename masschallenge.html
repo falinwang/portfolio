@@ -1232,7 +1232,13 @@
           if (!sections.includes(target)) return;
           closeMenu();
           if (history && window.location.hash !== "#" + id) {
-            window.history.pushState(null, "", "#" + id);
+            const url = new URL(window.location.href);
+            url.hash = id;
+            try {
+              window.history.pushState(null, "", url.href);
+            } catch {
+              // Scrolling must still work when history updates are restricted.
+            }
           }
           if (focus) focusSection(target);
           target.scrollIntoView({
