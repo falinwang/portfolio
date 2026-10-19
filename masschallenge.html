@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="mc-case-study-document">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -206,10 +206,48 @@
         }
       }
     </style>
+    <style>
+      #mc-case-study .mc-skip-link {
+        position: fixed;
+        top: 12px;
+        left: 12px;
+        z-index: 100;
+        padding: 12px 16px;
+        background: #fff;
+        color: #006875;
+        transform: translateY(-200%);
+      }
+      #mc-case-study .mc-skip-link:focus {
+        transform: translateY(0);
+        outline: 3px solid #006875;
+        outline-offset: 3px;
+      }
+      #mc-case-study #main:focus-visible,
+      #mc-case-study #main [tabindex="-1"]:focus-visible {
+        outline: 3px solid #006875;
+        outline-offset: 3px;
+      }
+      #mc-case-study #main .mc-dark-surface [tabindex="-1"]:focus-visible {
+        outline-color: #E3FAFA;
+      }
+      #mc-case-study .mc-back-to-top:focus {
+        opacity: 1;
+        transform: none;
+        pointer-events: auto;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html#mc-case-study-document { scroll-behavior: auto; }
+        #mc-case-study .mc-back-to-top {
+          transition: none;
+          transform: none;
+        }
+      }
+    </style>
   </head>
   <body id="mc-case-study" class="text-gray-800 antialiased">
+    <a class="mc-skip-link" href="#main">Skip to main content</a>
     <!-- Navigation -->
-    <nav id="mc-main-nav"
+    <nav id="mc-main-nav" aria-label="Primary navigation"
       class="top-0 absolute z-50 w-full flex flex-wrap items-center justify-between px-2 py-3 navbar-expand-lg"
     >
       <div
@@ -227,10 +265,13 @@
             Roy Wang </a
           ><button
             class="cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+            id="mc-main-nav-toggle"
             type="button"
-            onclick="toggleNavbar('collapse-navbar')"
+            aria-label="Open main navigation"
+            aria-controls="collapse-navbar"
+            aria-expanded="false"
           >
-            <i class="text-white fas fa-bars"></i>
+            <i class="text-white fas fa-bars" aria-hidden="true"></i>
           </button>
         </div>
         <!-- Nav Right Side -->
@@ -279,7 +320,7 @@
     </nav>
     <!-- End of Navigation -->
 
-    <main id="main">
+    <main id="main" tabindex="-1">
       <!-- Splash Page -->
       <div
         class="relative pt-16 pb-32 flex content-center items-center justify-center"
@@ -311,7 +352,7 @@
               </div>
             </div>
             <div class="w-full md:w-7/12 mt-4 md:flex-shrink-0 mt-8">
-              <img class="mc-radius-media" src="img/mc/hero-mc.png" alt="MassChallenge Cover" />
+              <img class="mc-radius-media" src="img/mc/hero-mc.png" alt="Laptop mockup showing the MassChallenge resource-matching landing page" />
             </div>
           </div>
         </div>
@@ -346,27 +387,27 @@
         <div class="container mx-auto px-4 pt-8 py-4">
           <div class="flex flex-wrap">
             <div class="w-full md:w-2/6 mb-4 px-2">
-              <h6 class="sectionTitle">Type</h6>
+              <p class="sectionTitle">Type</p>
               <p class="bodyText">Product Design Internship</p>
             </div>
             <div class="w-full md:w-2/6 mb-2 px-2">
-              <h6 class="sectionTitle">Focus</h6>
+              <p class="sectionTitle">Focus</p>
               <p class="bodyText">Research + Onboarding</p>
             </div>
             <div class="w-full md:w-2/6 mb-2 px-2">
-              <h6 class="sectionTitle">My Role</h6>
+              <p class="sectionTitle">My Role</p>
               <p class="bodyText">Product Designer</p>
             </div>
             <div class="w-full md:w-2/6 mb-2 px-2">
-              <h6 class="sectionTitle">Timeline</h6>
+              <p class="sectionTitle">Timeline</p>
               <p class="bodyText">10 Weeks</p>
             </div>
             <div class="w-full md:w-2/6 mb-2 px-2">
-              <h6 class="sectionTitle">Tools</h6>
+              <p class="sectionTitle">Tools</p>
               <p class="bodyText">Figma, Balsamiq, Optimal Workshop Reframer</p>
             </div>
             <div class="w-full md:w-2/6 mb-2 px-2">
-              <h6 class="sectionTitle">Team</h6>
+              <p class="sectionTitle">Team</p>
               <p class="bodyText">Senior UX Designer + Product Manager</p>
             </div>
           </div>
@@ -382,7 +423,7 @@
           </h2>
           <div class="py-4 flex flex-wrap" id="Challenge">
             <div class="w-full lg:w-3/5">
-              <h6 class="sectionTitle">The Problem</h6>
+              <p class="sectionTitle">The Problem</p>
               <h3 class="text-2xl py-4 tracking-wide">
                 Alumni weren’t returning to the community.
               </h3>
@@ -393,13 +434,13 @@
             </div>
             <div class="w-full lg:w-2/5">
               <div class="p-4 m-4">
-                <img class="mc-radius-media" src="img/mc/map.png" alt="Office Map" />
+                <img class="mc-radius-media" src="img/mc/map.png" alt="World map with highlighted countries" />
               </div>
             </div>
           </div>
           <div class="py-4 flex flex-wrap" id="Solution">
             <div class="w-full">
-              <h6 class="sectionTitle">The Solution</h6>
+              <p class="sectionTitle">The Solution</p>
               <h3 class="text-2xl py-4 tracking-wide">
                 Give founders a reason to come back.
               </h3>
@@ -413,17 +454,17 @@
                 <img
                   class="shadow-md my-2 mx-auto sm:w-11/12 md:w-full mc-radius-media"
                   src="img/mc/Landing-Page.jpg"
-                  alt="Landing Page"
+                  alt="Resource-matching landing-page exploration"
                 />
                 <img
                   class="shadow-md my-2 mx-auto sm:w-11/12 md:w-full mc-radius-media"
                   src="img/mc/Goal-Setting.png"
-                  alt="Goal Setting Page"
+                  alt="Design exploration for sharing company goals"
                 />
                 <img
                   class="shadow-md my-2 mx-auto sm:w-11/12 md:w-full mc-radius-media"
                   src="img/mc/Company-Specialty.png"
-                  alt="Company Specialty"
+                  alt="Design exploration for describing startup expertise"
                 />
               </div>
             </div>
@@ -446,7 +487,7 @@
               </p>
             </div>
             <div class="mt-6">
-              <img class="mc-radius-media" src="img/mc/Process-list.png" alt="Process" />
+              <img class="mc-radius-media" src="img/mc/Process-list.png" alt="Design process stages: Empathize, Define, Ideate, and Test" />
             </div>
           </div>
         </div>
@@ -517,7 +558,7 @@
               <div
                 class="flex-grow w-full lg:w-1/4 border-solid border border-gray-400 p-8 mc-radius-card m-2"
               >
-                <h6 class="sectionTitle">Stakeholders Interview</h6>
+                <h4 class="sectionTitle">Stakeholders Interview</h4>
                 <p class="bodyText">5 interviews across 3 offices</p>
                 <ul class="list-disc list-inside">
                   <li class="text-lg">Alumni Manager</li>
@@ -531,7 +572,7 @@
               <div
                 class="flex-grow w-full lg:w-1/4 border-solid border border-gray-400 p-8 mc-radius-card m-2"
               >
-                <h6 class="sectionTitle">Alumni Interviews</h6>
+                <h4 class="sectionTitle">Alumni Interviews</h4>
                 <p class="bodyText">3 interviews across 3 programs</p>
                 <p class="bodyText">
                   I recruited Alumni-in-Residence, who typically stayed at the
@@ -543,7 +584,7 @@
               <div
                 class="flex-grow w-full lg:w-1/4 border-solid border border-gray-400 p-8 mc-radius-card m-2"
               >
-                <h6 class="sectionTitle">Survey Analysis</h6>
+                <h4 class="sectionTitle">Survey Analysis</h4>
                 <p class="bodyText">Pre- and post-program surveys</p>
                 <p class="bodyText">
                   I worked with the data team to analyze pre- and post-program
@@ -554,7 +595,7 @@
               <div
                 class="w-full border-solid border border-gray-400 p-8 mc-radius-card m-2"
               >
-                <h6 class="sectionTitle">Comparative Analysis</h6>
+                <h4 class="sectionTitle">Comparative Analysis</h4>
                 <p class="bodyText">
                   I reviewed direct, indirect, and parallel competitors across
                   accelerators and social platforms to understand how they
@@ -567,7 +608,7 @@
           <div class="mt-8">
             <h3 class="text-2xl py-4 mb-2 tracking-wide">Supporting Evidence</h3>
             <div class="py-4">
-              <h6 class="sectionTitle">Comparative Analysis</h6>
+              <h4 class="sectionTitle">Comparative Analysis</h4>
                 <div class="flex flex-wrap justify-center mt-4">
                   <div class="px-4">
                     <img
@@ -592,7 +633,7 @@
                 </div>
             </div>
             <div class="py-4">
-              <h6 class="sectionTitle" id="Persona">User Personas</h6>
+              <h4 class="sectionTitle" id="Persona">User Personas</h4>
               <div class="flex flex-wrap justify-center">
                 <div class="lg:w-3/6">
                   <img
@@ -611,12 +652,12 @@
               </div>
             </div>
             <div class="py-4">
-              <h6 class="sectionTitle" id="Affinity-Diagram">
+              <p class="sectionTitle" id="Affinity-Diagram">
                 Affinity Diagramming
-              </h6>
-              <h3 class="text-2xl py-4 mb-2 tracking-wide">
+              </p>
+              <h4 class="text-2xl py-4 mb-2 tracking-wide">
                 Synthesizing Interview Themes
-              </h3>
+              </h4>
               <p class="bodyText">
                 I used Optimal Workshop Reframer to synthesize participants'
                 experiences, thoughts, and feelings about the alumni program
@@ -625,7 +666,7 @@
               <img
                 class="mx-auto shadow-lg m-4 lg:w-4/6 mc-radius-media"
                 src="img/mc/affnity-diagram.png"
-                alt="Affinity Diagramming"
+                alt="Alumni interview notes organized with tags in Optimal Workshop Reframer"
               />
             </div>
           </div>
@@ -675,7 +716,7 @@
           </h2>
           <div class="py-4 flex flex-wrap justify-center" id="Prioritization">
             <div class="w-full">
-              <h6 class="sectionTitle">PRIORITIZATION</h6>
+              <h3 class="sectionTitle">PRIORITIZATION</h3>
               <p class="bodyText">
                 We used an <strong>Impact / Effort Matrix</strong> to compare
                 the research findings and discuss priorities with the team.
@@ -685,7 +726,7 @@
               <img
                 class="mx-auto shadow-lg m-4 mc-radius-media"
                 src="img/mc/impact-effort-refined.png"
-                alt="Impact Effort Matrix"
+                alt="Impact / Effort Matrix comparing research findings; finding 6 combines findings 1–5"
               />
               <p class="bodyText px-4 mt-4">
                 Based on this exercise, we focused the 10-week project on
@@ -695,7 +736,7 @@
           </div>
           <div class="py-4" id="Redefine">
             <div class="bg-gray-100 p-4 md:p-8 mt-8 mc-radius-section">
-              <h6 class="sectionTitle">Re-define the Problem</h6>
+              <p class="sectionTitle">Re-define the Problem</p>
               <h3 class="text-2xl py-4 tracking-wide">
                 Defining the Project Scope
               </h3>
@@ -890,6 +931,7 @@
                   class="block w-full h-auto mc-radius-media"
                   src="img/mc/user-flow-first.jpg"
                   alt="Original user flow diagram for first-time users"
+                  aria-describedby="mc-first-flow-details"
                 />
                 <figcaption class="text-sm text-gray-700 mt-2">
                   First-time user flow.
@@ -899,7 +941,7 @@
                 </figcaption>
               </figure>
               <h5 class="text-xl font-bold py-2 mt-6">Process Details</h5>
-              <ol class="list-decimal pl-4 bodyText list-inside">
+              <ol id="mc-first-flow-details" class="list-decimal pl-4 bodyText list-inside">
                 <li>Open the resource-matching system from the onboarding email.</li>
                 <li>Enter company information, goals, and areas of expertise.</li>
                 <li>
@@ -915,6 +957,7 @@
                   class="block w-full h-auto mc-radius-media"
                   src="img/mc/user-flow-recurring.jpg"
                   alt="Original user flow diagram for recurring users"
+                  aria-describedby="mc-recurring-flow-details"
                 />
                 <figcaption class="text-sm text-gray-700 mt-2">
                   Recurring user flow.
@@ -924,7 +967,7 @@
                 </figcaption>
               </figure>
               <h5 class="text-xl font-bold py-2 mt-6">Process Details</h5>
-              <ol class="list-decimal pl-4 bodyText list-inside">
+              <ol id="mc-recurring-flow-details" class="list-decimal pl-4 bodyText list-inside">
                 <li>
                   Access the system through staff referrals, emails, event
                   registration, or office Wi-Fi.
@@ -952,7 +995,7 @@
             Iteration
           </h2>
           <div class="py-4 justify-center">
-            <h6 class="sectionTitle">Wireframe</h6>
+            <p class="sectionTitle">Wireframe</p>
             <h3 class="text-2xl py-4 tracking-wide">
               Designing the First-Time Onboarding Experience
             </h3>
@@ -987,7 +1030,7 @@
             </figure>
           </div>
           <div class="py-4 justify-center">
-            <h6 class="sectionTitle">HIGH-FIDELITY EXPLORATION</h6>
+            <p class="sectionTitle">HIGH-FIDELITY EXPLORATION</p>
             <h3 class="text-3xl font-semibold py-4 tracking-wide">
               Exploring the Resource-Matching Experience
             </h3>
@@ -1003,7 +1046,7 @@
                 <img
                   class="block w-full h-auto mc-radius-media"
                   src="img/mc/Landing-Page _v4.jpg"
-                  alt="Full Landing Page"
+                  alt="Resource-matching landing-page exploration"
                 />
                 <figcaption class="text-sm text-gray-700 mt-2">
                   <a
@@ -1023,7 +1066,7 @@
                 <img
                   class="block w-full h-auto mc-radius-media"
                   src="img/mc/Goal-Setting.png"
-                  alt="Goal Setting Page"
+                  alt="Design exploration for sharing company goals"
                 />
                 <figcaption class="text-sm text-gray-700 mt-2">
                   <a
@@ -1043,7 +1086,7 @@
                 <img
                   class="block w-full h-auto mc-radius-media"
                   src="img/mc/Company-Specialty.png"
-                  alt="Company Specialty Page"
+                  alt="Design exploration for describing startup expertise"
                 />
                 <figcaption class="text-sm text-gray-700 mt-2">
                   <a
@@ -1103,7 +1146,7 @@
                 <img
                     class="shadow-lg mc-radius-media"
                     src="img/mc/IMG_4363.jpg"
-                    alt="Mock up"
+                    alt="Whiteboard notes exploring startup onboarding and resource matching"
                   />
               </div>
             </div>
@@ -1168,20 +1211,18 @@
             <img
               class="shadow-2xl mc-radius-media"
               src="img/mc/mockup.jpg"
-              alt="Mock up"
+              alt="Laptop displaying the resource-matching landing page in an office setting"
             />
           </div>
           <div class="flex justify-center mt-20 mx-auto">
-            <a href="#main">
-              <button
-                class="mc-back-to-top text-gray-300 bg-transparent border border-solid border-gray-300 hover:bg-teal-500 hover:border-transparent hover:text-white active:bg-gray-600 font-semibold uppercase px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1"
-                type="button"
-                style="transition: all 0.15s ease"
-                data-aos="flip-left"
-                data-aos-duration="2000"
-              >
-                <i class="fas fa-arrow-up pr-3"></i> Back to Top
-              </button>
+            <a
+              href="#main"
+              class="inline-block mc-back-to-top text-gray-300 bg-transparent border border-solid border-gray-300 hover:bg-teal-500 hover:border-transparent hover:text-white active:bg-gray-600 font-semibold uppercase px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1"
+              style="transition: all 0.15s ease"
+              data-aos="flip-left"
+              data-aos-duration="2000"
+            >
+              <i class="fas fa-arrow-up pr-3" aria-hidden="true"></i> Back to Top
             </a>
           </div>
         </div>
@@ -1196,6 +1237,7 @@
       >
         <svg
           class="absolute bottom-0 overflow-hidden"
+          aria-hidden="true" focusable="false"
           xmlns="http://www.w3.org/2000/svg"
           preserveAspectRatio="none"
           version="1.1"
@@ -1214,30 +1256,30 @@
         <!-- Text Box Container -->
         <div class="flex flex-wrap">
           <div class="w-full lg:w-6/12 px-4">
-            <h4 class="text-3xl font-semibold">Let's keep in touch!</h4>
-            <h5 class="text-lg mt-0 mb-2 text-gray-700">
+            <h2 class="text-3xl font-semibold">Let's keep in touch!</h2>
+            <p class="text-lg mt-0 mb-2 text-gray-700">
               Find me on social platforms
-            </h5>
+            </p>
             <!-- Social Media Buttons -->
             <div class="mt-6">
-              <a href="https://twitter.com/roywannago" target="_blank"
+              <a href="https://twitter.com/roywannago" target="_blank" rel="noopener noreferrer" aria-label="Roy Wang on Twitter (opens in a new tab)"
                 ><i
-                  class="fab fa-twitter bg-white text-blue-400 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center"
+                  class="fab fa-twitter bg-white text-blue-400 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center" aria-hidden="true"
                 ></i
               ></a>
-              <a href="https://medium.com/@roywannago" target="_blank"
+              <a href="https://medium.com/@roywannago" target="_blank" rel="noopener noreferrer" aria-label="Roy Wang on Medium (opens in a new tab)"
                 ><i
-                  class="fab fa-medium-m bg-white text-gray-800 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center"
+                  class="fab fa-medium-m bg-white text-gray-800 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center" aria-hidden="true"
                 ></i
               ></a>
-              <a href="https://github.com/falinwang/" target="_blank"
+              <a href="https://github.com/falinwang/" target="_blank" rel="noopener noreferrer" aria-label="Roy Wang on GitHub (opens in a new tab)"
                 ><i
-                  class="fab fa-github bg-white text-black shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center"
+                  class="fab fa-github bg-white text-black shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center" aria-hidden="true"
                 ></i
               ></a>
-              <a href="https://www.linkedin.com/in/falinwang/" target="_blank"
+              <a href="https://www.linkedin.com/in/falinwang/" target="_blank" rel="noopener noreferrer" aria-label="Roy Wang on LinkedIn (opens in a new tab)"
                 ><i
-                  class="fab fa-linkedin-in bg-white text-blue-800 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center"
+                  class="fab fa-linkedin-in bg-white text-blue-800 shadow-lg font-lg p-3 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2 inline-block text-center" aria-hidden="true"
                 ></i
               ></a>
             </div>
@@ -1360,7 +1402,7 @@
           }
           if (focus) focusSection(target);
           target.scrollIntoView({
-            behavior: smooth && !reducedMotion.matches ? "smooth" : "auto",
+            behavior: smooth && !reducedMotion.matches ? "smooth" : "instant",
             block: "start"
           });
           scheduleUpdate();
@@ -1408,6 +1450,7 @@
           });
         });
         document.addEventListener("focusin", event => {
+          if (!nav.contains(event.target)) closeMenu();
           if (!visible || nav.contains(event.target) || !main.contains(event.target)) return;
           if (!event.target.matches("a, button, input, select, textarea, [contenteditable='true']")) return;
           const rect = event.target.getBoundingClientRect();
@@ -1438,9 +1481,42 @@
         }
         update();
       })();
+
+      (() => {
+        const nav = document.getElementById("mc-main-nav");
+        const toggle = document.getElementById("mc-main-nav-toggle");
+        const panel = document.getElementById("collapse-navbar");
+        const desktop = window.matchMedia("(min-width: 1024px)");
+        let open = false;
+
+        function setOpen(value) {
+          open = value;
+          panel.classList.toggle("hidden", !open);
+          panel.classList.toggle("block", open);
+          toggle.setAttribute("aria-expanded", String(open));
+          toggle.setAttribute("aria-label", open ? "Close main navigation" : "Open main navigation");
+        }
+
+        toggle.addEventListener("click", () => setOpen(!open));
+        nav.addEventListener("keydown", event => {
+          if (event.key === "Escape" && open && !desktop.matches) {
+            event.preventDefault();
+            setOpen(false);
+            toggle.focus({ preventScroll: true });
+          }
+        });
+        desktop.addEventListener("change", () => {
+          if (desktop.matches && document.activeElement === toggle) {
+            panel.querySelector("a").focus({ preventScroll: true });
+          } else if (!desktop.matches && !open && panel.contains(document.activeElement)) {
+            toggle.focus({ preventScroll: true });
+          }
+        });
+        setOpen(false);
+      })();
     </script>
+    <!-- AOS.js -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="script.js"></script>
   </body>
-  <!-- AOS.js -->
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
 </html>
